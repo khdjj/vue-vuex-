@@ -1,0 +1,234 @@
+.discover-module{
+    width:900px;
+    margin:5px auto;
+}
+.discover-module .m-n-rcmd{
+    width:900px;
+}
+.v-hd2,.cor{
+    background-image: url("https://s2.music.126.net/style/web2/img/index/index.png?6e05ba7%E2%80%A6");
+}
+a{
+    color: rgb(51, 51, 51);
+}
+.v-hd2 .tit{
+    margin-left: 30px;
+    float:left;
+    font-size:20px;
+    font-weight: normal;
+    line-height: 28px;
+}
+.v-hd2 {
+    border-bottom: 2px solid #C10D0C;
+    width:900px;
+    background-position:  -225px -156px;
+    background-repeat: no-repeat;
+    height:34px;
+}
+.v-hd2 .tabs{
+    float:left;
+    margin:7px 0 0 20px;
+}
+.v-hd2 .tabs .tabs-a{
+    float:left;
+    font-size:13px;
+    padding-left:28px;
+}
+.more .cor{
+    display: inline-block;
+    width:12px;
+    height:12px;
+    margin-left: 4px;
+    background-position: 0 -240px;
+    background-repeat: no-repeat
+
+}
+.more{
+    float:right;
+    font-size: 13px;
+    margin-top:6px;
+}
+.m-cvrlst{
+    margin-top:30px;
+}
+.u-cover{
+    width:140px;
+    height:140px;
+    position: relative;
+}
+.u-cover img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-left: 7px;
+}
+.m-cvrlst li{
+    width: 140px;
+    height: 204px;
+    margin: 10px;
+    margin-right: 74px;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1.4;
+}
+.u-cover .msk{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+.u-cover .bottom{
+    background-image: url("https://s2.music.126.net/style/web2/img/coverall.png?34d3e03…");
+}
+.u-cover .bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 27px;
+    background-position: 0 -537px;
+    color: #ccc;
+}
+.icon-headset{
+    background-image: url("https://s2.music.126.net/style/web2/img/iconall.png?ed3388d%E2%80%A6");
+}
+.bottom .icon-headset{
+    float: left;
+    width: 14px;
+    height: 11px;
+    background-position: 0 -24px;
+    margin: 9px 5px 9px 10px;
+}
+
+.bottom .nb{
+    float: left;
+    font-size:12px;
+    margin: 7px 0 0 5px;
+}
+.m-cvrlst li .desc{
+    margin: 8px 0 3px;
+    font-size: 14px;
+}
+.n-bill{
+    width: 100%;
+    margin-bottom: 200px;
+}
+
+.top-flag{
+    height:492px;
+    margin-top: 20px;
+}
+.blk{
+    float: left;
+    width: 299px;
+}
+.n-bill .top{
+    height: 100px;
+    padding: 0px 0 0px 19px;
+    width: 300px;
+}
+.n-bilst .cver {
+    float: left;
+    display: inline;
+}
+.u-cover-4 {
+    width: 100px;
+    height: 87px;
+}
+.u-cover {
+    position: relative;
+}
+.u-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.u-cover .msk {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.n-bilst {
+    height: 472px;
+    margin-top: 20px;
+    padding-left: 1px;
+    background-image: url(https://s2.music.126.net/style/web2/img/index/index_bill.png?922b9460926cb8de7cdb332bb377035f) ;
+    background-size: 900px 472px;
+}
+
+.n-bilst .tit {
+    float: left;
+    width: 116px;
+    margin:6px 0 0 18px;
+}
+.n-bilst .tit h3 {
+    width: 100%;
+    color: black;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.f-thide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+.n-bilst .btn a {
+    display: block;
+    float: left;
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    text-indent: -9999px;
+}
+
+.s-bg, .v-hd2, .n-disk li {
+    background: url(https://s2.music.126.net/style/web2/img/index/index.png?6e05ba76ea006524a8febbad6708ea5b) no-repeat 0 9999px;
+}
+.s-bg-9 {
+    background-position: -267px -205px;
+}
+.s-bg-10 {
+    background-position: -300px -205px;
+}
+.n-bilst ol {
+    height: 319px;
+    margin-left: 50px;
+    line-height: 32px;
+    margin-top:5px;
+}
+.n-bilst ol li {
+    height: 32px;
+}
+
+.n-bilst ol .no {
+    float: left;
+    position: relative;
+    width: 35px;
+    height: 32px;
+    margin-left: -35px;
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+}
+.n-bilst ol .nm {
+    float: left;
+    font-size:14px;
+    width: 170px;
+    height: 32px;
+}
+.n-bilst ol .nm:hover{
+    text-decoration:underline;
+}
+.n-bilst ol .no-top {
+    color: #c10d0c;
+}
+.n-bilst .more {
+    clear: both;
+    height: 32px;
+}

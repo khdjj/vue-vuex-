@@ -1,0 +1,122 @@
+.f-cb::after{
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+body,a,h1,li,ul,div,h3,h2,h4,ol{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    color: white;
+    list-style:none;
+}
+.m-top{
+    background-color: #242424;
+    position: relative;
+    height:70px;
+    border-bottom: 1px solid #000;
+}
+.m-top .wrap{
+    width: 90%;
+    margin:  0 auto;
+}
+
+.logo,.srch-btn{
+    background-image: url('https://s2.music.126.net/style/web2/img/frame/topbar.png?d0ddca5…');
+}
+.m-top .wrap .logo{
+    float: left;
+    background-position: 0 0;
+    width: 176px;
+    height: 69px;
+}
+.wrap .logo a{
+    text-indent: -9999px;
+}
+.m-nav{
+    float: left;
+}
+
+.m-nav li,.m-nav li span,.m-nav a{
+    font-size: 14px;
+    height: 70px;
+    float:left;
+}
+.m-nav li a{
+    text-align: center;
+    line-height: 70px;
+    padding: 0 20px;
+    color: #ccc;
+}
+.m-nav li a:hover{
+    background-color: black;
+}
+.m-search{
+    height: 72px;
+    float:left;
+    margin-left: 20px;
+    width: 200px;
+}
+.m-search .srchbg{
+    position: relative;
+    margin: 20px auto;
+    background-position: 0 -99px;
+}
+#srch{
+    width: 180px;
+    height: 25px;
+    border-radius: 30px;
+    padding-left:30px;
+}
+.srch-btn{
+    position: absolute;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    top:0;
+    left:0;
+    background-position: 0 -99px;
+}
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+.m-creator-center{
+    text-align: center;
+    float:left;
+    width: 130px;
+    height:34px;
+    line-height: 34px;
+    border:1px solid #4F4F4F;
+    color:#ccc;
+    border-radius: 20px;
+    margin: 20px auto;
+    margin-left:30px;
+    font-size:14px;
+}
+.m-creator-center:hover{
+    border:1px solid #fff;
+    color:#fff;
+}
+.m-tophead{
+    float:left;
+    height:70px;
+    width:60px;
+    margin-left:47px;
+}
+.m-tophead .head{
+    background-color: #fff;
+    margin: 15px auto;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    overflow:hidden;
+}
+.head img{
+    width:100%;
+    height:100%;
+}
+

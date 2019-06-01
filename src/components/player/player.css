@@ -1,0 +1,360 @@
+/* body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	background: -webkit-radial-gradient(#847c7c, #101010);
+	background: -o-radial-gradient(#847c7c, #101010);
+	background: -moz-radial-gradient(#847c7c, #101010);
+	background: radial-gradient(#847c7c, #101010);
+} */
+div,body,pre{
+	box-sizing: border-box;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+#player{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+	
+.player_u-cover .player_avatar{
+	position: relative;
+	
+}
+.player_u-cover .content-operation{
+	padding-top: 320px;
+}
+.lplayer-lrc-after{
+	color: black !important;
+	font-size: 12px;
+}
+.lplayer-lrc{
+	width: 400px;
+	height: 400px;
+	overflow: hidden;
+	margin-top: 30px;
+}
+.lplayer-lrc-container .lplayer-lrc-content{
+	text-align: center;
+	margin-top: 37px;
+	width: 400px;
+	height:400px;
+	transition: all 2s;
+}
+.player_cvrwrap{
+	float: left;
+    margin-left: 73px;
+}
+.player_cvrwrap .player_u-cover .p-img{
+	position: absolute;
+	width: 130px;
+	height: 130px;
+	top: 15%;
+	left: 16%;
+	border-radius: 50%;
+}
+.msk {
+	background-image:url(https://s2.music.126.net/style/web2/img/coverall.png?34d3e0334c1f00c8ba7ab4a48b50a3ae);
+}
+.player_u-cover .msk{
+	position: absolute;
+	top: 50px;
+	left: 100px;
+	width: 239px ;
+	height: 242px;
+	background-position: -140px -580px;
+}
+.lplayer-lrc-container{
+	color:#272424;
+	overflow: hidden;
+	
+}
+
+.content-operation .btns{
+	display: inline-block;
+	height: 35px;
+	width: 75px;
+	line-height: 35px;
+	text-align: center;
+	color: white;
+	font-size: 15px;
+	border:1px solid #bdb0b0;
+	text-decoration: none;
+}
+.content-operation .addTo{
+	width: 30px;
+	margin-left: -5px;
+}
+.btns:hover{
+	background-color:#989191 ;
+}
+.lplayer-lrc-container .lplayer-music{
+	margin-left: 120px;
+}
+ .m-playbar{
+	position: absolute;
+	height: 37px;
+	width: 102%;
+	background-color: #2a2a2a;
+}
+
+.playbar-btns{
+	margin-left: 44px;
+	float:left;
+}
+.playbar-btns a,.playbar-btns{
+	display: inline-block;
+}
+.playbar-btns .prev{
+	width: 28px;
+	height: 28px;
+	background-position: 0 -130px;
+}
+.playbar-btns .next{
+	width: 28px;
+	height: 28px;
+	background-position: -80px -130px;
+}
+.playbar-btns .ply{
+	width: 36px;
+	height: 36px;
+	background-position: 0 -204px;
+}
+.prev,.next,.ply,.mv,.icn-add,.icn-share,.icn-vol,.icn-list,.icn-shuffle{
+	background-image: url(https://s2.music.126.net/style/web2/img/frame/playbar.png?b6669c278485666917231c56383487b5);
+}
+.m-playbar .head{
+	position: relative;
+	float:left;
+	width: 36px;
+	margin:0px -8px 0px  63px
+}
+.m-playbar .head img{
+	width: 34px;
+	height: 34px;
+	margin-top: 2px;
+}
+.m-playbar .head .albumimg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 34px;
+	height: 34px;
+	
+}
+.words{
+	display: inline-block;
+}
+.words .mv{
+	display: inline-block;
+	background-position: 0 -57px;
+	width: 19px;
+	height: 14px;
+}
+.words .song-name{
+	color: white;
+	font-size: 15px;
+}
+.words .by .artist{
+	margin-left: 20px;
+	color: #4c4747;
+	font-size: 14px;
+}
+.play .m-pbar{
+	position: relative;
+	width: 491px;
+}
+.barbg,.rdy{
+	background-image: url(https://s2.music.126.net/style/web2/img/frame/statbar.png?feda912eb226e9f7a4247139fe8df79d);
+}
+.m-pbar .barbg{
+	margin-top: 2px;
+	height: 9px;
+	background-position: right 0;
+}
+.m-pbar .rdy{
+	width: 30px;
+	height: 9px;
+	cursor: pointer;
+	background-position: right -30px;
+ }
+ 
+.m-pbar .cur{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0px;
+	height:9px;
+	cursor: pointer;
+	background-color: red;
+}
+.cur .circle-btn{
+	position: absolute;
+	top: -3px;
+	right: -13px;
+	margin-left: -11px;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	z-index: 30;
+	background-color: white;
+	border-radius: 50%;
+}
+.m-pbar .time{
+	position: absolute;
+	top: -7px;
+	right: -100px;
+	color: #3e3939;
+}
+.m-pbar .time em{
+	color: #c5bebe;
+	font-style: normal;
+}
+
+.oper{
+	margin-top: 11px;
+	float:left;
+	margin-left:139px;
+}
+.icn{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+}
+.oper .icn-add{
+	background-position:-88px -163px ;
+}
+.oper .icn-share{
+	background-position: -114px -163px;
+}
+.m-vol{
+	display: none;
+	position: absolute;
+	top: -113px;
+	left: 9px;
+	clear: both;
+	width: 32px;
+	height: 113px;
+}
+.play{
+	margin-left: 20px;
+    float: left;
+}
+.m-vol .barbg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 32px;
+	height: 113px;
+	background-position: 0 -503px;
+	background-image: url(https://s2.music.126.net/style/web2/img/frame/playbar.png?b6669c278485666917231c56383487b5);
+}
+.m-vol .vbg{
+	padding: 4px 0;
+	top: 7px;
+	cursor: pointer;
+}
+.vbg{
+	position: absolute;
+	left: 14px;
+	height: 93px;
+	width: 4px;
+}
+.m-vol .curr{
+	top:auto;
+	position: absolute;
+	bottom: -10px;
+	display: inline-block;
+	width: 0.25rem;
+	height: 98px;
+	left: 0;
+	cursor: pointer;
+	background-color: red;
+	overflow: hidden;
+}
+.m-vol .vol-btn{
+	position: absolute;
+	left: -7px;
+	width: 14px;
+	height:14px;
+	background-color: white;
+	border-radius: 50%;
+	display: inline-block;
+	cursor: pointer;
+}
+.icn-vol{
+	background-position: -2px -248px;
+}
+.icn-shuffle{
+	background-position: -2px -248px;
+}
+.add-song-list {
+	display: inline-block;
+	width: 59px;
+	height: 36px;
+}
+.icn-list{
+	display: inline-block;
+	width: 59px;
+	padding-left: 21px;
+	background-position: -42px -68px;
+	line-height: 27px;
+	text-align: center;
+	color: #fff;
+	text-decoration: none;
+	position: absolute;
+	font-size:12px;
+	top:5px
+}
+.m-playbar .ctrl{
+	position: relative;
+	z-index: 10;
+	width: 152px;
+	padding-left: 13px;
+	background-position:-147px -238px ;
+	float: right;
+    margin-right: 191px;
+    margin-top: 4px;
+}
+.icn-vol{
+	margin-top: 5px;
+	background-position: -2px -248px;
+}
+.icn-shuffle{
+	margin-top: 5px;
+	background-position: -66px -248px;
+}
+.lplayer-music h1{
+	color: #fff;
+}
+.lplayer-music span{
+	color: #c5bbbe;
+	
+}
+.lplayer-music a{
+	color: #fff;
+	font-size: 15px;
+	
+}
+
+.aplayer-lrc-current{
+	color: white;
+	font-size: 18px!important;
+	
+}
+
+.g-btmbar{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 37px;
+	width: 100%;
+	z-index: 10000;
+	
+}
