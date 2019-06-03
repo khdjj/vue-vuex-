@@ -206,7 +206,7 @@ LPlayer.prototype = {
 				e === 1 && clearInterval(m.loadedTime);
 			}, 500);
 		};
-		this.audio.error = function() {
+		this.audio.onerror = function() {
 			console.log("加载失败");
 		}
 

@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import {LPlayer} from '../../../plugins/Lplayer'
 export default {
     name:'player',

@@ -56,111 +56,19 @@
           </span>
         </div>
         <ul class="m-cvrlst f-cb">
-          <li>
+          <!-- <li v-for="item in playList" v-bind:key="item.id">
             <div class="u-cover">
-              <img
-                src="http://p1.music.126.net/EdV6HJNNXb2nknKfqEh9vA==/109951164111749636.jpg?param=140y140"
-              >
+              <img :src="item.img">
               <a href="javascript:;" class="msk"></a>
               <div class="bottom">
                 <span class="icon-headset"></span>
-                <span class="nb">1万</span>
+                <span class="nb">{{item.play_num}}</span>
               </div>
             </div>
             <p class="desc">
-              <a href="javascript:;" class="tit"></a>
+              <a href="javascript:;" class="tit">{{item.desc}}</a>
             </p>
-          </li>
-          <li>
-            <div class="u-cover">
-              <img
-                src="http://p1.music.126.net/EdV6HJNNXb2nknKfqEh9vA==/109951164111749636.jpg?param=140y140"
-              >
-              <a href="javascript:;" class="msk"></a>
-              <div class="bottom">
-                <span class="icon-headset"></span>
-                <span class="nb">1万</span>
-              </div>
-            </div>
-            <p class="desc">
-              <a href="javascript:;" class="tit"></a>
-            </p>
-          </li>
-          <li>
-            <div class="u-cover">
-              <img
-                src="http://p1.music.126.net/EdV6HJNNXb2nknKfqEh9vA==/109951164111749636.jpg?param=140y140"
-              >
-              <a href="javascript:;" class="msk"></a>
-              <div class="bottom">
-                <span class="icon-headset"></span>
-                <span class="nb">1万</span>
-              </div>
-            </div>
-            <p class="desc">
-              <a href="javascript:;" class="tit"></a>
-            </p>
-          </li>
-          <li>
-            <div class="u-cover">
-              <img
-                src="http://p1.music.126.net/EdV6HJNNXb2nknKfqEh9vA==/109951164111749636.jpg?param=140y140"
-              >
-              <a href="javascript:;" class="msk"></a>
-              <div class="bottom">
-                <span class="icon-headset"></span>
-                <span class="nb">1万</span>
-              </div>
-            </div>
-            <p class="desc">
-              <a href="javascript:;" class="tit"></a>
-            </p>
-          </li>
-          <li>
-            <div class="u-cover">
-              <img
-                src="http://p1.music.126.net/EdV6HJNNXb2nknKfqEh9vA==/109951164111749636.jpg?param=140y140"
-              >
-              <a href="javascript:;" class="msk"></a>
-              <div class="bottom">
-                <span class="icon-headset"></span>
-                <span class="nb">1万</span>
-              </div>
-            </div>
-            <p class="desc">
-              <a href="javascript:;" class="tit"></a>
-            </p>
-          </li>
-          <li>
-            <div class="u-cover">
-              <img
-                src="http://p1.music.126.net/EdV6HJNNXb2nknKfqEh9vA==/109951164111749636.jpg?param=140y140"
-              >
-              <a href="javascript:;" class="msk"></a>
-              <div class="bottom">
-                <span class="icon-headset"></span>
-                <span class="nb">1万</span>
-              </div>
-            </div>
-            <p class="desc">
-              <a href="javascript:;" class="tit"></a>
-            </p>
-          </li>
-          <li>
-            <div class="u-cover">
-              <img
-                src="http://p1.music.126.net/EdV6HJNNXb2nknKfqEh9vA==/109951164111749636.jpg?param=140y140"
-              >
-              <a href="javascript:;" class="msk"></a>
-              <div class="bottom">
-                <span class="icon-headset"></span>
-                <span class="nb">1万</span>
-              </div>
-            </div>
-            <p class="desc">
-              <a href="javascript:;" class="tit">【VIP专享】一周新歌推荐</a>
-            </p>
-          </li>
+          </li> -->
         </ul>
       </div>
       <div class="n-bill">
@@ -191,51 +99,93 @@
                 </div>
               </div>
             </dt>
-						<dd>
-							<ol>
-								<li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
+            <dd>
+              <ol>
                 <li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
                 <li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
-                	<li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
                 <li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
                 <li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
-                	<li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
                 <li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
                 <li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
                 <li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
-							</ol>
-              <div class="more"><a href="javascript:;" class="s-fc0">查看全部&gt;</a></div>
-						</dd>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
+                <li>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
+                <li>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
+                <li>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
+              </ol>
+              <div class="more">
+                <a href="javascript:;" class="s-fc0">查看全部&gt;</a>
+              </div>
+            </dd>
           </dl>
           <dl class="blk">
             <dt class="top">
@@ -256,15 +206,21 @@
                 </div>
               </div>
             </dt>
-						<dd>
-							<ol>
-								<li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
-							</ol>
-              <div class="more"><a href="javascript:;" class="s-fc0">查看全部&gt;</a></div>
-						</dd>
+            <dd>
+              <ol>
+                <li>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
+              </ol>
+              <div class="more">
+                <a href="javascript:;" class="s-fc0">查看全部&gt;</a>
+              </div>
+            </dd>
           </dl>
           <dl class="blk">
             <dt class="top">
@@ -285,15 +241,21 @@
                 </div>
               </div>
             </dt>
-						<dd>
-							<ol>
-								<li>
-									<span class="no no-top">1</span>
-									<a href="javascript:;" class="nm s-fc0 f-thide" title="Never Really Over">Never Really Over</a>
-								</li>
-							</ol>
-              <div class="more"><a href="javascript:;" class="s-fc0">查看全部&gt;</a></div>
-						</dd>
+            <dd>
+              <ol>
+                <li>
+                  <span class="no no-top">1</span>
+                  <a
+                    href="javascript:;"
+                    class="nm s-fc0 f-thide"
+                    title="Never Really Over"
+                  >Never Really Over</a>
+                </li>
+              </ol>
+              <div class="more">
+                <a href="javascript:;" class="s-fc0">查看全部&gt;</a>
+              </div>
+            </dd>
           </dl>
         </div>
       </div>
@@ -308,7 +270,8 @@
 import navCompt from "../nav/nav";
 import $ from "jquery";
 import player from "../player/player";
-import foot from "../foot/foot"
+import foot from "../foot/foot";
+import axios from "axios";
 import { Shuffling } from "../../../plugins/broadcast/Shuffling.js";
 export default {
   name: "home",
@@ -317,7 +280,11 @@ export default {
     player,
     foot
   },
+  data() {
+    playList: 6;
+  },
   mounted: function() {
+    this.getPlayList();
     this.shuffling();
   },
   methods: {
@@ -339,6 +306,17 @@ export default {
       $(function() {
         new Shuffling($(".slider-wrap"), setting);
       });
+    },
+    getPlayList() {
+      axios
+        .get("http://localhost:8001/discover/playlist?limit=8&offset=0")
+        .then(function(res) {
+          console.log(res);
+          this.playList = res.data;
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
     }
   }
 };
