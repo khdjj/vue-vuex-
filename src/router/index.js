@@ -4,7 +4,7 @@ import App from '../App.vue'
 Vue.use(Router)
 
 const home  = resolve => require.ensure([], () => resolve(require('../components/home/home.vue')), 'home');
-// const app = resolve => require.ensure([], () => resolve(require('../App.vue')), 'app');
+const playlist  = resolve => require.ensure([], () => resolve(require('../components/playlist/playlist.vue')), 'home');
 
 
 export default new Router({
@@ -21,7 +21,11 @@ export default new Router({
           component:home
         }
       ]
-
+    },
+    {
+      name:'playlist',
+      path:'/playlist/:id',
+      component:playlist
     }
   ]
 })

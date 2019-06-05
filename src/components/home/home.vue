@@ -56,19 +56,19 @@
           </span>
         </div>
         <ul class="m-cvrlst f-cb">
-          <!-- <li v-for="item in playList" v-bind:key="item.id">
+          <li v-for="item in playList" v-bind:key="item.id">
             <div class="u-cover">
               <img :src="item.img">
-              <a href="javascript:;" class="msk"></a>
+              <router-link :to="{name:'playlist',params:{id:item.id}}" class="msk"></router-link>
               <div class="bottom">
                 <span class="icon-headset"></span>
                 <span class="nb">{{item.play_num}}</span>
               </div>
             </div>
             <p class="desc">
-              <a href="javascript:;" class="tit">{{item.desc}}</a>
+              <router-link :to="{name:'playlist',params:item.id}" class="tit">{{item.name}}</router-link>
             </p>
-          </li> -->
+          </li>
         </ul>
       </div>
       <div class="n-bill">
@@ -80,18 +80,18 @@
           </span>
         </div>
         <div class="n-bilst" id="top-flag">
-          <dl class="blk">
+          <dl class="blk" v-for="(toplist,index) in topList" v-bind:key = "index">
             <dt class="top">
               <div class="cver u-cover u-cover-4">
                 <img
                   class="j-img"
-                  src="http://p3.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=100y100"
+                  :src="toplist.cover"
                 >
-                <a href="javascript:;" class="msk" title="云音乐飙升榜"></a>
+                <a href="javascript:;" class="msk" v-bind:title="toplist.top_name"></a>
               </div>
               <div class="tit">
-                <a href="/discover/toplist?id=19723756" title="云音乐飙升榜">
-                  <h3 class="f-fs1 f-thide">云音乐飙升榜</h3>
+                <a href="/discover/toplist?id=19723756" v-bind:title="toplist.top_name">
+                  <h3 class="f-fs1 f-thide">{{toplist.top_name}}</h3>
                 </a>
                 <div class="btn">
                   <a href="javascript:;" class="s-bg s-bg-9">播放</a>
@@ -101,155 +101,18 @@
             </dt>
             <dd>
               <ol>
-                <li>
-                  <span class="no no-top">1</span>
+                <li @mouseover.stop="mouseover($event)" @mouseout.stop="mouseout($event)"  v-for = "(songlist,index) in songList[index]" v-bind:key="index">
+                  <span class="no no-top">{{index+1}}</span>
                   <a
                     href="javascript:;"
                     class="nm s-fc0 f-thide"
                     title="Never Really Over"
-                  >Never Really Over</a>
-                </li>
-                <li>
-                  <span class="no no-top">1</span>
-                  <a
-                    href="javascript:;"
-                    class="nm s-fc0 f-thide"
-                    title="Never Really Over"
-                  >Never Really Over</a>
-                </li>
-                <li>
-                  <span class="no no-top">1</span>
-                  <a
-                    href="javascript:;"
-                    class="nm s-fc0 f-thide"
-                    title="Never Really Over"
-                  >Never Really Over</a>
-                </li>
-                <li>
-                  <span class="no no-top">1</span>
-                  <a
-                    href="javascript:;"
-                    class="nm s-fc0 f-thide"
-                    title="Never Really Over"
-                  >Never Really Over</a>
-                </li>
-                <li>
-                  <span class="no no-top">1</span>
-                  <a
-                    href="javascript:;"
-                    class="nm s-fc0 f-thide"
-                    title="Never Really Over"
-                  >Never Really Over</a>
-                </li>
-                <li>
-                  <span class="no no-top">1</span>
-                  <a
-                    href="javascript:;"
-                    class="nm s-fc0 f-thide"
-                    title="Never Really Over"
-                  >Never Really Over</a>
-                </li>
-                <li>
-                  <span class="no no-top">1</span>
-                  <a
-                    href="javascript:;"
-                    class="nm s-fc0 f-thide"
-                    title="Never Really Over"
-                  >Never Really Over</a>
-                </li>
-                <li>
-                  <span class="no no-top">1</span>
-                  <a
-                    href="javascript:;"
-                    class="nm s-fc0 f-thide"
-                    title="Never Really Over"
-                  >Never Really Over</a>
-                </li>
-                <li>
-                  <span class="no no-top">1</span>
-                  <a
-                    href="javascript:;"
-                    class="nm s-fc0 f-thide"
-                    title="Never Really Over"
-                  >Never Really Over</a>
-                </li>
-                <li>
-                  <span class="no no-top">1</span>
-                  <a
-                    href="javascript:;"
-                    class="nm s-fc0 f-thide"
-                    title="Never Really Over"
-                  >Never Really Over</a>
-                </li>
-              </ol>
-              <div class="more">
-                <a href="javascript:;" class="s-fc0">查看全部&gt;</a>
-              </div>
-            </dd>
-          </dl>
-          <dl class="blk">
-            <dt class="top">
-              <div class="cver u-cover u-cover-4">
-                <img
-                  class="j-img"
-                  src="http://p4.music.126.net/N2HO5xfYEqyQ8q6oxCw8IQ==/18713687906568048.jpg?param=100y100"
-                >
-                <a href="javascript:;" class="msk" title="云音乐新歌榜"></a>
-              </div>
-              <div class="tit">
-                <a href="/discover/toplist?id=19723756" title="云音乐新歌榜">
-                  <h3 class="f-fs1 f-thide">云音乐新歌榜</h3>
-                </a>
-                <div class="btn">
-                  <a href="javascript:;" class="s-bg s-bg-9">播放</a>
-                  <a href="javascript:;" title="收藏" class="s-bg s-bg-10">收藏</a>
-                </div>
-              </div>
-            </dt>
-            <dd>
-              <ol>
-                <li>
-                  <span class="no no-top">1</span>
-                  <a
-                    href="javascript:;"
-                    class="nm s-fc0 f-thide"
-                    title="Never Really Over"
-                  >Never Really Over</a>
-                </li>
-              </ol>
-              <div class="more">
-                <a href="javascript:;" class="s-fc0">查看全部&gt;</a>
-              </div>
-            </dd>
-          </dl>
-          <dl class="blk">
-            <dt class="top">
-              <div class="cver u-cover u-cover-4">
-                <img
-                  class="j-img"
-                  src="http://p3.music.126.net/sBzD11nforcuh1jdLSgX7g==/18740076185638788.jpg?param=100y100"
-                >
-                <a href="javascript:;" class="msk" title="网易原创歌曲榜"></a>
-              </div>
-              <div class="tit">
-                <a href="/discover/toplist?id=19723756" title="网易原创歌曲榜">
-                  <h3 class="f-fs1 f-thide">网易原创歌曲榜</h3>
-                </a>
-                <div class="btn">
-                  <a href="javascript:;" class="s-bg s-bg-9">播放</a>
-                  <a href="javascript:;" title="收藏" class="s-bg s-bg-10">收藏</a>
-                </div>
-              </div>
-            </dt>
-            <dd>
-              <ol>
-                <li>
-                  <span class="no no-top">1</span>
-                  <a
-                    href="javascript:;"
-                    class="nm s-fc0 f-thide"
-                    title="Never Really Over"
-                  >Never Really Over</a>
+                  >{{songlist.song_name}}</a>
+                  <div class="oper">
+                    <a href="#" class="s-bg s-bg-11" title="播放" hidefocus="true"></a>
+                    <a href="#" class="u-icn u-icn-81" title="添加到播放列表" hidefocus="true"></a>
+                    <a href="#" class="s-bg s-bg-12" title="收藏" hidefocus="true"></a>
+                  </div>
                 </li>
               </ol>
               <div class="more">
@@ -269,10 +132,13 @@
 <script>
 import navCompt from "../nav/nav";
 import $ from "jquery";
+// import {show,hide} from '../../../service/core'
 import player from "../player/player";
 import foot from "../foot/foot";
 import axios from "axios";
+import { numFormat } from "../../../service/utils";
 import { Shuffling } from "../../../plugins/broadcast/Shuffling.js";
+import axiosmethod from "../../../service/axios";
 export default {
   name: "home",
   components: {
@@ -281,16 +147,22 @@ export default {
     foot
   },
   data() {
-    playList: 6;
+    return {
+      playList: null,
+      topList: null,
+      songList:null
+    };
   },
   mounted: function() {
     this.getPlayList();
     this.shuffling();
+    this.getTopList();
   },
   methods: {
     /**
      * 轮播插件
      */
+
     shuffling() {
       var setting = {
         model: "slide", //slide or carousel
@@ -308,15 +180,38 @@ export default {
       });
     },
     getPlayList() {
-      axios
-        .get("http://localhost:8001/discover/playlist?limit=8&offset=0")
-        .then(function(res) {
-          console.log(res);
-          this.playList = res.data;
-        })
-        .catch(function(err) {
-          console.log(err);
-        });
+      let self = this;
+      axiosmethod("/discover/playlist", {
+        limit: 8,
+        offset: 0
+      }).then(res => {
+        self.playList = res.data.data;
+        if (self.playList) {
+          self.playList.forEach(item => {
+            item.play_num = numFormat(item.play_num);
+          });
+        }
+      });
+    },
+    getTopList() {
+      let self = this;
+      axiosmethod("/discover/toplist", {
+        limit: 10,
+        offset: 0,
+        name:['云音乐飙升榜','云音乐新歌榜','网易原创歌曲榜']
+      }).then(res => {
+        console.log(res);
+        self.topList = res.data.data.topList;
+        self.songList = res.data.data.songIds;
+      });
+    },
+    mouseover: function(e) {
+      let target = e.currentTarget;
+      $(target).addClass("z-hvr");
+    },
+    mouseout: function(e) {
+      let target = e.currentTarget;
+      $(target).removeClass("z-hvr");
     }
   }
 };

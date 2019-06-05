@@ -178,7 +178,7 @@ a{
 	background-position: right 0;
 }
 .m-pbar .rdy{
-	width: 30px;
+	width: 0px;
 	height: 9px;
 	cursor: pointer;
 	background-position: right -30px;
@@ -216,7 +216,7 @@ a{
 	font-style: normal;
 }
 
-.oper{
+.m-playbar .oper{
 	margin-top: 11px;
 	float:left;
 	margin-left:139px;
