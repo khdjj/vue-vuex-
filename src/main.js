@@ -3,11 +3,12 @@
 import Vue from 'vue'
 import router from './router'
 import {numFormat} from "../service/utils"
-
+import vuex from 'vuex'
+import store from '../src/store/index'
 Vue.config.productionTip = false
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
 }).$mount('#app')

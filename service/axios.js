@@ -4,7 +4,6 @@ let baseUrl = "http://localhost:8001";
 export default  (url = '', data = {}, type = "GET") => {
     type = type.toUpperCase();
     url = baseUrl + url;
-    console.log(type);
     if (type == 'GET') {
         return new Promise((resolve,reject)=>{
          axios.get(url, {

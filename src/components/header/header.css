@@ -5,6 +5,9 @@
     height: 0;
     visibility: hidden;
 }
+body{
+    position: relative;
+}
 body,a,h1,li,ul,div,h3,h2,h4,ol{
     margin:0;
     padding:0;

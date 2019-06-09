@@ -1,6 +1,6 @@
-/* body {
+#container{
 	width: 100%;
-	height: 100%;
+	height: 600px;
 	margin: 0;
 	padding: 0;
 	position: relative;
@@ -8,9 +8,12 @@
 	background: -o-radial-gradient(#847c7c, #101010);
 	background: -moz-radial-gradient(#847c7c, #101010);
 	background: radial-gradient(#847c7c, #101010);
-} */
+} 
+
 div,body,pre{
 	box-sizing: border-box;
+	margin:0;
+	padding:0;
 }
 a{
 	text-decoration: none;
@@ -45,6 +48,13 @@ a{
 	width: 400px;
 	height:400px;
 	transition: all 2s;
+}
+.lplayer-lrc-content p {
+    height: 16px;
+    min-height: 32px;
+    margin: 0px;
+    padding: 10px;
+	line-height: 16px;
 }
 .player_cvrwrap{
 	float: left;
@@ -95,9 +105,10 @@ a{
 }
 .lplayer-lrc-container .lplayer-music{
 	margin-left: 120px;
+	margin-top: 58px;
 }
  .m-playbar{
-	position: absolute;
+	position: relative;
 	height: 37px;
 	width: 102%;
 	background-color: #2a2a2a;
@@ -162,7 +173,7 @@ a{
 }
 .words .by .artist{
 	margin-left: 20px;
-	color: #4c4747;
+	color:white;
 	font-size: 14px;
 }
 .play .m-pbar{
@@ -300,7 +311,7 @@ a{
 }
 .icn-list{
 	display: inline-block;
-	width: 59px;
+	width: 58px;
 	padding-left: 21px;
 	background-position: -42px -68px;
 	line-height: 27px;
@@ -345,7 +356,6 @@ a{
 .aplayer-lrc-current{
 	color: white;
 	font-size: 18px!important;
-	
 }
 
 .g-btmbar{
@@ -357,4 +367,28 @@ a{
 	width: 100%;
 	z-index: 10000;
 	
+}
+
+.allscreen {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-image: url(https://www.iqiyipic.com/common/fix/pcWeb-img/icon-all.png);
+    background-position: -34px -28px;
+    position: absolute;
+    top: 10px;
+	right: 96px;
+	cursor: pointer;
+}
+
+.closePlayer{
+	z-index:999;
+	position: absolute;
+	cursor: pointer;
+	top:10px;
+	right:30px;
+	display:inline-block;
+	width:18px;
+	height:18px;
+	background:url("http://static.redocn.com/public/images/icon-public-login.png") no-repeat 0 -68px;
 }

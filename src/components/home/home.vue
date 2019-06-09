@@ -1,3 +1,5 @@
+
+
 <template>
   <div>
     <nav-compt></nav-compt>
@@ -66,7 +68,7 @@
               </div>
             </div>
             <p class="desc">
-              <router-link :to="{name:'playlist',params:item.id}" class="tit">{{item.name}}</router-link>
+              <router-link :to="{path:'/playlist',query: {id:item.id}}" class="tit">{{item.name}}</router-link>
             </p>
           </li>
         </ul>
@@ -80,19 +82,19 @@
           </span>
         </div>
         <div class="n-bilst" id="top-flag">
-          <dl class="blk" v-for="(toplist,index) in topList" v-bind:key = "index">
+          <dl class="blk" v-for="(toplist,index) in topList" v-bind:key="index">
             <dt class="top">
               <div class="cver u-cover u-cover-4">
-                <img
-                  class="j-img"
-                  :src="toplist.cover"
-                >
+                <img class="j-img" :src="toplist.cover">
                 <a href="javascript:;" class="msk" v-bind:title="toplist.top_name"></a>
               </div>
               <div class="tit">
-                <a href="/discover/toplist?id=19723756" v-bind:title="toplist.top_name">
+                <router-link
+                  to="'/discover/toplist?name='+toplist.top_name"
+                  v-bind:title="toplist.top_name"
+                >
                   <h3 class="f-fs1 f-thide">{{toplist.top_name}}</h3>
-                </a>
+                </router-link>
                 <div class="btn">
                   <a href="javascript:;" class="s-bg s-bg-9">播放</a>
                   <a href="javascript:;" title="收藏" class="s-bg s-bg-10">收藏</a>
@@ -101,29 +103,43 @@
             </dt>
             <dd>
               <ol>
-                <li @mouseover.stop="mouseover($event)" @mouseout.stop="mouseout($event)"  v-for = "(songlist,index) in songList[index]" v-bind:key="index">
+                <li
+                  @mouseover.stop="mouseover($event)"
+                  @mouseout.stop="mouseout($event)"
+                  v-for="(songlist,index) in songList[index]"
+                  v-bind:key="index"
+                >
                   <span class="no no-top">{{index+1}}</span>
+
                   <a
-                    href="javascript:;"
+                    @click.stop.prevent="player(songlist,songlist.song_id,true)"
                     class="nm s-fc0 f-thide"
-                    title="Never Really Over"
+                    v-bind:title="songlist.song_name"
                   >{{songlist.song_name}}</a>
                   <div class="oper">
-                    <a href="#" class="s-bg s-bg-11" title="播放" hidefocus="true"></a>
+                    <a
+                      class="s-bg s-bg-11"
+                      @click.stop.prevent="player(songlist,songlist.song_id,false)"
+                      title="播放"
+                      hidefocus="true"
+                    ></a>
                     <a href="#" class="u-icn u-icn-81" title="添加到播放列表" hidefocus="true"></a>
                     <a href="#" class="s-bg s-bg-12" title="收藏" hidefocus="true"></a>
                   </div>
                 </li>
               </ol>
               <div class="more">
-                <a href="javascript:;" class="s-fc0">查看全部&gt;</a>
+                <router-link
+                  :to="{path:'/toplist',query:{name:toplist.top_name}}"
+                  class="s-fc0"
+                >查看全部&gt;</router-link>
               </div>
             </dd>
           </dl>
         </div>
       </div>
     </div>
-    <player></player>
+    <player ref="play"></player>
     <foot></foot>
     <router-view></router-view>
   </div>
@@ -132,13 +148,13 @@
 <script>
 import navCompt from "../nav/nav";
 import $ from "jquery";
-// import {show,hide} from '../../../service/core'
 import player from "../player/player";
 import foot from "../foot/foot";
 import axios from "axios";
 import { numFormat } from "../../../service/utils";
 import { Shuffling } from "../../../plugins/broadcast/Shuffling.js";
 import axiosmethod from "../../../service/axios";
+import { mapMutations } from "vuex";
 export default {
   name: "home",
   components: {
@@ -150,7 +166,7 @@ export default {
     return {
       playList: null,
       topList: null,
-      songList:null
+      songList: null,
     };
   },
   mounted: function() {
@@ -158,11 +174,22 @@ export default {
     this.shuffling();
     this.getTopList();
   },
+  beforeDestroy:function(){
+    this.$refs.play.saveCurrTime();
+  },
   methods: {
     /**
      * 轮播插件
      */
-
+    ...mapMutations([
+      "SAVE_SONG","SAVE_CURRTIME"
+      ]),
+    player(song, id, show) {
+      this.SAVE_SONG(song);
+      this.SAVE_CURRTIME(0);
+      show && this.$router.push({ path: "/player", query: { id: id, show: true } });
+      this.$refs.play.getSongUrl(id);
+    },
     shuffling() {
       var setting = {
         model: "slide", //slide or carousel
@@ -198,7 +225,7 @@ export default {
       axiosmethod("/discover/toplist", {
         limit: 10,
         offset: 0,
-        name:['云音乐飙升榜','云音乐新歌榜','网易原创歌曲榜']
+        name: ["云音乐飙升榜", "云音乐新歌榜", "网易原创歌曲榜"]
       }).then(res => {
         console.log(res);
         self.topList = res.data.data.topList;
