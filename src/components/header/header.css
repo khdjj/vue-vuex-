@@ -8,13 +8,13 @@
 body{
     position: relative;
 }
-body,a,h1,li,ul,div,h3,h2,h4,ol{
+body,a,h1,li,ul,div,h3,h2,h4,ol,table,th,td,tr,p{
     margin:0;
     padding:0;
     box-sizing: border-box;
     text-decoration: none;
     outline: none;
-    color: white;
+    color: black;
     list-style:none;
 }
 .m-top{
@@ -123,3 +123,191 @@ input:focus, textarea:focus, select:focus {
     height:100%;
 }
 
+
+.u-icn, .u-title-1 .out .icon {
+    background: url(https://s2.music.126.net/style/web2/img/icon.png?55ac5bd43ae77a860891b43bbe3a3c13) no-repeat 0 9999px;
+}
+.u-icn, .u-icn2, .u-icn3 {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.f-fl {
+    float: left;
+}
+.f-pr {
+    position: relative;
+    zoom: 1;
+}
+em, i {
+    font-style: normal;
+    text-align: left;
+    font-size: inherit;
+}
+.m-info .user .face, .m-info .user .face img {
+    float: left;
+    width: 35px;
+    height: 35px;
+}
+.u-btn2, .u-btn2 i, .u-btn2 .icn, .u-btni, .u-btni i, .u-tag, .u-tag i, .u-btni-addply .ply {
+    background: url(https://s2.music.126.net/style/web2/img/button2.png?2c4ab99aac01121af43e61c329d71cf0) no-repeat 0 9999px;
+}
+
+.m-table th, .m-table th .wp, .m-table td, .m-table .ply, .m-table .mv, .m-table .icn, .m-info .edit {
+    background: url(https://s2.music.126.net/style/web2/img/table.png?f6995c1bdcbf281ca205ecbae6185ee9) no-repeat 0 9999px;
+}
+.z-hvr{
+    didplay:block;
+}
+.g-bd, .g-bd1, .g-bd2, .g-bd3, .g-bd4, .g-bd5, .g-bd6, .g-bd7 {
+    width: 980px;
+    min-height: 700px;
+    _height: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    border-width: 0 1px;
+}
+.u-cover-rank .msk {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-position: -230px -380px;
+    top: 3px;
+    left: 3px;
+}
+.m-info .btns {
+    margin-bottom: 25px;
+    margin-right: -10px;
+}
+.u-btni-addply {
+    float: left;
+}
+
+.u-btn2-2 {
+    color: #fff;
+    background-position: right -428px;
+}
+.u-btn2, .u-btn2:hover {
+    text-decoration: none;
+}
+.u-btn2 {
+    padding: 0 5px 0 0;
+    white-space: nowrap;
+}
+.u-btn2, .u-btn2 i {
+    display: inline-block;
+    zoom: 1;
+    height: 31px;
+    line-height: 31px;
+    overflow: hidden;
+    line-height: 32px;
+    vertical-align: top;
+    text-align: center;
+    cursor: pointer;
+}
+
+.m-info .btns .u-btni-add {
+    margin-right: 5px;
+}
+
+.m-info .btns2 .u-btni, .m-info .btns .u-btni {
+    margin-right: 6px;
+}
+.u-btni-add {
+    width: 31px;
+    margin-left: -3px;
+    padding-right: 0;
+    background-position: 0 -1588px;
+}
+
+.u-btni {
+    padding: 0 5px 0 0;
+    white-space: nowrap;
+}
+.u-btni, .u-btni i {
+    float: left;
+    height: 31px;
+    line-height: 30px;
+    min-width: 23px;
+    cursor: pointer;
+}
+.u-btni-addply .ply {
+    float: left;
+    width: 20px;
+    height: 18px;
+    margin: 6px 2px 2px 0;
+    background-position: 0 -1622px;
+    overflow: hidden;
+}
+.u-btni-addply i {
+    padding: 0 7px 0 8px;
+}
+.u-btn2-2 i {
+    color: #fff;
+    background-position: 0 -387px;
+}
+.u-btni-fav i {
+    background-position: 0 -977px;
+}
+.u-btni-share i {
+    background-position: 0 -1225px;
+}
+.u-btni-dl i {
+    background-position: 0 -2761px;
+}
+.u-btni-cmmt i {
+    background-position: 0 -1465px;
+}
+.u-btni-share, .u-btni-fav, .u-btni-cmmt, .u-btni-dl {
+    background-position: right -1020px;
+}
+.u-btni i{
+    padding-left:32px;
+    font-size:14px;
+    padding-right: 3px;
+}
+.m-info .tags {
+    margin: 25px 0 5px;
+    line-height: 22px;
+}
+.m-info .tags b {
+    float: left;
+}
+
+.m-info b {
+    font-weight: normal;
+    color: #666;
+}
+.u-tag i {
+    position: relative;
+    zoom: 1;
+    padding: 0 3px 0 13px;
+    background-position: 0 0;
+}
+.u-tag, .u-tag i {
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    font-size:13px;
+}
+.m-info .tags .u-tag {
+    float: left;
+    margin: 0px 10px 3px 0;
+}
+.u-tag {
+    padding: 0 10px 0 0;
+    text-shadow: 0 1px #fdfdfd;
+    background-position: right -27px;
+}
+.u-tag, .u-tag:hover {
+    color: #777;
+    text-decoration: none;
+}
+
+.m-info .intr {
+    margin-top: 4px;
+    line-height: 18px;
+    color: #666;
+    font-size:14px;
+}

@@ -64,14 +64,16 @@ import $ from "jquery";
 import axiosMethod from "../../../service/axios";
 import { LPlayer } from "../../../plugins/Lplayer";
 import { mapState, mapMutations } from "vuex";
+import {formatArtist} from "../../../service/core"
 export default {
   name: "player",
   mounted: function() {
-    console.log("mounted");
+    //如果url函数中带有show，则表明需要全屏显示歌曲播放信息
     if (this.$route.query.show) {
       this.isOnlyProgressBar = true;
     }
     if (this.song.song_name != "未知") {
+      //开始获取歌曲信息
       this.start();
     }
   },
@@ -88,6 +90,7 @@ export default {
     };
   },
   beforeDestroy:function(){
+    //在vue实例销毁之前将歌曲暂停并存储当前歌曲播放时间
     this.audioPlayer.pause();
     this.SAVE_CURRTIME(this.audioPlayer.getCurrTime());
   },
@@ -101,6 +104,7 @@ export default {
       'SAVE_CURRTIME','SAVE_SONG_URL','SAVE_SONG_LYRIC'
     ]),
     start:function(id){
+      //如果当前歌曲信息忆存在，则无需获取，直接播放，否则先获取歌曲播放地址
       if(!this.songUrl && !this.lyric){
         this.LPlayer();
       }else{
@@ -108,18 +112,26 @@ export default {
       }
     },
     saveCurrTime:function(){
+      //父组件调用此函数，调用此函数时，则说明父组件正在销毁，需要存储父组件的歌曲信息
       this.audioPlayer.pause()
       this.audioPlaer && this.SAVE_CURRTIME(this.audioPlayer.getCurrTime());
     },
+    /**
+     * 歌曲播放组件
+     */
     LPlayer() {
-      console.log(this.currTime);
+
+      /**
+       * 在vue中存储当前歌曲的信息
+       */
       this.SAVE_SONG_URL(this.song.song_url);
       this.SAVE_SONG_LYRIC(this.song.song_lyric);
-      let artist = "";
-      for (let i = 0; i < this.song.artist_names.length; i++) {
-        artist += this.song.artist_names[i].artist_name + " / ";
-      }
-      artist = artist.substring(0, artist.lastIndexOf("/"));
+
+      //歌曲可能有多个，需要对后台的数据进行处理
+      let artist = formatArtist(this.song.artist_names);
+      
+
+      //全局只需要一个Lplayer实例，所以根据状态，如果还没有此实例，则创建，否则，更改数据，无需创建
       if(this.status == "first"){
         this.status = "second";
         this.audioPlayer = new LPlayer({
@@ -157,6 +169,9 @@ export default {
       }
   
     },
+    /**
+     * 后台获取歌曲url
+     */
     getSongUrl(id) {
       if (this.song.song_id == "") {
         this.song.song_id = id;
@@ -170,6 +185,9 @@ export default {
         self.getLyric();
       });
     },
+    /**
+     * 后台获取歌曲歌曲
+     */
     getLyric() {
       let self = this;
       axiosMethod("/discover/song/lyric", {

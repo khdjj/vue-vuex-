@@ -1,0 +1,148 @@
+.g-sd3-1 {
+    position: static;
+}
+.g-sd3 {
+    float: left;
+    width: 237px;
+}
+.n-minelst-2 {
+    margin-top: 40px;
+}
+.n-minelst h2 {
+    padding: 0 10px 12px 15px;
+    font-size: 14px;
+    color: #000;
+}
+.n-minelst li.z-selected, .n-minelst li.z-selected:hover, .n-minelst li:hover{
+    background: #e6e6e6;
+}
+
+.n-minelst li {
+    position: relative;
+    zoom: 1;
+    height: 63px;
+    padding: 6px 0 6px 20px;
+}
+.n-minelst .item {
+    padding-left: 50px;
+}
+
+.n-minelst ul * {
+    cursor: pointer;
+    vertical-align: middle;
+}
+.n-minelst .left {
+    display: inline;
+    float: left;
+    margin-left: -50px;
+    overflow: hidden;
+    width: 40px;
+}
+.n-minelst .avatar {
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+.n-minelst .avatar img {
+    width: 40px;
+    height: 40px;
+}
+.n-minelst .avatar .msk {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-position: -310px -330px;
+}
+.n-minelst .name {
+    width: 150px;
+    overflow: hidden;
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+.s-fc4, a.s-fc4:hover {
+    color: #999;
+    font-size:12px;
+}
+.n-minelst .name a {
+    white-space: nowrap;
+    font-size: 14px;
+}
+.g-bd3 {
+    background: url(https://s2.music.126.net/style/web2/img/frame/wrap3.png?26eaab0bfe7f1fa886b621e70e6c5126) repeat-y center 0;
+}
+.g-bd3-1 {
+    min-height: 700px;
+}
+.n-minelst-2 li {
+    padding: 10px 0 10px 20px;
+}
+.g-mn3 {
+    height: 100%;
+    float: right;
+    width: 740px;
+    padding-bottom: 50px;
+}
+.g-wrap {
+    padding: 40px;
+}
+.u-cover-rank {
+    padding: 3px;
+    border: 1px solid #ccc;
+}
+
+.u-cover-rank, .u-cover-rank img {
+    /* width: 150px;
+    height: 150px; */
+}
+.m-info .cntc {
+    margin-left: 170px;
+}
+.u-title{
+    border-bottom:none !important;
+}
+.m-info-rank .cntc {
+    margin-left: 174px;
+}
+.m-info-rank .hd {
+    margin: 16px 0 4px;
+}
+.m-info .hd {
+    position: relative;
+    margin: 0 0 12px;
+    line-height: 24px;
+}
+.m-info .hd h2 {
+    line-height: 24px;
+    font-size: 20px;
+    font-weight: normal;
+}
+.m-info .user {
+    margin: 0 0 20px;
+    line-height: 35px;
+}
+.m-info .cnt {
+    float: right;
+    width: 100%;
+}
+.m-info .cover {
+    float: left;
+    position: relative;
+    display: inline;
+    margin: 0 -220px 0 0;
+}
+.u-cover-rank {
+    padding: 3px;
+    border: 1px solid #ccc;
+}
+.u-cover-rank, .u-cover-rank img {
+    width: 150px;
+    height: 150px;
+}
+.user  .sep{
+    font-size:13px;
+    color:#999;
+}

@@ -174,22 +174,30 @@ export default {
     this.shuffling();
     this.getTopList();
   },
+  /**
+   * 在vue实例销毁之前的钩子函数，调用播放组件的存储函数存储当前歌曲播放时间
+   */
   beforeDestroy:function(){
     this.$refs.play.saveCurrTime();
   },
   methods: {
-    /**
-     * 轮播插件
-     */
+
     ...mapMutations([
       "SAVE_SONG","SAVE_CURRTIME"
       ]),
+
+    /**
+     * 点击排行榜播放按钮时，进行歌曲播放
+     */
     player(song, id, show) {
-      this.SAVE_SONG(song);
-      this.SAVE_CURRTIME(0);
-      show && this.$router.push({ path: "/player", query: { id: id, show: true } });
-      this.$refs.play.getSongUrl(id);
+      this.SAVE_SONG(song); //在vuex中存储当前播放歌曲
+      this.SAVE_CURRTIME(0); //在vuex中重置当前歌曲播放时间 
+      show && this.$router.push({ path: "/player", query: { id: id, show: true } }); //播放栏中的扩展按钮，点击时，可全屏查看歌曲信息
+      this.$refs.play.getSongUrl(id); //播放歌曲
     },
+    /**
+     * 轮播插件
+     */
     shuffling() {
       var setting = {
         model: "slide", //slide or carousel
@@ -206,6 +214,10 @@ export default {
         new Shuffling($(".slider-wrap"), setting);
       });
     },
+
+    /**
+     * 后台获取歌单数据
+     */
     getPlayList() {
       let self = this;
       axiosmethod("/discover/playlist", {
@@ -214,12 +226,16 @@ export default {
       }).then(res => {
         self.playList = res.data.data;
         if (self.playList) {
+          //对歌单数据进行处理 将歌曲播放量进行格式化
           self.playList.forEach(item => {
             item.play_num = numFormat(item.play_num);
           });
         }
       });
     },
+    /**
+     * 获取排行榜数据
+     */
     getTopList() {
       let self = this;
       axiosmethod("/discover/toplist", {
@@ -228,10 +244,13 @@ export default {
         name: ["云音乐飙升榜", "云音乐新歌榜", "网易原创歌曲榜"]
       }).then(res => {
         console.log(res);
-        self.topList = res.data.data.topList;
-        self.songList = res.data.data.songIds;
+        self.topList = res.data.topList;
+        self.songList = res.data.songs;
       });
     },
+    /**
+     * 对排行榜的鼠标移动操作进行处理
+     */
     mouseover: function(e) {
       let target = e.currentTarget;
       $(target).addClass("z-hvr");
@@ -244,7 +263,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url("../../../plugins/broadcast/style.css");
 @import url("./home.css");
 </style>

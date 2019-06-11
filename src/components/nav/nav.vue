@@ -2,8 +2,8 @@
     <div class="m-subnav">
         <div class="wrap  f-cb">
             <ul class="nav">
-                <li> <a href="javascript:;">推荐</a></li>
-                <li> <a href="javascript:;">排行榜</a></li>
+                <li> <router-link to="/home">推荐</router-link></li>
+                <li> <router-link to="/toplist">排行榜</router-link></li>
                 <li> <a href="javascript:;">歌单</a></li>
                 <li> <a href="javascript:;">主播电台</a></li>
                 <li> <a href="javascript:;">歌手</a></li>
@@ -14,7 +14,7 @@
 </template>
 <script>
 export default {
-    name:'nav'
+    name:'navComp'
 }
 </script>
 

@@ -1,0 +1,218 @@
+.g-bd, .g-bd1, .g-bd2, .g-bd3, .g-bd4, .g-bd5, .g-bd6, .g-bd7 {
+    width: 980px;
+    min-height: 700px;
+    _height: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    border-width: 0 1px;
+}
+.m-info .cover {
+    float: left;
+    position: relative;
+    margin: 0 -220px 0 0;
+}
+.u-cover-dj {
+    width: 200px;
+    height: 200px;
+}
+.u-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.u-cover-dj .msk {
+    width: 208px;
+    height: 208px;
+    background-position: 0 -1285px;
+    top: -4px;
+    left: -4px;
+}
+.g-wrap6 {
+    padding: 47px 30px 40px 39px;
+}
+.m-info .cnt {
+    float: right;
+    width: 100%;
+    height:230px;
+}
+.m-info .cntc {
+    margin-left: 230px;
+}
+.m-info .hd {
+    position: relative;
+    margin: 0 0 12px;
+    line-height: 24px;
+}
+.u-icn-13 {
+    width: 54px;
+    height: 24px;
+    background-position: 0 -243px;
+}
+.m-info .tit {
+    margin-left: 64px;
+    position: relative;
+}
+.m-info .hd h2 {
+    line-height: 24px;
+    font-size: 20px;
+    font-weight: normal;
+    color:black;
+}
+.f-brk {
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+
+.m-info .user {
+    margin: 0 0 20px;
+    line-height: 35px;
+}
+.m-info .user .face {
+    margin-right: 10px;
+}
+.m-info .user .name {
+    float: left;
+}
+.m-info .user .time {
+    margin-left: 15px;
+}
+.s-fc7{
+    color:#000;
+}
+/* .m-info .btns {
+    margin-bottom: 25px;
+    margin-right: -10px;
+}
+.u-btni-addply {
+    float: left;
+}
+
+.u-btn2-2 {
+    color: #fff;
+    background-position: right -428px;
+}
+.u-btn2, .u-btn2:hover {
+    text-decoration: none;
+}
+.u-btn2 {
+    padding: 0 5px 0 0;
+    white-space: nowrap;
+}
+.u-btn2, .u-btn2 i {
+    display: inline-block;
+    zoom: 1;
+    height: 31px;
+    line-height: 31px;
+    overflow: hidden;
+    line-height: 32px;
+    vertical-align: top;
+    text-align: center;
+    cursor: pointer;
+}
+
+.m-info .btns .u-btni-add {
+    margin-right: 5px;
+}
+
+.m-info .btns2 .u-btni, .m-info .btns .u-btni {
+    margin-right: 6px;
+}
+.u-btni-add {
+    width: 31px;
+    margin-left: -3px;
+    padding-right: 0;
+    background-position: 0 -1588px;
+}
+
+.u-btni {
+    padding: 0 5px 0 0;
+    white-space: nowrap;
+}
+.u-btni, .u-btni i {
+    float: left;
+    height: 31px;
+    line-height: 30px;
+    min-width: 23px;
+    cursor: pointer;
+}
+.u-btni-addply .ply {
+    float: left;
+    width: 20px;
+    height: 18px;
+    margin: 6px 2px 2px 0;
+    background-position: 0 -1622px;
+    overflow: hidden;
+}
+.u-btni-addply i {
+    padding: 0 7px 0 8px;
+}
+.u-btn2-2 i {
+    color: #fff;
+    background-position: 0 -387px;
+}
+.u-btni-fav i {
+    background-position: 0 -977px;
+}
+.u-btni-share i {
+    background-position: 0 -1225px;
+}
+.u-btni-dl i {
+    background-position: 0 -2761px;
+}
+.u-btni-cmmt i {
+    background-position: 0 -1465px;
+}
+.u-btni-share, .u-btni-fav, .u-btni-cmmt, .u-btni-dl {
+    background-position: right -1020px;
+}
+.u-btni i{
+    padding-left:32px;
+    font-size:14px;
+    padding-right: 3px;
+}
+.m-info .tags {
+    margin: 25px 0 5px;
+    line-height: 22px;
+}
+.m-info .tags b {
+    float: left;
+}
+
+.m-info b {
+    font-weight: normal;
+    color: #666;
+}
+.u-tag i {
+    position: relative;
+    zoom: 1;
+    padding: 0 3px 0 13px;
+    background-position: 0 0;
+}
+.u-tag, .u-tag i {
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    font-size:13px;
+}
+.m-info .tags .u-tag {
+    float: left;
+    margin: 0px 10px 3px 0;
+}
+.u-tag {
+    padding: 0 10px 0 0;
+    text-shadow: 0 1px #fdfdfd;
+    background-position: right -27px;
+}
+.u-tag, .u-tag:hover {
+    color: #777;
+    text-decoration: none;
+}
+
+.m-info .intr {
+    margin-top: 4px;
+    line-height: 18px;
+    color: #666;
+    font-size:14px;
+} */
