@@ -82,8 +82,8 @@
                 </div>
               </div>
             </div>
-            <play-list-song ref="songList" :playNum = "2019520256" ></play-list-song>
-
+            <play-list-song ref="songList" :playNum = "2019520256" :limit="20" :offset="0"></play-list-song>
+            <comment type = "playListComment" :id="currTopListid"></comment>
           </div>
         </div>
       </div>
@@ -95,10 +95,11 @@
 import navCompt from "../nav/nav";
 import playListSong from "../playlist/playlist_song"
 import axiosMethod from "../../../service/axios"
+import comment from "../comment/comment"
 export default {
   name: "toplist",
   components: {
-    navCompt,playListSong
+    navCompt,playListSong,comment
   },
   mounted:function(){
     this.currTopListName = this.$route.query.name || "云音乐飙升榜";
@@ -109,6 +110,7 @@ export default {
     return {
       currTopListName:null,
       currTopListCover:null,
+      currTopListid:null,
       topList:null,
       songList:null
     }
@@ -122,11 +124,13 @@ export default {
     getCurrTopListData(){
       axiosMethod('/discover/toplist/',{
         name:this.currTopListName,
-        limit:50,
+        limit:100,
         offset:0
       }).then(res=>{
         this.songList = res.data.songs[0];
         this.$refs.songList.changeSongList(this.songList);
+        this.currTopListid  = res.data.topList[0].id;
+        console.log(this.currTopListid);
         this.currTopListCover = res.data.topList[0].cover;
       });
     }

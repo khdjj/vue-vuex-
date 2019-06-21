@@ -7,6 +7,10 @@ const home  = resolve => require.ensure([], () => resolve(require('../components
 const playlist  = resolve => require.ensure([], () => resolve(require('../components/playlist/playlist.vue')), 'playlist');
 const player = resolve => require.ensure([], () => resolve(require('../components/player/player.vue')), 'player');
 const toplist = resolve => require.ensure([], () => resolve(require('../components/toplist/toplist.vue')), 'toplist');
+const comment = resolve => require.ensure([], () => resolve(require('../components/comment/comment.vue')), 'comment');
+
+
+
 export default new Router({
   routes: [
     {
@@ -36,6 +40,12 @@ export default new Router({
       name:'player',
       path:'/player',
       component:player
+    },
+    {
+      name:"comment",
+      path:'/comment',
+      component:comment
     }
+
   ]
 })

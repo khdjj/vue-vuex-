@@ -70,7 +70,7 @@ LPlayer.prototype = {
 			for (let i = 0; i < this.lyrTime.length; i++) {
 				if (e >= this.lyrTime[i] && e < this.lyrTime[i + 1]) {
 					this.lrcIndex = i;
-					this.lrcContent[0].style.transform = "translateY(" + 52 * -this.lrcIndex + "px)",
+					this.lrcContent[0].style.transform = "translateY(" + 30 * -this.lrcIndex + "px)",
 						$('.aplayer-lrc-current').css({
 							"color": "white",
 							"font-size": "16px"
@@ -109,14 +109,39 @@ LPlayer.prototype = {
 				lyricTextRegEx = /](.*)$/; //获取歌词文字的正则表达式
 			l = l.split(/\n/);
 			//获取歌词文件并解析
-
+			let status = 0;
 			for (let i = 0; i < l.length; i++) {
 				let c = timeRegEx.exec(l[i]);
 				let d = lyricTextRegEx.exec(l[i]);
+
+				if (Object.prototype.toString.call(d) == '[object Array]' && timeRegEx.exec(d[1])) {
+					l.splice(i + 1, 0, d[1]);
+					d[1] = d[1].replace(/^\[(\d{2}):(\d{2}).(\d{2,4})\]/, '');
+					status = 1;
+				}
 				//将正则表达式的结果转换成时间和歌词文字，时间统一换算成秒
 				if (c && d && (this.lyrTime.push(parseInt(c[1]) * 60 + parseInt(c[2]) + parseInt(c[3]) / 1000), this.lyrLine.push(
 					d[1])));
 			}
+
+			if(status){
+				let strtemp, temp, i, j, len = this.lyrTime.length, k;
+				for (i = 0; i < len - 1; i++) {
+					k = i;
+					for (j = i + 1; j < len; j++) {
+						if (this.lyrTime[j] < this.lyrTime[k]) {
+							k = j;
+						}
+					}
+					temp = this.lyrTime[i], strtemp = this.lyrLine[i];
+					this.lyrTime[i] = this.lyrTime[k], this.lyrLine[i] = this.lyrLine[k];
+					this.lyrTime[k] = temp, this.lyrLine[k] = strtemp;
+				}
+			}
+		
+
+
+
 			let container = `<div id="container">
 			<span class="closePlayer" onclick="javascript:history.back(-1);" title="返回上一级"></span>
 			<div id="player" class="lplayer row">

@@ -139,7 +139,9 @@
         </div>
       </div>
     </div>
-    <player ref="play"></player>
+    <keep-alive>
+      <player ref="play"></player>
+    </keep-alive>
     <foot></foot>
     <router-view></router-view>
   </div>
@@ -166,7 +168,7 @@ export default {
     return {
       playList: null,
       topList: null,
-      songList: null,
+      songList: null
     };
   },
   mounted: function() {
@@ -177,22 +179,20 @@ export default {
   /**
    * 在vue实例销毁之前的钩子函数，调用播放组件的存储函数存储当前歌曲播放时间
    */
-  beforeDestroy:function(){
+  beforeDestroy: function() {
     this.$refs.play.saveCurrTime();
   },
   methods: {
-
-    ...mapMutations([
-      "SAVE_SONG","SAVE_CURRTIME"
-      ]),
+    ...mapMutations(["SAVE_SONG", "SAVE_CURRTIME"]),
 
     /**
      * 点击排行榜播放按钮时，进行歌曲播放
      */
     player(song, id, show) {
       this.SAVE_SONG(song); //在vuex中存储当前播放歌曲
-      this.SAVE_CURRTIME(0); //在vuex中重置当前歌曲播放时间 
-      show && this.$router.push({ path: "/player", query: { id: id, show: true } }); //播放栏中的扩展按钮，点击时，可全屏查看歌曲信息
+      this.SAVE_CURRTIME(0); //在vuex中重置当前歌曲播放时间
+      show &&
+        this.$router.push({ path: "/player", query: { id: id, show: true } }); //播放栏中的扩展按钮，点击时，可全屏查看歌曲信息
       this.$refs.play.getSongUrl(id); //播放歌曲
     },
     /**

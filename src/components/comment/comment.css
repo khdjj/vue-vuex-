@@ -1,0 +1,260 @@
+body, html, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, header, menu, section, p, input, td, th, ins {
+    padding: 0;
+    margin: 0;
+    font-size:12px;
+}
+a{
+    text-decoration: none;
+    font-size:12px;
+}
+.n-cmt {
+    margin-top: 40px;
+    width:90%;
+    margin:0 auto;
+}
+.u-title-1 {
+    height: 33px;
+}
+.u-title {
+    height: 40px;
+    border-bottom: 2px solid #c20c0c;
+    margin-top:30px;
+}
+.u-title-1 h3 {
+    font-size: 20px;
+    line-height: 28px;
+}
+.u-title h3 {
+    float: left;
+    font-size: 24px;
+    font-weight: normal;
+}
+.u-title-1 .sub {
+    margin: 9px 0 0 20px;
+}
+.u-title .sub {
+    float: left;
+    /* margin: 13px 0 0 10px; */
+}
+.s-fc3, a.s-fc3:hover {
+    color: #666;
+}
+
+.m-cmmt {
+    margin-top: 20px;
+}
+.m-cmmt .iptarea {
+    margin-bottom: 20px;
+}
+.m-cmmt .head, .m-cmmt .head img {
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-right: -100px;
+}
+.m-cmmt .iptarea .m-cmmtipt {
+    margin-left: 62px;
+}
+
+.f-pr {
+    position: relative;
+    zoom: 1;
+}
+div.holder-parent {
+    position: relative;
+    zoom: 1;
+}
+.u-txtwrap {
+    padding-right: 14px;
+    display: block;
+}
+
+.m-cmmtipt .area {
+    height: 50px;
+    display: block;
+}
+textarea.u-txt, div.u-txt {
+    width: 100%;
+    margin-right: -20px;
+}
+.u-txt {
+    height: 19px;
+    margin: 0;
+    padding: 5px 6px 6px;
+    border: 1px solid #cdcdcd;
+    border-radius: 2px;
+    line-height: 19px;
+}
+textarea {
+    resize: none;
+    overflow: auto;
+}
+body, textarea, select, input, button {
+    font-size: 12px;
+    color: #333;
+
+}
+.m-cmmtipt .btns {
+    clear: both;
+    padding-top: 10px;
+}
+
+.f-pr {
+    position: relative;
+    zoom: 1;
+}
+.m-cmmtipt .btns .icn {
+    float: left;
+    margin: 0px 10px 0 0;
+    cursor: pointer;
+}
+
+.u-icn, .u-icn2, .u-icn3 {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.u-icn, .u-title-1 .out .icon {
+    background: url(https://s2.music.126.net/style/web2/img/icon.png?69a860b6054c775a51b5093c01cafc5c) no-repeat 0 9999px;
+}
+em, i {
+    font-style: normal;
+    text-align: left;
+    font-size: inherit;
+}
+.u-icn-41 {
+    width: 18px;
+    height: 18px;
+    background-position: -60px -490px;
+}
+.m-cmmtipt .btns .btn {
+    float: right;
+}
+
+
+.u-btn {
+    display: inline-block;
+}
+.m-cmmtipt .btns .zs {
+    float: right;
+    margin-right: 10px;
+    line-height: 25px;
+}
+.s-fc4, a.s-fc4:hover {
+    color: #999;
+}
+
+.u-icn-36 {
+    width: 18px;
+    height: 18px;
+    background-position: -40px -490px;
+}
+.u-btn, div.u-page a, div.u-page a.js-selected, div.u-page a.znxt.js-disabled, div.u-page a.zprv.js-disabled {
+    background: url(https://s2.music.126.net/style/web2/img/button.png?30535b76c756478e920f9380503ca4f2) no-repeat 0 9999px;
+}
+.u-btn-1 {
+    width: 46px;
+    height: 25px;
+    background-position: -84px -64px;
+    color: #fff;
+    text-align: center;
+    line-height: 25px;
+    text-decoration: none
+}
+.u-hd4 {
+    position: relative;
+    top: 1px;
+    height: 20px;
+    border-bottom: 1px solid #cfcfcf;
+}
+.m-cmmt .cmmts .itm {
+    padding: 15px 0;
+    border-top: 1px dotted #ccc;
+}
+.m-cmmt .head, .m-cmmt .head img {
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-right: -100px;
+}
+.m-cmmt .cmmts .cntwrap {
+    margin-left: 60px;
+}
+.m-cmmt .cmmts .cntwrap .f-brk, .m-cmmt .cmmts .cnt.f-brk {
+    word-break: break-word;
+}
+
+.m-cmmt .cmmts .cnt {
+    width: 100%;
+    overflow: hidden;
+    line-height: 20px;
+}
+.f-brk {
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+.m-cmmt .cmmts .cntwrap .s-fc7 {
+    margin-right: 5px;
+}
+
+.s-fc7, a.s-fc7:hover {
+    color: #0c73c2;
+}
+.u-icn2 {
+    background: url(https://s2.music.126.net/style/web2/img/icon2.png?5c95c307fbfcc8f04650da3c00cc6f11) no-repeat 0 9999px;
+}
+.u-icn-84 {
+    width: 12px;
+    height: 13px;
+    background-position: -65px -840px;
+}
+.m-cmmt .cmmts div.rp {
+    margin-top: 15px;
+    text-align: right;
+}
+.m-cmmt .cmmts .time {
+    float: left;
+    font-size:13px;
+    margin: 0 !important;
+}
+.s-fc4, a.s-fc4:hover {
+    color: #999;
+}
+.u-icn2-12, .u-icn2-13 {
+    width: 15px;
+    height: 14px;
+    background-position: -150px 0;
+}
+.m-cmmt .cmmts .sep {
+    margin: 0 8px;
+    color: #ccc;
+}
+.m-cmmt .cmmts img {
+    vertical-align: middle;
+}
+.m-cmmt .cmmts .cntwrap .u-icn2 {
+    margin-right: 5px;
+    vertical-align: -2px;
+}
+
+.m-cmmt .cmmts .cntwrap .f-brk, .m-cmmt .cmmts .cnt.f-brk {
+    font-size:14px;
+    word-break: break-word;
+}
+.m-cmmt .cmmts .que {
+    padding: 8px 19px;
+    margin-top: 10px;
+    line-height: 20px;
+    background: #f4f4f4;
+    border: 1px solid #dedede;
+}
+.u-hd4 {
+    position: relative;
+    top: 1px;
+    height: 20px;
+    border-bottom: 1px solid #cfcfcf;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}

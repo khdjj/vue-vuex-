@@ -53,6 +53,56 @@
           <a href="#" class="icn icn-list" title="播放列表">125</a>
           <!-- </span> -->
         </div>
+        <div class="list" id="g_playlist">
+          <div class="listhd">
+            <div class="listhdc">
+              <h4>
+                播放列表(
+                <span class="j-flag">128</span>)
+              </h4>
+              <a href="javascript:;" class="addall">
+                <span class="ico ico-add"></span>收藏全部
+              </a>
+              <span class="line"></span>
+              <a href="javascript:;" class="clear">
+                <span class="ico icn-del"></span>清除
+              </a>
+            </div>
+            <div class="custom-scroll custom-scroll-1">
+              <ul class="f-cb" style="background-color:#262424 ;width:549px">
+                <li v-for="(item,index) in 33" :key="index">
+                  <div class="col col-1">
+                    <div class="playicn"></div>
+                  </div>
+                  <div class="col col-2">你我</div>
+                  <div class="col col-3">
+                    <div class="icns">
+                      <i class="ico icn-del" title="删除" data-id="29774167" data-action="delete">删除</i>
+                      <i class="ico ico-dl" title="下载" data-id="29774167" data-action="download">下载</i>
+                      <i class="ico ico-share" title="分享" data-id="29774167" data-action="share">分享</i>
+                      <i class="j-t ico ico-add" title="收藏" data-id="29774167" data-action="like">收藏</i>
+                    </div>
+                  </div>
+                  <div class="col col-4">
+                    <span title="陈晓/陈妍希">
+                      <a class href="javascript:;" hidefocus="true">陈晓</a>
+                      <a class href="javascript:;" hidefocus="true">陈妍希</a>
+                    </span>
+                  </div>
+                  <div class="col col-6">
+                    <a
+                      href="/playlist?id=2765397746&amp;_hash=songlist-29774167"
+                      class="ico ico-src"
+                      title="来自歌单"
+                      data-action="link"
+                    >来源</a>
+                  </div>
+                </li>
+              </ul>
+               <div style="width:552px;height:32px;background-color:#262424"></div>
+            </div>
+          </div>
+        </div>
         <router-link :to="{path:'/player',query: {show: true}}" class="allscreen"></router-link>
       </div>
     </div>
@@ -63,8 +113,9 @@
 import $ from "jquery";
 import axiosMethod from "../../../service/axios";
 import { LPlayer } from "../../../plugins/Lplayer";
+import { scrollbot } from "../../../plugins/scrollbot";
 import { mapState, mapMutations } from "vuex";
-import {formatArtist} from "../../../service/core"
+import { formatArtist } from "../../../service/core";
 export default {
   name: "player",
   mounted: function() {
@@ -76,20 +127,19 @@ export default {
       //开始获取歌曲信息
       this.start();
     }
+    new scrollbot(".custom-scroll");
   },
   computed: {
-    ...mapState([
-      "song","currTime"
-      ])
+    ...mapState(["song", "currTime"])
   },
   data() {
     return {
       isOnlyProgressBar: false,
       audioPlayer: null,
-      status:"first"
+      status: "first"
     };
   },
-  beforeDestroy:function(){
+  beforeDestroy: function() {
     //在vue实例销毁之前将歌曲暂停并存储当前歌曲播放时间
     this.audioPlayer.pause();
     this.SAVE_CURRTIME(this.audioPlayer.getCurrTime());
@@ -100,27 +150,24 @@ export default {
       .remove();
   },
   methods: {
-    ...mapMutations([
-      'SAVE_CURRTIME','SAVE_SONG_URL','SAVE_SONG_LYRIC'
-    ]),
-    start:function(id){
+    ...mapMutations(["SAVE_CURRTIME", "SAVE_SONG_URL", "SAVE_SONG_LYRIC"]),
+    start: function(id) {
       //如果当前歌曲信息忆存在，则无需获取，直接播放，否则先获取歌曲播放地址
-      if(!this.songUrl && !this.lyric){
+      if (!this.songUrl && !this.lyric) {
         this.LPlayer();
-      }else{
+      } else {
         this.getSongUrl();
       }
     },
-    saveCurrTime:function(){
+    saveCurrTime: function() {
       //父组件调用此函数，调用此函数时，则说明父组件正在销毁，需要存储父组件的歌曲信息
-      this.audioPlayer.pause()
+      this.audioPlayer.pause();
       this.audioPlaer && this.SAVE_CURRTIME(this.audioPlayer.getCurrTime());
     },
     /**
      * 歌曲播放组件
      */
     LPlayer() {
-
       /**
        * 在vue中存储当前歌曲的信息
        */
@@ -129,10 +176,9 @@ export default {
 
       //歌曲可能有多个，需要对后台的数据进行处理
       let artist = formatArtist(this.song.artist_names);
-      
 
       //全局只需要一个Lplayer实例，所以根据状态，如果还没有此实例，则创建，否则，更改数据，无需创建
-      if(this.status == "first"){
+      if (this.status == "first") {
         this.status = "second";
         this.audioPlayer = new LPlayer({
           element: $("#player"),
@@ -148,7 +194,7 @@ export default {
             pic: this.song.album_img,
             lyric: this.song.song_lyric
           },
-          audioCurrTime:this.currTime
+          audioCurrTime: this.currTime
         });
       } else {
         this.audioPlayer.changeData({
@@ -164,10 +210,9 @@ export default {
             pic: this.song.album_img,
             lyric: this.song.song_lyric
           },
-          audioCurrTime:this.currTime
+          audioCurrTime: this.currTime
         });
       }
-  
     },
     /**
      * 后台获取歌曲url
@@ -201,8 +246,9 @@ export default {
   }
 };
 </script>
+
 <style>
-@import url("./player.css");
+@import url("player.css");
 </style>
 
 

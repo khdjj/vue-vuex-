@@ -9,6 +9,22 @@
 	background: -moz-radial-gradient(#847c7c, #101010);
 	background: radial-gradient(#847c7c, #101010);
 } 
+#wrapper {
+	height: 100%;
+}
+.custom-scroll {
+	width: 100%;
+	height: 260px;
+	/* padding: 20px; */
+	text-align: left;
+	/* margin: 25px; */
+	display: inline-block;
+	overflow: auto;
+}
+.custom-scroll ul li a,.custom-scroll div{
+	color:white;
+	font-size:14px;
+}
 
 div,body,pre{
 	box-sizing: border-box;
@@ -16,6 +32,7 @@ div,body,pre{
 	padding:0;
 }
 a{
+	font-size:14px;
 	text-decoration: none;
 	color: black;
 }
@@ -392,4 +409,162 @@ a{
 	width:18px;
 	height:18px;
 	background:url("http://static.redocn.com/public/images/icon-public-login.png") no-repeat 0 -68px;
+}
+
+
+.m-playbar .list {
+	position: absolute;
+    left: 85%;
+    bottom: 36px;
+    width: 553px;
+    height: 301px;
+    margin-left: -493px;
+}
+.m-playbar .listhd {
+	background-color:#2f2f2f;
+    height: 41px;
+}
+.m-playbar .listhdc {
+    position: relative;
+    height: 40px;
+}
+.m-playbar .listhdc h4 {
+    position: absolute;
+    left: 25px;
+    top: 0;
+    height: 39px;
+    line-height: 39px;
+    font-size: 14px;
+    color: #e2e2e2;
+}
+
+.m-playbar .listhdc .clear, .m-playbar .listhdc .addall {
+	position: absolute;
+    left: 141px;
+    top: 12px;
+    height: 15px;
+    line-height: 15px;
+    cursor: pointer;
+}
+.m-playbar .listhdc .addall {
+    left: 239px;
+}
+.m-playbar .listhdc a {
+    color: #ccc;
+}
+.m-playbar .listhdc .ico {
+    float: left;
+    margin: 1px 6px 0 0;
+}
+
+.m-playbar .ico-add {
+    width: 16px;
+    background-position: -24px 0;
+}
+.m-playbar .ico {
+    height: 16px;
+}
+.m-playbar .list .close, .m-playbar .playicn, .m-playbar .ico{
+	background:url('https://s2.music.126.net/style/web2/img/frame/playlist.png?bc822572e3badb461cfeac7b28913e2d') no-repeat 0 9999px;
+}
+
+.m-playbar .listhdc .line {
+    position: absolute;
+    top: 13px;
+    left: 477px;
+    height: 15px;
+    border-left: 1px solid #000;
+    border-right: 1px solid #2c2c2c;
+}
+.m-playbar .icn-del {
+    width: 13px;
+    background-position: -51px 0;
+}
+.m-playbar .ico-add {
+    width: 16px;
+    background-position: -24px 0;
+}
+.m-playbar .list li {
+    float: left;
+    width: 100%;
+}
+
+.m-playbar .col-1 {
+    width: 10px;
+}
+
+.m-playbar .col {
+    float: left;
+    padding-left: 10px;
+    height: 28px;
+    line-height: 28px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.m-playbar .col-2 {
+    width: 256px;
+}
+
+.m-playbar .col-2, .m-playbar .col-4 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.m-playbar .col-3 {
+    width: 94px;
+    position: relative;
+}
+.m-playbar .col .icns {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100px;
+    height: 23px;
+}
+
+.m-playbar .col .ico {
+    float: right;
+    overflow: hidden;
+    margin: 7px 0 0 10px;
+    text-indent: -9999px;
+}
+
+.m-playbar .ico-dl {
+    width: 14px;
+    background-position: -57px -50px;
+}
+.m-playbar .ico-share {
+    width: 14px;
+    background-position: 0 0;
+}
+.m-playbar .ico-add {
+    width: 16px;
+    background-position: -24px 0;
+}
+.m-playbar .col-4 {
+    width: 105px;
+}
+.m-playbar .col-6 {
+    width: 37px;
+    padding-left: 6px;
+}
+.m-playbar .col .ico-src {
+    width: 14px;
+    margin-left: 0;
+    background-position: -80px 0px;
+}
+.m-playbar .playicn {
+    /* display: none; */
+    margin-top: 8px;
+    width: 10px;
+    height: 13px;
+    background-position: -182px 0;
+}
+#wrapper {
+	height: 100%;
+}
+.scrolls {
+	padding: 20px;
 }

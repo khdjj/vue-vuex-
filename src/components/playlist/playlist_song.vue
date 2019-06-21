@@ -88,7 +88,9 @@
         </tbody>
       </table>
     </div>
+    <keep-alive>
     <player ref="play"></player>
+    </keep-alive>
   </div>
 </template>
 <script>

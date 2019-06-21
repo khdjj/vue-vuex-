@@ -69,6 +69,7 @@
           </div>
         </div>
         <play-list-song :songIdList="playList.song_ids" :playNum = "playList.play_num"></play-list-song>
+        <comment type = "playListComment" :id="id"></comment>
       </div>
     </div>
   </div>
@@ -78,13 +79,15 @@
 
 <script>
 import navCompt from "../nav/nav";
+import comment from "../comment/comment"
 import axiosMethod from "../../../service/axios";
 import playListSong from "./playlist_song";
 export default {
   name: "playlist",
   components: {
     navCompt,
-    playListSong
+    playListSong,
+    comment
   },
   data() {
     return {
@@ -94,7 +97,6 @@ export default {
   },
   mounted: function() {
     this.id = this.$route.params.id;
-    console.log(this.id);
     this.id && this.getPlayList();
   },
   methods: {
