@@ -60,7 +60,7 @@ let scrollbot = function(e, w) {
 			position: "absolute",
 			right: 0,
 			top: 0,
-			backgroundColor: "#ADADAD",
+			backgroundColor: "#444444",
 			borderRadius: "15px"
 		};
 
@@ -71,7 +71,7 @@ let scrollbot = function(e, w) {
 			position: "absolute",
 			right: 0,
 			top: 0,
-			backgroundColor: "#444444",
+			backgroundColor: "#ADADAD",
 			borderRadius: "15px"
 		};
 
@@ -155,11 +155,11 @@ let scrollbot = function(e, w) {
 
 		this.refresh = function() {
 			_this.sbHeight = _this.inP.clientHeight * 100 / _this.inP.scrollHeight;
-			if (_this.sbHeight >= 100) {
-				_this.scrollBarHolder.style.display = "none";
-			} else {
-				_this.scrollBarHolder.style.display = "block"
-			}
+			// if (_this.sbHeight >= 100) {
+			// 	_this.scrollBarHolder.style.display = "none";
+			// } else {
+			// 	_this.scrollBarHolder.style.display = "block"
+			// }
 			_this.sbHeight = this.inP.clientHeight * 100 / this.inP.scrollHeight;
 			_this.sB["height"] = _this.customHeight ? _this.sB["height"] : _this.sbHeight + "%";
 			if (_this.inP.scrollHeight > _this.inP.clientHeight) {

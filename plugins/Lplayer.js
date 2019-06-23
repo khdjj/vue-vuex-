@@ -1,4 +1,4 @@
-function LPlayer(e) {
+function LPlayer(e,$window) {
 	if (!("music" in e && "title" in e.music && "url" in e.music && "pic" in e.music && "author" in e.music)) {
 		throw "APlayer Error: Music, music.title, music.author, music.url, music.pic are required in options";
 	}
@@ -13,8 +13,10 @@ function LPlayer(e) {
 		isOnlyProgressBar: false,
 	}
 	this.options = $.extend({}, a, e);
+	this._window = $window;
 	this.init();
 	this.initData();
+	
 }
 
 export {
@@ -30,11 +32,13 @@ LPlayer.prototype = {
 
 	initData: function () {
 		let m = this;
-		m.playStatus = 'play';
-		m.ply = $('.ply');
 		m.player = $('.player');
 		m.ply.on('click', c);
 		m.player.on('click', c);
+		m.img = $('.p-img');
+
+
+		m.options.isOnlyProgressBar && m.options.autoplay && b();
 
 		function c() {
 			if (m.playStatus == 'play') {
@@ -55,7 +59,6 @@ LPlayer.prototype = {
 			}
 		}
 		//旋转函数
-		m.img = $('.p-img');
 		function b() {
 			m.img.css({
 				"transform": "rotate(" + m.d + "deg)"
@@ -85,6 +88,10 @@ LPlayer.prototype = {
 		}
 	},
 	play: function () {
+		
+		this.options.autoplay && (this.playStatus = 'pause') && this.ply.css({
+			"background-position": "-40px -165px"
+		});
 		this.audio.play();
 		let e = this;
 		this.playTimer = setInterval(function () {
@@ -99,6 +106,8 @@ LPlayer.prototype = {
 	},
 	init: function () {
 
+		let $window = window;
+		
 		let m = this;
 		//如果是只需要显示进度条的话，则不需要解析歌词
 		if (this.options.isOnlyProgressBar) {
@@ -138,9 +147,6 @@ LPlayer.prototype = {
 					this.lyrTime[k] = temp, this.lyrLine[k] = strtemp;
 				}
 			}
-		
-
-
 
 			let container = `<div id="container">
 			<span class="closePlayer" onclick="javascript:history.back(-1);" title="返回上一级"></span>
@@ -205,9 +211,23 @@ LPlayer.prototype = {
 				"color": this.options.theme
 			})
 
+
+
+
+
 		}
+		m.ply = $('.ply');
+		m.playStatus = 'play';
 
-
+		this.audioOver = true;
+		$('.next').click(function(){
+			this.audioOver = true;
+			window.playNextSong()
+		})
+		$('.prev').click(function(){
+			this.audioOver = true;
+			window.playPrevSong();
+		})
 
 		this.loadpro = $('.m-pbar .rdy');
 		this.playpro = $('.m-pbar .cur');
@@ -216,12 +236,17 @@ LPlayer.prototype = {
 		this.bar = $('.m-pbar');
 		this.audio = document.createElement('audio');
 		this.audio.src = this.options.music.url;
-		this.audio.loop = !0;
+		this.audio.loop =this.options.loop;
 		this.audio.preload = "metadata";
 		this.audio.currentTime = this.options.audioCurrTime;
+		this.loaded = false;
 		this.playpro.css({
 			"background-color": this.options.theme
 		})
+
+		this.audio.onended = function(){
+			window.playNextSong();
+		}
 
 		this.audio.ondurationchange = function () {
 			1 !== m.audio.duration && $('.m-pbar .time .song-time').html(m.secondTime(m.audio.duration));
@@ -230,7 +255,9 @@ LPlayer.prototype = {
 			m.loadedTime = setInterval(function () {
 				let e = m.audio.buffered.end(m.audio.buffered.length - 1) / m.audio.duration;
 				m.updateBar(e, 'loaded', 'width');
-				e === 1 && clearInterval(m.loadedTime);
+				e === 1 && (this.loaded = true) && clearInterval(m.loadedTime);
+				e === 1 && console.log(this.loaded);
+				this.audioOver && clearInterval(m.loadedTime);
 			}, 500);
 		};
 		this.audio.onerror = function () {
@@ -355,13 +382,15 @@ LPlayer.prototype = {
 		}
 	},
 	changeData: function (e) {
+		clearInterval(this.loadedTime)
 		this.options = $.extend({}, this.options, e);
 		this.audio.pause();
 		this.audio = null;
 		this.ply.css({
-			"background-position": "0 -204px"
+				"background-position": "0 -204px"
 		})
 		this.init();
+		this.initData();
 	},
 	getAudio: function () {
 		return this.audio;

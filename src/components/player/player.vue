@@ -50,15 +50,20 @@
           </div>
           <a href="#" class="icn icn-vol" title="音量"></a>
           <a href="#" class="icn icn-shuffle" title="播放方式"></a>
-          <a href="#" class="icn icn-list" title="播放列表">125</a>
+          <a
+            href="#"
+            class="icn icn-list"
+            title="播放列表"
+            @click.prevent="playerListClick()"
+          >{{playerList.length}}</a>
           <!-- </span> -->
         </div>
         <div class="list" id="g_playlist">
           <div class="listhd">
             <div class="listhdc">
               <h4>
-                播放列表(
-                <span class="j-flag">128</span>)
+                播放列表&nbsp;
+                <span class="j-flag">{{playerList.length}}</span>
               </h4>
               <a href="javascript:;" class="addall">
                 <span class="ico ico-add"></span>收藏全部
@@ -68,13 +73,14 @@
                 <span class="ico icn-del"></span>清除
               </a>
             </div>
+
             <div class="custom-scroll custom-scroll-1">
-              <ul class="f-cb" style="background-color:#262424 ;width:549px">
-                <li v-for="(item,index) in 33" :key="index">
+              <ul class="f-cb playerul" style="background-color:#262424 ;width:549px">
+                <li v-for="(list,index) in playerList" :key="list.song_id">
                   <div class="col col-1">
                     <div class="playicn"></div>
                   </div>
-                  <div class="col col-2">你我</div>
+                  <div class="col col-2" @click="start(list.song_id,list,index)">{{list.song_name}}</div>
                   <div class="col col-3">
                     <div class="icns">
                       <i class="ico icn-del" title="删除" data-id="29774167" data-action="delete">删除</i>
@@ -84,9 +90,14 @@
                     </div>
                   </div>
                   <div class="col col-4">
-                    <span title="陈晓/陈妍希">
-                      <a class href="javascript:;" hidefocus="true">陈晓</a>
-                      <a class href="javascript:;" hidefocus="true">陈妍希</a>
+                    <span>
+                      <a
+                        class
+                        href="javascript:;"
+                        hidefocus="true"
+                        v-for="(name,index) in list.artist_names"
+                        :key="index"
+                      >{{name.artist_name}}&nbsp;</a>
                     </span>
                   </div>
                   <div class="col col-6">
@@ -99,7 +110,7 @@
                   </div>
                 </li>
               </ul>
-               <div style="width:552px;height:32px;background-color:#262424"></div>
+              <div style="width:552px;height:32px;background-color:#262424"></div>
             </div>
           </div>
         </div>
@@ -116,9 +127,11 @@ import { LPlayer } from "../../../plugins/Lplayer";
 import { scrollbot } from "../../../plugins/scrollbot";
 import { mapState, mapMutations } from "vuex";
 import { formatArtist } from "../../../service/core";
+import {getStore,setStore} from "../../../service/getStoreData"
 export default {
   name: "player",
   mounted: function() {
+    
     //如果url函数中带有show，则表明需要全屏显示歌曲播放信息
     if (this.$route.query.show) {
       this.isOnlyProgressBar = true;
@@ -127,37 +140,89 @@ export default {
       //开始获取歌曲信息
       this.start();
     }
-    new scrollbot(".custom-scroll");
+    window.playNextSong = this.playNextSong;
+    window.playPrevSong = this.playPrevSong;
   },
   computed: {
-    ...mapState(["song", "currTime"])
+    ...mapState(["song", "currTime", "playerList"])
   },
   data() {
     return {
       isOnlyProgressBar: false,
       audioPlayer: null,
-      status: "first"
+      status: "first",
+      currSongIndex: 0,
+      firstPlayerListSong: "未知"
     };
+  },
+  watch: {
+    playerList() {
+      // new scrollbot(".custom-scroll");
+    }
   },
   beforeDestroy: function() {
     //在vue实例销毁之前将歌曲暂停并存储当前歌曲播放时间
-    this.audioPlayer.pause();
+    // this.audioPlayer.pause();
+    this.removeContainer();
     this.SAVE_CURRTIME(this.audioPlayer.getCurrTime());
   },
-  destroyed: function() {
-    $("#player")
-      .children("#container")
-      .remove();
-  },
+  // destroyed: function() {
+  //   this.removeContainer();
+  // },
   methods: {
-    ...mapMutations(["SAVE_CURRTIME", "SAVE_SONG_URL", "SAVE_SONG_LYRIC"]),
-    start: function(id) {
+    ...mapMutations([
+      "SAVE_CURRTIME",
+      "SAVE_SONG_URL",
+      "SAVE_SONG_LYRIC",
+      "SAVE_SONG"
+    ]),
+    removeContainer() {
+      $("#player")
+        .children("#container")
+        .remove();
+    },
+    start: function(id, song, index) {
+      if (id) {
+        this.currSongIndex = index || this.currSongIndex;
+        this.SAVE_SONG(song);
+        console.log(song);
+        this.SAVE_CURRTIME(0);
+      }
       //如果当前歌曲信息忆存在，则无需获取，直接播放，否则先获取歌曲播放地址
-      if (!this.songUrl && !this.lyric) {
+      if (
+        this.songUrl != "" &&
+        !this.lyric != "" &&
+        this.songUrl &&
+        this.lyric
+      ) {
         this.LPlayer();
       } else {
-        this.getSongUrl();
+        this.getSongUrl(id);
       }
+    },
+    playNextSong: function() {
+      this.removeContainer();
+      this.currSongIndex = this.currSongIndex + 1;
+      if (this.currSongIndex == this.playerList.length) {
+        this.currSongIndex = 0;
+      }
+      console.log(this.currSongIndex);
+      this.start(
+        this.playerList[this.currSongIndex].song_id,
+        this.playerList[this.currSongIndex]
+      );
+    },
+    playPrevSong: function() {
+      this.removeContainer();
+      this.currSongIndex = this.currSongIndex - 1;
+      if (this.currSongIndex - 1 < 0) {
+        this.currSongIndex = this.playerList.length - 1;
+      }
+      console.log(this.currSongIndex);
+      this.start(
+        this.playerList[this.currSongIndex].song_id,
+        this.playerList[this.currSongIndex]
+      );
     },
     saveCurrTime: function() {
       //父组件调用此函数，调用此函数时，则说明父组件正在销毁，需要存储父组件的歌曲信息
@@ -173,32 +238,36 @@ export default {
        */
       this.SAVE_SONG_URL(this.song.song_url);
       this.SAVE_SONG_LYRIC(this.song.song_lyric);
-
       //歌曲可能有多个，需要对后台的数据进行处理
       let artist = formatArtist(this.song.artist_names);
 
       //全局只需要一个Lplayer实例，所以根据状态，如果还没有此实例，则创建，否则，更改数据，无需创建
       if (this.status == "first") {
         this.status = "second";
-        this.audioPlayer = new LPlayer({
-          element: $("#player"),
-          autoplay: false, //是否自动播放
-          showlrc: true, //是否显示歌词
-          theme: "#d4b514", //主题颜色 如进度条颜色,音量的颜色
-          isOnlyProgressBar: this.isOnlyProgressBar,
-          music: {
-            title: this.song.song_name,
-            album: this.song.album,
-            author: artist,
-            url: this.song.song_url,
-            pic: this.song.album_img,
-            lyric: this.song.song_lyric
+        this.audioPlayer = new LPlayer(
+          {
+            element: $("#player"),
+            loop: false,
+            autoplay: true, //是否自动播放
+            showlrc: true, //是否显示歌词
+            theme: "#d4b514", //主题颜色 如进度条颜色,音量的颜色
+            isOnlyProgressBar: this.isOnlyProgressBar,
+            music: {
+              title: this.song.song_name,
+              album: this.song.album,
+              author: artist,
+              url: this.song.song_url,
+              pic: this.song.album_img,
+              lyric: this.song.song_lyric
+            },
+            audioCurrTime: this.currTime
           },
-          audioCurrTime: this.currTime
-        });
+          window
+        );
       } else {
         this.audioPlayer.changeData({
-          autoplay: false, //是否自动播放
+          autoplay: true, //是否自动播放
+          loop: false,
           showlrc: true, //是否显示歌词
           theme: "#d4b514", //主题颜色 如进度条颜色,音量的颜色
           isOnlyProgressBar: this.isOnlyProgressBar,
@@ -226,6 +295,7 @@ export default {
         id: self.song.song_id
       }).then(res => {
         console.log("getSongUrl");
+        console.log(res);
         this.song.song_url = res.data.url;
         self.getLyric();
       });
@@ -239,9 +309,18 @@ export default {
         id: self.song.song_id
       }).then(res => {
         console.log("getSongLyric");
+        console.log(res);
         this.song.song_lyric = res.data.lyric;
         self.LPlayer();
       });
+    },
+    playerListClick() {
+      let g_playList = document.getElementById("g_playlist");
+      if (g_playList.style.display == "block") {
+        g_playList.style.display = "none";
+      } else {
+        g_playList.style.display = "block";
+      }
     }
   }
 };

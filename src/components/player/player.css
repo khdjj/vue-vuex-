@@ -20,6 +20,7 @@
 	/* margin: 25px; */
 	display: inline-block;
 	overflow: auto;
+	overflow-x:hidden;
 }
 .custom-scroll ul li a,.custom-scroll div{
 	color:white;
@@ -567,4 +568,7 @@ a{
 }
 .scrolls {
 	padding: 20px;
+}
+#g_playlist{
+	display:none;
 }

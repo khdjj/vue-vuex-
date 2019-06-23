@@ -17,7 +17,7 @@ const state = {
         song_url: "",
         song_lyric:""
     },
-    songList: null,
+    playerList: [],
     login: false,
     currTime:0,
 }
