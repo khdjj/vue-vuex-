@@ -6,7 +6,8 @@
           <span class="f-ff2">歌曲列表</span>
         </h3>
         <span class="sub s-fc3">
-          <span id="playlist-track-count">{{songList.length}}</span>首歌
+          <span id="playlist-track-count" v-if="songList">{{songList.length}}首歌</span>
+          <span id="playlist-track-count" v-else>0首歌</span>
         </span>
         <div class="more s-fc3">
           播放：
@@ -60,7 +61,12 @@
             <td class="s-fc3" @mouseover="mouseover($event)" @mouseout="mouseout($event)">
               <span class="u-dur" style="cursor:pointer">oper</span>
               <div class="opt hshow">
-                <a href="javascript:;" class="u-icn u-icn-81" title="添加到播放列表"></a>
+                <a
+                  href="javascript:;"
+                  class="u-icn u-icn-81"
+                  title="添加到播放列表"
+                  @click.prevent="addToPlayerList(song)"
+                ></a>
                 <span class="icn icn-fav" title="收藏"></span>
                 <span class="icn icn-share" title="分享">分享</span>
                 <span class="icn icn-dl" title="下载"></span>
@@ -89,14 +95,14 @@
       </table>
     </div>
     <keep-alive>
-    <player ref="play"></player>
+      <player ref="play"></player>
     </keep-alive>
   </div>
 </template>
 <script>
 import axiosMethod from "../../../service/axios";
 import player from "../player/player";
-import {mapState,mapMutations} from 'vuex'
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "playListSong",
   mounted: function() {
@@ -112,21 +118,28 @@ export default {
     };
   },
   methods: {
-    ...mapMutations([
-      'SAVE_SONG','SAVE_CURRTIME'
-    ]),
-    changeSongList(songList){
+    ...mapMutations(["SAVE_SONG", "SAVE_CURRTIME", "SAVE_PLAYERLIST"]),
+    changeSongList(songList) {
       this.songList = songList;
       console.log(this.songList);
     },
-    play(song,id,show){
+    play(song, id, show) {
       this.SAVE_SONG(song); //在vuex中存储当前播放歌曲
-      this.SAVE_CURRTIME(0); //在vuex中重置当前歌曲播放时间 
-      show && this.$router.push({ path: "/player", query: { id: id, show: true } }); //播放栏中的扩展按钮，点击时，可全屏查看歌曲信息
+      this.SAVE_CURRTIME(0); //在vuex中重置当前歌曲播放时间
+      show &&
+        this.$router.push({ path: "/player", query: { id: id, show: true } }); //播放栏中的扩展按钮，点击时，可全屏查看歌曲信息
       this.$refs.play.getSongUrl(id); //播放歌曲
     },
+    addToPlayerList(playlist) {
+      if (playlist) {
+        this.$refs.play.addPlayerList(playlist);
+      } else {
+        this.songList && this.$refs.play.addPlayerList(this.songList);
+      }
+    },
     getSongList() {
-      axiosMethod("/discover/song/ids",
+      axiosMethod(
+        "/discover/song/ids",
         {
           ids: this.songIdList,
           limit: 1000,
@@ -140,19 +153,19 @@ export default {
     },
     mouseover: function(e) {
       let $target = $(e.currentTarget);
-      $target.find('.u-dur').css({
+      $target.find(".u-dur").css({
         display: "none"
       });
-      $target.find('.opt').css({
+      $target.find(".opt").css({
         display: "block"
       });
     },
     mouseout: function(e) {
       let $target = $(e.currentTarget);
-      $target.find('.u-dur').css({
+      $target.find(".u-dur").css({
         display: "block"
       });
-      $target.find('.opt').css({
+      $target.find(".opt").css({
         display: "none"
       });
     }
@@ -160,216 +173,222 @@ export default {
 };
 </script>
 <style scoped>
-  .n-songtb {
-    margin-top: 27px;
+.n-songtb {
+  margin-top: 27px;
 }
 .u-title-1 {
-    height: 33px;
+  height: 33px;
 }
 .u-title {
-    height: 40px;
-    border-bottom: 2px solid #c20c0c;
+  height: 40px;
+  border-bottom: 2px solid #c20c0c;
 }
 .u-title-1 h3 {
-    font-size: 20px;
-    line-height: 28px;
+  font-size: 20px;
+  line-height: 28px;
 }
 
 .u-title h3 {
-    float: left;
-    font-size: 24px;
-    font-weight: normal;
-    color:black;
+  float: left;
+  font-size: 24px;
+  font-weight: normal;
+  color: black;
 }
 .u-title-1 .sub {
-    margin: 9px 0 0 20px;
+  margin: 9px 0 0 20px;
 }
 .u-title .sub {
-    float: left;
-    margin: 13px 0 0 10px;
-    color: #999;
-    font-size: 12px;
+  float: left;
+  margin: 13px 0 0 10px;
+  color: #999;
+  font-size: 12px;
 }
 .u-title-1 .more {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .u-title .more {
-    float: right;
-    margin-top: 14px;
+  float: right;
+  margin-top: 14px;
 }
-.s-fc6, a.s-fc6:hover {
-    color: #c20c0c;
+.s-fc6,
+a.s-fc6:hover {
+  color: #c20c0c;
 }
 
 .m-table {
-    width: 100%;
-    border: 1px solid #d9d9d9;
+  width: 100%;
+  border: 1px solid #d9d9d9;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
 }
 .m-table .w1 {
-    width: 74px;
+  width: 74px;
 }
 .m-table th {
-    height: 38px;
-    background-color: #f7f7f7;
-    background-position: 0 0;
-    background-repeat: repeat-x;
+  height: 38px;
+  background-color: #f7f7f7;
+  background-position: 0 0;
+  background-repeat: repeat-x;
 }
 .m-table th {
-    vertical-align: top;
-    text-align: left;
-    font-weight: normal;
-    color: #666;
+  vertical-align: top;
+  text-align: left;
+  font-weight: normal;
+  color: #666;
 }
 .m-table th.first .wp {
-    background: none;
+  background: none;
 }
 .m-table th .wp {
-    height: 18px;
-    line-height: 18px;
-    padding: 8px 10px;
-    background-position: 0 -56px;
+  height: 18px;
+  line-height: 18px;
+  padding: 8px 10px;
+  background-position: 0 -56px;
 }
 .m-table .af0:after {
-    content: '\6b4c \66f2 \6807 \9898';
+  content: "\6b4c \66f2 \6807 \9898";
 }
 .m-table .af1:after {
-    content: '播放';
+  content: "播放";
 }
 .m-table .af2:after {
-    content: '\6b4c \624b';
+  content: "\6b4c \624b";
 }
 .m-table .af3:after {
-    content: '\4e13 \8f91';
+  content: "\4e13 \8f91";
 }
-                 
+
 .m-table .even td {
-    background-color: #f7f7f7;
+  background-color: #f7f7f7;
 }
 
 .m-table td {
-    padding: 6px 10px;
-    line-height: 18px;
-    text-align: left;
+  padding: 6px 10px;
+  line-height: 18px;
+  text-align: left;
 }
 .m-table .hd {
-    height: 18px;
+  height: 18px;
 }
 .m-table .ply {
-    width: 17px;
-    height: 17px;
-    cursor: pointer;
-    background-position: 0 -103px !important;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  background-position: 0 -103px !important;
 }
 .m-table .ply {
-    float: left;
+  float: left;
 }
 .m-table .hd .num {
-    width: 25px;
-    margin-left: 5px;
-    color: #999;
+  width: 25px;
+  margin-left: 5px;
+  color: #999;
 }
 .m-table .tt {
-    float: left;
-    width: 100%;
+  float: left;
+  width: 100%;
 }
 .m-table .ttc {
-    height: 18px;
-    margin-right: 20px;
+  height: 18px;
+  margin-right: 20px;
 }
 .m-table .txt {
-    position: relative;
-    display: inline-block;
-    padding-right: 25px;
-    margin-right: -25px;
-    max-width: 99%;
-    height: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  position: relative;
+  display: inline-block;
+  padding-right: 25px;
+  margin-right: -25px;
+  max-width: 99%;
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .m-table .mv {
-    width: 23px;
-    height: 17px;
-    margin: 1px 0 0 0;
-    background-position: 0 -151px;
+  width: 23px;
+  height: 17px;
+  margin: 1px 0 0 0;
+  background-position: 0 -151px;
 }
-.m-table .mv, .m-table .icnfix {
-    position: absolute;
-    top: 0;
-    right: 0;
+.m-table .mv,
+.m-table .icnfix {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
-.m-table .mv, .m-table .icn {
-    float: left;
-    width: 18px;
-    height: 16px;
-    margin: 2px 0 0 4px;
-    overflow: hidden;
-    text-indent: -999px;
-    cursor: pointer;
+.m-table .mv,
+.m-table .icn {
+  float: left;
+  width: 18px;
+  height: 16px;
+  margin: 2px 0 0 4px;
+  overflow: hidden;
+  text-indent: -999px;
+  cursor: pointer;
 }
 .m-table b {
-    font-weight: normal;
+  font-weight: normal;
 }
 .m-table .hshow {
-    display: none;
+  display: none;
 }
 .m-table .opt {
-    float: left;
+  float: left;
 }
 .m-table .u-icn-81 {
-    float: left;
-    margin-top: 2px;
+  float: left;
+  margin-top: 2px;
 }
 
 .u-icn-81 {
-    width: 13px;
-    height: 13px;
-    background-position: 0 -700px !important;
+  width: 13px;
+  height: 13px;
+  background-position: 0 -700px !important;
 }
-.u-icn, .u-icn2, .u-icn3 {
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: middle;
+.u-icn,
+.u-icn2,
+.u-icn3 {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
 }
 .m-table .icn-fav {
-    background-position: 0 -174px;
+  background-position: 0 -174px;
 }
-.m-table .mv, .m-table .icn {
-    float: left;
-    width: 18px;
-    height: 16px;
-    margin: 2px 0 0 4px;
-    overflow: hidden;
-    text-indent: -999px;
-    cursor: pointer;
+.m-table .mv,
+.m-table .icn {
+  float: left;
+  width: 18px;
+  height: 16px;
+  margin: 2px 0 0 4px;
+  overflow: hidden;
+  text-indent: -999px;
+  cursor: pointer;
 }
 .m-table .icn-share {
-    background-position: 0 -195px;
+  background-position: 0 -195px;
 }
 .m-table .icn-dl {
-    background-position: -81px -174px;
+  background-position: -81px -174px;
 }
 .m-table .text {
-    width: 100%;
-    position: relative;
-    zoom: 1;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size:14px;
-    text-overflow: ellipsis;
+  width: 100%;
+  position: relative;
+  zoom: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 14px;
+  text-overflow: ellipsis;
 }
 td {
-    font-size:14px;
+  font-size: 14px;
 }
-.icn{
-    padding-left:5px;
+.icn {
+  padding-left: 5px;
 }
 </style>
 

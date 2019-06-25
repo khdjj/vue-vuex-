@@ -1,10 +1,19 @@
 
 export const setStore = function(name,song){
     if(!name) return;
-    window.localStorage.setItem(name,song);
+    let data  = JSON.stringify(song);
+    window.localStorage.setItem(name,data);
 }
 export const getStore = function(name){
-
     if(!name) return;
-    return window.localStorage.getItem(name);
+    let data =  window.localStorage.getItem(name);
+    if(data){
+        return  JSON.parse(data);
+    }
+    return null;
+}
+
+export const removeStore = function(name){
+    if(!name) return;
+    window.localStorage.removeItem(name);
 }

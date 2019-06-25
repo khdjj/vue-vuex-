@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="m-top">
     <div class="wrap f-cb">
       <h1 class="logo">
@@ -6,40 +7,101 @@
       </h1>
       <ul class="m-nav">
         <li>
-          <span> <a href="javascript:;"> 发现音乐 </a></span>
+          <span>
+            <a href="javascript:;">发现音乐</a>
+          </span>
         </li>
         <li>
-          <span> <a href="javascript:;">我的音乐 </a> </span>
+          <span>
+            <a href="javascript:;">我的音乐</a>
+          </span>
         </li>
         <li>
-          <span> <a href="javascript:;"> 朋友</a></span>
+          <span>
+            <a href="javascript:;">朋友</a>
+          </span>
         </li>
         <li>
-          <span> <a href="javascript:;">商城</a></span>
+          <span>
+            <a href="javascript:;">商城</a>
+          </span>
         </li>
         <li>
-          <span> <a href="javascript:;">音乐人</a></span>
+          <span>
+            <a href="javascript:;">音乐人</a>
+          </span>
         </li>
       </ul>
       <div class="m-search">
         <div class="srchbg">
           <i class="srch-btn"></i>
-          <input type="text" placeholder="音乐/视频/电台/用户" id="srch"/>
+          <input type="text" placeholder="音乐/视频/电台/用户" id="srch">
         </div>
       </div>
-      <a href="javascript:;" class="m-creator-center" >创作者中心</a>
+      <a href="javascript:;" class="m-creator-center">创作者中心</a>
       <div class="m-tophead">
-        <div class="head">
-          <img src="../../../default/default.png" alt="">
+        <div class="head" v-if="isLogin">
+          <img src="../../../default/default.png" alt>
           <a href="javascript:;" class="creator-center"></a>
+        </div>
+        <a hidefocus="true" href="javascript:;" class="link s-fc3" data-action="login" @mouseover="show()">登录</a>
+        <div class="m-tlist j-uflag" @mouseover="show()" @mouseout="hide()">
+          <!-- style="display: none;" -->
+          <div class="inner">
+            <ul class="f-cb">
+              <li class="lb">
+                <a hidefocus="true" class="itm-1" href="#" data-action="login" data-type="mobile" @click.prevent="showPop()">
+                  <em>邮箱登录</em>
+                </a>
+              </li>
+              <li class="lb">
+                <a hidefocus="true" class="itm-2" href="javascript:;" target="_blank">
+                  <em>微信登录</em>
+                </a>
+              </li>
+              <li class="lb">
+                <a hidefocus="true" class="itm-2" target="_blank" href="javascript:;">
+                  <em>QQ登录</em>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <i class="arr"></i>
         </div>
       </div>
     </div>
   </div>
+  <pop ref="pop"></pop>
+  </div>
 </template>
 <script>
+import $ from 'jquery';
+import pop from '../popWindows/pop'
 export default {
-  name: "header"
+  name: "header",
+  data() {
+    return {
+      isLogin: false
+    };
+  },
+  components:{
+    pop
+  },
+  methods:{
+    showPop(){
+      this.$refs.pop.show();
+    },
+    show(){
+      $('.m-tlist').css({
+        'display':'block'
+      });
+    },
+    hide(){
+      $('.m-tlist').css({
+        'display':'none'
+      });
+    }
+  }
 };
 </script>
 <style>

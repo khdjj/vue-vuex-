@@ -30,6 +30,10 @@ export {
 LPlayer.prototype = {
 
 
+	/**
+	 * 因为事件只能注册一次，所以initData只能调用一次，不能再在其他地方调用 
+	 */
+
 	initData: function () {
 		let m = this;
 		m.player = $('.player');
@@ -66,6 +70,16 @@ LPlayer.prototype = {
 			m.d += 1;
 			m.timer = window.requestAnimationFrame(b);
 		}
+
+		$('.next').click(function(){
+			this.audioOver = true;
+			window.playNextSong()
+		})
+		$('.prev').click(function(){
+			this.audioOver = true;
+			window.playPrevSong();
+		})
+
 	},
 	updateLrc: function () {
 		let e;
@@ -220,15 +234,6 @@ LPlayer.prototype = {
 		m.playStatus = 'play';
 
 		this.audioOver = true;
-		$('.next').click(function(){
-			this.audioOver = true;
-			window.playNextSong()
-		})
-		$('.prev').click(function(){
-			this.audioOver = true;
-			window.playPrevSong();
-		})
-
 		this.loadpro = $('.m-pbar .rdy');
 		this.playpro = $('.m-pbar .cur');
 		this.curTime = $('.time .cur-time');
@@ -245,6 +250,7 @@ LPlayer.prototype = {
 		})
 
 		this.audio.onended = function(){
+			console.log("end");
 			window.playNextSong();
 		}
 
@@ -255,8 +261,7 @@ LPlayer.prototype = {
 			m.loadedTime = setInterval(function () {
 				let e = m.audio.buffered.end(m.audio.buffered.length - 1) / m.audio.duration;
 				m.updateBar(e, 'loaded', 'width');
-				e === 1 && (this.loaded = true) && clearInterval(m.loadedTime);
-				e === 1 && console.log(this.loaded);
+				e === 1 && clearInterval(m.loadedTime);
 				this.audioOver && clearInterval(m.loadedTime);
 			}, 500);
 		};
@@ -390,7 +395,6 @@ LPlayer.prototype = {
 				"background-position": "0 -204px"
 		})
 		this.init();
-		this.initData();
 	},
 	getAudio: function () {
 		return this.audio;

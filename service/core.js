@@ -14,7 +14,6 @@ k2x.bfv1x = function (bB3x) {
         de4i = new Date(Date.parse(bB3x));
     if (!k2x.IC3x(bB3x))
         de4i = new Date(bB3x);
-    console.log("17 " + de4i);
     return de4i
 }
 k2x.fM5R = function (i2x) {
@@ -38,7 +37,6 @@ k2x.ib5g = function () {
         return qD8v < 12 ? 0 : 1
     };
     return function (bB3x, Lg4k, clU7N) {
-        console.log(bB3x, Lg4k);
         if (!bB3x || !Lg4k)
             return "";
         bB3x = k2x.bfv1x(bB3x);
@@ -100,8 +98,6 @@ exports.formatDate = function (bB3x) {
         }
         bB3x = num;
     }
-
-    console.log(bB3x);
     if (k2x.IC3x(bB3x))
         bB3x = bB3x.getTime();
     var fi5n = new Date

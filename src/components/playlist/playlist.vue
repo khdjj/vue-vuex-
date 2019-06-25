@@ -5,7 +5,7 @@
       <div class="g-wrap6 f-cb">
         <div class="m-info f-cb">
           <div class="cover u-cover u-cover-dj">
-            <img :src="playList.img" class="j-img">
+            <img :src="playList.img" class="j-img" v-if="playList">
             <span class="msk"></span>
           </div>
           <div class="cnt">
@@ -13,17 +13,17 @@
               <div class="hd f-cb">
                 <i class="f-fl u-icn u-icn-13 f-pr"></i>
                 <div class="tit">
-                  <h2 class="f-ff2 f-brk">{{playList.name}}</h2>
+                  <h2 class="f-ff2 f-brk" v-if="playList">{{playList.name}}</h2>
                 </div>
               </div>
               <div class="user f-cb">
                 <a class="face" href="javascript:;">
-                  <img :src="playList.creator_avatar">
+                  <img :src="playList.creator_avatar" v-if="playList">
                 </a>
                 <span class="name">
-                  <a href="javascript:;" class="s-fc7">{{playList.creator}}</a>
+                  <a href="javascript:;" class="s-fc7" v-if="playList">{{playList.creator}}</a>
                 </span>
-                <span class="time s-fc4">{{playList.create_time}}</span>
+                <span class="time s-fc4" v-if="playList">{{playList.create_time}}</span>
               </div>
               <div id="content-operation" class="btns f-cb">
                 <a
@@ -31,6 +31,7 @@
                   class="u-btn2 u-btn2-2 u-btni-addply f-fl"
                   hidefocus="true"
                   title="播放"
+                  @click.prevent="addToPlayList();"
                 >
                   <i>
                     <em class="ply"></em>播放
@@ -53,7 +54,7 @@
                   </i>
                 </a>
               </div>
-              <div class="tags f-cb">
+              <div class="tags f-cb" v-if="playList">
                 <b>标签：</b>
                 <a
                   class="u-tag"
@@ -64,11 +65,11 @@
                   <i>{{tag.cat}}</i>
                 </a>
               </div>
-              <p id="album-desc-more" class="intr f-brk">{{playList.desc}}</p>
+              <p id="album-desc-more" class="intr f-brk" v-if="playList">{{playList.desc}}</p>
             </div>
           </div>
         </div>
-        <play-list-song :songIdList="playList.song_ids" :playNum = "playList.play_num"></play-list-song>
+        <play-list-song :songIdList="playList.song_ids" :playNum = "playList.play_num" ref = "playlistsong"></play-list-song>
         <comment type = "playListComment" :id="id"></comment>
       </div>
     </div>
@@ -100,6 +101,9 @@ export default {
     this.id && this.getPlayList();
   },
   methods: {
+    addToPlayList(){
+      this.$refs.playlistsong.addToPlayerList();
+    },
     getPlayList() {
       axiosMethod("/discover/playlist/id", {
         id: this.id

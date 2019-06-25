@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-06-01 14:53:53
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-06-24 21:17:10
+ -->
 <template>
   <div id="player">
     <div class="g-btmbar">
@@ -125,13 +133,15 @@ import $ from "jquery";
 import axiosMethod from "../../../service/axios";
 import { LPlayer } from "../../../plugins/Lplayer";
 import { scrollbot } from "../../../plugins/scrollbot";
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations,mapActions } from "vuex";
 import { formatArtist } from "../../../service/core";
-import {getStore,setStore} from "../../../service/getStoreData"
+import {removeStore} from "../../../service/getStoreData"
 export default {
   name: "player",
   mounted: function() {
-    
+    this.getSong();
+    this.getPlayerList();
+
     //如果url函数中带有show，则表明需要全屏显示歌曲播放信息
     if (this.$route.query.show) {
       this.isOnlyProgressBar = true;
@@ -174,8 +184,58 @@ export default {
       "SAVE_CURRTIME",
       "SAVE_SONG_URL",
       "SAVE_SONG_LYRIC",
-      "SAVE_SONG"
+      "SAVE_SONG",
+      "SAVE_PLAYERLIST"
     ]),
+
+    ...mapActions([
+      "getSong",
+      "getPlayerList"
+    ]),
+
+    //添加到播放列表
+    addPlayerList(playList, index) {
+      let data,isRepeat = false;
+      //vuex的mutations不能传递多个参数，所以只能作为对象传进去
+      let obj;
+      if(index){
+        if (Object.prototype.toString.call(playList[index]) == "[object Array]") {
+            console.log("array");
+            obj = JSON.parse(JSON.stringify(playList[index]));
+            data = {
+              list:obj,
+              isArray:true
+            }
+        }
+      }else{
+        if(Object.prototype.toString.call(playList) == "[object Array]"){
+          console.log("array");
+            obj = JSON.parse(JSON.stringify(playList));
+               data = {
+              list:obj,
+              isArray:true
+            }
+        }
+      }
+      console.log(Object.prototype.toString.call(playList));
+     if (Object.prototype.toString.call(playList) == "[object Object]") {
+       console.log("object");
+        for(let i = 0; i< this.playerList.length;i++){
+          if(this.playerList[i].song_id == playList.song_id){
+            console.log(isRepeat);
+            isRepeat = true;
+            break;
+          }
+        }
+        data = {
+          list: playList,
+          isArray: false
+        };
+      }
+      console.log(data);
+      !isRepeat && this.SAVE_PLAYERLIST(data);
+    },
+    //每次一首歌结束之后，就要将container去掉，因为它会重新生成一个节点
     removeContainer() {
       $("#player")
         .children("#container")
@@ -195,35 +255,42 @@ export default {
         this.songUrl &&
         this.lyric
       ) {
+        console.log("all have");
         this.LPlayer();
       } else {
         this.getSongUrl(id);
       }
     },
+
+    //播放上一首歌曲
     playNextSong: function() {
       this.removeContainer();
       this.currSongIndex = this.currSongIndex + 1;
       if (this.currSongIndex == this.playerList.length) {
         this.currSongIndex = 0;
       }
-      console.log(this.currSongIndex);
+      console.log(this.playerList[this.currSongIndex]);
       this.start(
         this.playerList[this.currSongIndex].song_id,
         this.playerList[this.currSongIndex]
       );
     },
+
+    //播放下一首歌曲
     playPrevSong: function() {
       this.removeContainer();
       this.currSongIndex = this.currSongIndex - 1;
       if (this.currSongIndex - 1 < 0) {
         this.currSongIndex = this.playerList.length - 1;
       }
-      console.log(this.currSongIndex);
+      console.log(this.playerList[this.currSongIndex]);
       this.start(
         this.playerList[this.currSongIndex].song_id,
         this.playerList[this.currSongIndex]
       );
     },
+
+    //存储当前歌曲播放时间
     saveCurrTime: function() {
       //父组件调用此函数，调用此函数时，则说明父组件正在销毁，需要存储父组件的歌曲信息
       this.audioPlayer.pause();

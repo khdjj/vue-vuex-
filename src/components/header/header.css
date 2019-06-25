@@ -107,7 +107,10 @@ input:focus, textarea:focus, select:focus {
 .m-tophead{
     float:left;
     height:70px;
+    position: relative;
     width:60px;
+    padding: 18px;
+    text-align: center;
     margin-left:47px;
 }
 .m-tophead .head{
@@ -310,4 +313,47 @@ em, i {
     line-height: 18px;
     color: #666;
     font-size:14px;
+}
+
+.m-tophead .link{
+    display: block;
+    width: 28px;
+    margin-top: 7px;
+    color: #787878;
+}
+.m-tlist {
+    position: absolute;
+    top: 65px;
+    left: -25px;
+    width: 158px;
+    z-index:999;
+    background: #2b2b2b;
+    border: 1px solid #202020;
+    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.50);
+    border-radius: 4px;
+}
+.m-tlist li, .m-tlist li a {
+    float: left;
+    box-sizing: border-box;
+    width: 100%;
+}
+.m-tlist a {
+    position: relative;
+    height: 38px;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-left: 24px;
+    color: #ccc;
+    line-height: 39px;
+}
+.m-tlist em {
+    float: left;
+    width: 100px;
+}
+.m-tlist .ltb {
+    border: 1px solid #232323;
+    border-width: 1px 0;
+}
+.m-tlist .inner li:hover{
+    background: #3a3838;
 }

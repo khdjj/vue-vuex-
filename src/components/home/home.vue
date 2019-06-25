@@ -99,7 +99,7 @@
                   <a
                     href="javascript:;"
                     class="s-bg s-bg-9"
-                    @click="addPlayerList(songList,index)"
+                    @click="addToPlayerList(songList,index)"
                   >播放</a>
                   <a href="javascript:;" title="收藏" class="s-bg s-bg-10">收藏</a>
                 </div>
@@ -127,7 +127,7 @@
                       title="播放"
                       hidefocus="true"
                     ></a>
-                    <a href="#" class="u-icn u-icn-81" @click.prevent="addPlayerList(songlist)" title="添加到播放列表" hidefocus="true"></a>
+                    <a href="#" class="u-icn u-icn-81" @click.prevent="addToPlayerList(songlist)" title="添加到播放列表" hidefocus="true"></a>
                     <a href="#" class="s-bg s-bg-12" title="收藏" hidefocus="true"></a>
                   </div>
                 </li>
@@ -144,7 +144,7 @@
       </div>
     </div>
     <keep-alive>
-      <player ref="play"></player>
+    <player ref="play"></player>
     </keep-alive>
     <foot></foot>
     <router-view></router-view>
@@ -161,12 +161,14 @@ import { numFormat } from "../../../service/utils";
 import { Shuffling } from "../../../plugins/broadcast/Shuffling.js";
 import axiosmethod from "../../../service/axios";
 import { mapMutations, mapState } from "vuex";
+import pop from "../popWindows/pop"
 export default {
   name: "home",
   components: {
     navCompt,
     player,
-    foot
+    foot,
+    pop
   },
   data() {
     return {
@@ -202,23 +204,8 @@ export default {
       this.$refs.play.getSongUrl(id); //播放歌曲
     },
 
-    addPlayerList(playList, index) {
-      let data;
-      //vuex的mutations不能传递多个参数，所以只能作为对象传进去
-      if (Object.prototype.toString.call(playList[index]) == "[object Array]") {
-        //解决数组关联问题
-        let obj = JSON.parse(JSON.stringify(playList[index]));
-        data = {
-          list: obj,
-          isArray: true
-        };
-      } else {
-        data = {
-          list: playList,
-          isArray: false
-        };
-      }
-      this.SAVE_PLAYERLIST(data);
+    addToPlayerList(playList, index) {
+      this.$refs.play.addPlayerList(playList,index);
     },
     /**
      * 轮播插件
