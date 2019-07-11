@@ -8,7 +8,6 @@ export default {
     },
     getPlayerList({commit,state}) {
         let playerList = getStore('bbbbb');
-        console.log(playerList.length);
         if (playerList) {
             let data = {
                 isArray: true,

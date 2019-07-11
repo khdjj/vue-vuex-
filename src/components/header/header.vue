@@ -56,7 +56,7 @@
               </li>
               <li class="lb">
                 <a hidefocus="true" class="itm-2" href="javascript:;" target="_blank">
-                  <em>微信登录</em>
+                  <em>微博登录</em>
                 </a>
               </li>
               <li class="lb">
