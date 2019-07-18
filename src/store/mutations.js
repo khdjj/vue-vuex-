@@ -4,7 +4,7 @@
  * @Author: khdjj
  * @Date: 2019-06-06 10:24:45
  * @LastEditors: khdjj
- * @LastEditTime: 2019-06-24 16:38:52
+ * @LastEditTime: 2019-07-13 20:24:57
  */
 
  import {setStore} from "../../service/getStoreData"
@@ -32,5 +32,14 @@ export default {
         }
         console.log(state.playerList);
         setStore('bbbbb',state.playerList);
+    },
+    SAVE_USER(state,data){
+        console.log(data);
+        if(!data.avator){
+            data.avator = 'http://p2.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg?param=180y180';
+        }else{
+            data.avator = "http://localhost:8001/img/"+data.avator;
+        }
+        state.userInfo = data;
     }
 }

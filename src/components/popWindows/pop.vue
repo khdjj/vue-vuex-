@@ -11,38 +11,15 @@
           <div class="j-mob">
             <div class="u-phonewrap">
               <div class="txtwrap">
-                <input
-                  type="text"
-                  name="p"
-                  id="p"
-                  class="j-phone txt u-txt"
-                  placeholder="请输入邮箱"
-                  autocomplete="off"
-                  v-model="email"
-                >
+                <input type="text" name="p" id="p" class="j-phone txt u-txt" placeholder="请输入邮箱" autocomplete="off" v-model="email" />
               </div>
             </div>
           </div>
           <div class="f-mgt10">
-            <input
-              type="password"
-              name="pw"
-              id="pw"
-              class="j-pwd u-txt"
-              placeholder="请输入密码"
-              autocomplete="new-password"
-              v-model="pwd"
-            >
+            <input type="password" name="pw" id="pw" class="j-pwd u-txt" placeholder="请输入密码" autocomplete="new-password" v-model="pwd" />
           </div>
           <div class="f-mgt10" v-if="isRegister">
-            <input
-              type="text"
-              name="code"
-              id="code"
-              class="j-code u-txt"
-              placeholder="请输入验证码"
-              v-model="code"
-            >
+            <input type="text" name="code" id="code" class="j-code u-txt" placeholder="请输入验证码" v-model="code" />
             <span class="verification_code" @click="getCapchas()" v-if="send">发送验证码</span>
             <span class="verification_code" v-else>重新发送({{this.time}})</span>
             <span class="msg" v-if="hint">{{hint}}</span>
@@ -53,29 +30,15 @@
           </div>
           <div class="f-mgt10" v-if="isLogin">
             <label class="s-fc3">
-              <input type="checkbox" checked="checked" class="j-auto u-auto">自动登录
+              <input type="checkbox" checked="checked" class="j-auto u-auto" />自动登录
             </label>
             <a href="#" class="f-fr s-fc3" data-action="forget" style="padding-top:2px;">忘记密码？</a>
           </div>
           <div class="f-mgt20">
-            <a
-              class="j-primary u-btn2 u-btn2-2"
-              hidefocus="true"
-              href="#"
-              data-action="login"
-              v-if="isLogin"
-              @click.prevent="login()"
-            >
+            <a class="j-primary u-btn2 u-btn2-2" hidefocus="true" href="#" data-action="login" v-if="isLogin" @click.prevent="login()">
               <i>登 录</i>
             </a>
-            <a
-              class="j-register u-btn2 u-btn2-2"
-              hidefocus="true"
-              href="#"
-              data-action="login"
-              v-if="isRegister"
-              @click.prevent="register()"
-            >
+            <a class="j-register u-btn2 u-btn2-2" hidefocus="true" href="#" data-action="login" v-if="isRegister" @click.prevent="register()">
               <i>注册</i>
             </a>
           </div>
@@ -84,21 +47,10 @@
           <div v-if="isLogin">
             <a href="javascript:;" data-action="select" class="f-fl u-mlg2 u-mlg2-wb"></a>
             <a href="javascript:;" data-action="select" class="f-fl u-mlg2 u-mlg2-qq"></a>
-            <a
-              href="javascript:;"
-              data-action="reg"
-              class="f-fr"
-              @click.prevent="registerAction()"
-            >没有帐号？免费注册&nbsp;&nbsp;&gt;</a>
+            <a href="javascript:;" data-action="reg" class="f-fr" @click.prevent="registerAction()">没有帐号？免费注册&nbsp;&nbsp;&gt;</a>
           </div>
           <div v-else>
-            <a
-              href="javascript:;"
-              data-action="select"
-              class="f-fl u-mlg2"
-              style="color: blue;width:120px"
-              @click.prevent="registerAction()"
-            >&lt;&nbsp;返回登录</a>
+            <a href="javascript:;" data-action="select" class="f-fl u-mlg2" style="color: blue;width:120px" @click.prevent="registerAction()">&lt;&nbsp;返回登录</a>
           </div>
         </div>
       </div>
@@ -108,14 +60,7 @@
             <div class="frm m-frm">
               <div class="itm">
                 <label class="lab">昵称：</label>
-                <input
-                  type="text"
-                  class="u-txt txt"
-                  id="nickname"
-                  maxlength="30"
-                  v-model="nickname"
-                  @blur="nicknameisRepeat()"
-                >
+                <input type="text" class="u-txt txt" id="nickname" maxlength="30" v-model="nickname" @blur="nicknameisRepeat()" />
                 <div class="u-err" style="display:none;" id="err">
                   <span>昵称已存在！</span>
                 </div>
@@ -131,33 +76,27 @@
                 <label class="lab">性别：</label>
                 <div class="f-cb">
                   <label class="check">
-                    <input name="gender" type="radio" class="u-rdi" value="男" v-model="sex"> 男
+                    <input name="gender" type="radio" class="u-rdi" value="男" v-model="sex" /> 男
                   </label>
                   <label class="check">
-                    <input name="gender" type="radio" class="u-rdi" value="女" v-model="sex"> 女
+                    <input name="gender" type="radio" class="u-rdi" value="女" v-model="sex" /> 女
                   </label>
                 </div>
               </div>
               <div class="itm ft">
-                <a
-                  class="pop_btn"
-                  hidefocus="true"
-                  href="#"
-                  data-action="save"
-                  @click.prevent="login()"
-                >
+                <a class="pop_btn" hidefocus="true" href="#" data-action="save" @click.prevent="improve()">
                   <i>保 存</i>
                 </a>
-                <a class="pop_btn cancel_btn" hidefocus="true" href="#" data-action="cancel">
+                <a class="pop_btn cancel_btn" hidefocus="true" href="#" data-action="cancel" @click="cancel()">
                   <i>取 消</i>
                 </a>
               </div>
             </div>
             <div class="pop_avatar f-pr">
-              <img :src="imgsrc" id="avatar">
+              <img :src="imgsrc" id="avatar" />
               <span class="btm"></span>
               <a href="javascript:;" class="upload" id="upload">
-                <input type="file" class="addTofile">更换头像
+                <input type="file" class="addTofile" @change="upload($event)"/>更换头像
               </a>
             </div>
           </div>
@@ -172,6 +111,7 @@
 import axiosMethod from "../../../service/axios";
 import alert from "../alert/alert";
 import axios from "axios";
+import {mapMutations} from "vuex";
 export default {
   name: "pop",
   components: {
@@ -179,7 +119,7 @@ export default {
   },
   data() {
     return {
-      isLogin: false,
+      isLogin: true,
       isRegister: false,
       hint: null,
       email: null, //邮箱
@@ -192,25 +132,29 @@ export default {
       desc: null, //个人描述
       sex: null, //性别
       updateavatar: null, //上传图像值
+      userId:null,
       imgsrc:
         "http://p2.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg?param=180y180",
-      isRegisterSucc: true,
+      isRegisterSucc: false,
       EMAIL_REGEX: /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/ //邮箱验证正则表达式
     };
   },
   mounted() {
-    this.upload();
   },
   methods: {
+    ...mapMutations([
+      'SAVE_USER'
+    ]),
     /**
      * 上传图片,当文件改变时,将图片上传
      */
-    upload() {
-      let self = this,
-        input = document.querySelector(".addTofile");
-      input.onchange = function() {
-        self.$refs.alert.show("正在上传，请稍候");
+    upload(e) {
+       console.log(e);
+        var input = e.currentTarget;
+        console.log(input);
+        this.$refs.alert.show("正在上传，请稍候");
         let data = new FormData();
+        console.log(input.files[0]);
         data.append("file", input.files[0]);
         let config = {
           headers: {
@@ -222,21 +166,34 @@ export default {
           .then(res => {
             console.log(res);
             if (res.data.code == 200) {
-              self.imgsrc = "http://localhost:8001/img" + res.data.url;
-              self.$refs.alert.show("上传成功");
+              this.imgsrc = "http://localhost:8001/img/" + res.data.url;
+              this.$refs.alert.show("上传成功");
             }
           });
-      };
     },
 
+    login(){
+        axiosMethod('/v1/users/login',{
+          email:this.email,
+          pwd:this.pwd
+        },'POST').then(res=>{
+          console.log(res);
+          let data = res.data;
+          if(data.code == 200){
+            this.SAVE_USER(data.userData);
+            this.$emit('chageStatus');
+            this.hide();
+          }
+        })
+    },
     /**
-     * 检查用户填写的昵称是否已存在 
+     * 检查用户填写的昵称是否已存在
      */
     nicknameisRepeat() {
       let self = this;
       if (this.nickname) {
         axiosMethod("/v1/search/nickname", {
-          nickname
+          nickname:this.nickname
         }).then(res => {
           console.log(res);
           if (res.status == 0) {
@@ -263,6 +220,7 @@ export default {
       this.isLogin = !this.isLogin;
     },
 
+
     //重置所有填写信息
     reset() {
       this.hint = null;
@@ -270,42 +228,29 @@ export default {
       this.pwd = null;
       this.code = null;
     },
-    //用户注册后填写个人资料
-    login() {
-      if (this.nickname != null && this.nickname == this.oldnickname) {
-        this.$refs.alert.show("对不起，此用户名已存在，请重新填写");
-        return;
-      }
-      console.log(this.sex);
+    //注册后填写具体信息
+    improve() {
+
+      let _self = this;
       this.desc = this.desc || null;
       this.sex = this.sex || null;
+      console.log(this.sex);
       console.log(this.desc);
       console.log(this.nickname);
-      axiosMethod(
-        "/v1/users/login",
-        {
+      axiosMethod("/v1/users/improve", {
           nickname: this.nickname,
           desc: this.desc,
           sex: this.sex
-        },
-        "POST"
-      ).then(res => {
-        console.log(res);
-        this.$refs.alert.show(res.data.msg);
-      });
-      axios
-        .post("/v1/users/login", {
-          nickname: this.nickname,
-          desc: this.desc,
-          sex: this.sex
-        })
-        .then(res => {
+        },"POST").then(res => {
           console.log(res);
+          this.$refs.alert.show(res.data.msg);
           if (res.data.code == 200) {
             this.reset();
+            this.$refs.alert.show(res.data.msg);
             this.isRegister = false;
-            this.isLogin = false;
-            this.isRegisterSucc = true;
+            this.isLogin = true;
+            this.isRegisterSucc = false;
+            this.login();
           }
         });
     },
@@ -313,6 +258,11 @@ export default {
      * 注册方法
      */
     async register() {
+
+      // if (this.nickname != null && this.nickname == this.oldnickname) {
+      //   this.$refs.alert.show("对不起，此用户名已存在，请重新填写");
+      //   return;
+      // }
       console.log("register");
       if (!this.email) {
         this.hint = "邮箱未填写";
@@ -336,8 +286,10 @@ export default {
         code: this.code
       }).then(res => {
         console.log(res);
+        this.$refs.alert.show(res.data.msg);
         if (res.data.code == 200) {
           this.reset();
+          this.userId = res.data.userId;
           this.isRegister = false;
           this.isLogin = false;
           this.isRegisterSucc = true;
@@ -359,6 +311,7 @@ export default {
         email: this.email
       }).then(res => {
         console.log(res);
+          this.$refs.alert.show(res.data.msg);
         if (res.data.code == 200) {
           this.hint = res.data.msg;
         }
@@ -372,8 +325,14 @@ export default {
           this.send = true;
         }
       }, 1000);
+    },
+    cancel() {
+      this.isLogin = true;
+      this.isRegister = false;
+      this.isRegisterSucc = false;
     }
   }
+
 };
 </script>
 

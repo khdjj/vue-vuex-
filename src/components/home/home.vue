@@ -143,9 +143,9 @@
         </div>
       </div>
     </div>
-    <keep-alive>
+    <!-- <keep-alive>
     <player ref="play"></player>
-    </keep-alive>
+    </keep-alive> -->
     <foot></foot>
     <router-view></router-view>
   </div>
@@ -154,7 +154,7 @@
 <script>
 import navCompt from "../nav/nav";
 import $ from "jquery";
-import player from "../player/player";
+// import player from "../player/player";
 import foot from "../foot/foot";
 import axios from "axios";
 import { numFormat } from "../../../service/utils";
@@ -166,7 +166,7 @@ export default {
   name: "home",
   components: {
     navCompt,
-    player,
+    // player,
     foot,
     pop
   },
@@ -186,7 +186,7 @@ export default {
    * 在vue实例销毁之前的钩子函数，调用播放组件的存储函数存储当前歌曲播放时间
    */
   beforeDestroy: function() {
-    this.$refs.play.saveCurrTime();
+    // this.$refs.play.saveCurrTime();
   },
   computed: {
     ...mapState(["playerList"])
@@ -199,13 +199,14 @@ export default {
     player(song, id, show) {
       this.SAVE_SONG(song); //在vuex中存储当前播放歌曲
       this.SAVE_CURRTIME(0); //在vuex中重置当前歌曲播放时间
-      show &&
-        this.$router.push({ path: "/player", query: { id: id, show: true } }); //播放栏中的扩展按钮，点击时，可全屏查看歌曲信息
-      this.$refs.play.getSongUrl(id); //播放歌曲
+      show && this.$router.push({ path: "/player", query: { id: id, show: true } }); //播放栏中的扩展按钮，点击时，可全屏查看歌曲信息
+      // this.$refs.play.getSongUrl(id); //播放歌曲
+      this.$root.$emit('playEvent', id); //插入歌曲
     },
 
     addToPlayerList(playList, index) {
-      this.$refs.play.addPlayerList(playList,index);
+      // this.$refs.play.addPlayerList(playList,index);
+      this.$root.$emit('addPlayerListEvent', playList,index); //插入歌曲
     },
     /**
      * 轮播插件

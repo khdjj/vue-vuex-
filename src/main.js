@@ -16,4 +16,7 @@ new Vue({
   el: '#app',
   store,
   router,
+  data:{
+    Bus:new Vue()
+  }
 }).$mount('#app')

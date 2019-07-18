@@ -94,14 +94,14 @@
         </tbody>
       </table>
     </div>
-    <keep-alive>
+    <!-- <keep-alive>
       <player ref="play"></player>
-    </keep-alive>
+    </keep-alive> -->
   </div>
 </template>
 <script>
 import axiosMethod from "../../../service/axios";
-import player from "../player/player";
+// import player from "../player/player";
 import { mapState, mapMutations } from "vuex";
 export default {
   name: "playListSong",
@@ -109,7 +109,7 @@ export default {
     this.songIdList && this.getSongList();
   },
   components: {
-    player
+    // player
   },
   props: ["songIdList", "playNum"],
   data() {
@@ -128,13 +128,16 @@ export default {
       this.SAVE_CURRTIME(0); //在vuex中重置当前歌曲播放时间
       show &&
         this.$router.push({ path: "/player", query: { id: id, show: true } }); //播放栏中的扩展按钮，点击时，可全屏查看歌曲信息
-      this.$refs.play.getSongUrl(id); //播放歌曲
+      // this.$refs.play.getSongUrl(id); //播放歌曲
+      this.$root.$emit('playEvent', id); //插入歌曲
     },
     addToPlayerList(playlist) {
       if (playlist) {
-        this.$refs.play.addPlayerList(playlist);
+         this.$root.$emit('addPlayerListEvent', playList); //插入歌曲
+        // this.$refs.play.addPlayerList(playlist);
       } else {
-        this.songList && this.$refs.play.addPlayerList(this.songList);
+         this.songList &&  this.$root.$emit('addPlayerListEvent', this.songList); //插入歌曲
+        // this.songList && this.$refs.play.addPlayerList(this.songList);
       }
     },
     getSongList() {

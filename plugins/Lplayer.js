@@ -162,42 +162,46 @@ LPlayer.prototype = {
 				}
 			}
 
-			let container = `<div id="container">
-			<span class="closePlayer" onclick="javascript:history.back(-1);" title="返回上一级"></span>
-			<div id="player" class="lplayer row">
-				<div class="player_cvrwrap col-lg-4 col-lg-offset-1">
-					<div class="player_u-cover">
-						<div class="player_avatar">
-							<div class="msk">
-								<img src= ${this.options.music.pic} class="p-img" />
-							</div>
-						</div>
-						<div class="content-operation">
-							<a href="javascript:;" class="player btns" title="播放">播放</a>
-							<a href="javascript:;" class="addTo btns" title="添加到播放列表">+</a>
-							<a href="javascript:;" class="btns" title="收藏">收藏</a>
-							<a href="javascript:;" class="btns" title="分享">分享</a>
-							<a href="javascript:;" class="btns" title="下载">下载</a>
-							<a href="javascript:;" class="btns" title="评论">评论</a>
-						</div>
-					</div>
-				</div>
-				<div class="lplayer-lrc-container col-lg-6 ">
-					<div class="lplayer-music">
-						<h1>${this.options.music.title}</h1>
-						<span style=" margin-top: 16px; display: inline-block;">歌手：<span style = "color:white">${this.options.music.author}</span></span>
-						<span style="margin-left: 20px;">专辑：<a href="javascript:;">${this.options.music.album}</a></span>
-					</div>
-					<div class="lplayer-lrc">
-						<div class="lplayer-lrc-content">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>`
+		// 	let container = `<div id="container">
+		// 	<span class="closePlayer" onclick="javascript:history.back(-1);" title="返回上一级"></span>
+		// 	<div id="player" class="lplayer row">
+		// 		<div class="player_cvrwrap col-lg-4 col-lg-offset-1">
+		// 			<div class="player_u-cover">
+		// 				<div class="player_avatar">
+		// 					<div class="msk">
+		// 						<img src= ${this.options.music.pic} class="p-img" />
+		// 					</div>
+		// 				</div>
+		// 				<div class="content-operation">
+		// 					<a href="javascript:;" class="player btns" title="播放">播放</a>
+		// 					<a href="javascript:;" class="addTo btns" title="添加到播放列表">+</a>
+		// 					<a href="javascript:;" class="btns" title="收藏">收藏</a>
+		// 					<a href="javascript:;" class="btns" title="分享">分享</a>
+		// 					<a href="javascript:;" class="btns" title="下载">下载</a>
+		// 					<a href="javascript:;" class="btns" title="评论">评论</a>
+		// 				</div>
+		// 			</div>
+		// 		</div>
+		// 		<div class="lplayer-lrc-container col-lg-6 ">
+		// 			<div class="lplayer-music">
+		// 				<h1>${this.options.music.title}</h1>
+		// 				<span style=" margin-top: 16px; display: inline-block;">歌手：<span style = "color:white">${this.options.music.author}</span></span>
+		// 				<span style="margin-left: 20px;">专辑：<a href="javascript:;">${this.options.music.album}</a></span>
+		// 			</div>
+		// 			<div class="lplayer-lrc">
+		// 				<div class="lplayer-lrc-content">
+		// 				</div>
+		// 			</div>
+		// 		</div>
+		// 	</div>
+		// </div>`
 
-			$('#player').prepend(container);
+			// $('#container').remove();
+			// $('#player').prepend(container);
 
+			$('#container').css({
+				display:"block"
+			})
 			//将文字信息转换成p的dom元素
 
 			let el = '';

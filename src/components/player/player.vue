@@ -4,10 +4,49 @@
  * @Author: khdjj
  * @Date: 2019-06-01 14:53:53
  * @LastEditors: khdjj
- * @LastEditTime: 2019-06-24 21:17:10
+ * @LastEditTime: 2019-07-18 14:03:41
  -->
 <template>
   <div id="player">
+    <div id="container" style="display:none;">
+			<span class="closePlayer" @click="closePlayer()" title="返回上一级"></span>
+			<div id="player" class="lplayer row">
+				<div class="player_cvrwrap col-lg-4 col-lg-offset-1">
+					<div class="player_u-cover">
+						<div class="player_avatar">
+							<div class="msk">
+								<img :src="song.album_img" class="p-img" />
+							</div>
+						</div>
+						<div class="content-operation">
+							<a href="javascript:;" class="player btns" title="播放">播放</a>
+							<a href="javascript:;" class="addTo btns" title="添加到播放列表">+</a>
+							<a href="javascript:;" class="btns" title="收藏">收藏</a>
+							<a href="javascript:;" class="btns" title="分享">分享</a>
+							<a href="javascript:;" class="btns" title="下载">下载</a>
+							<a href="javascript:;" class="btns" title="评论">评论</a>
+						</div>
+					</div>
+				</div>
+         <!-- title: this.song.song_name,
+              album: this.song.album,
+              author: artist,
+              url: this.song.song_url,
+              pic: this.song.album_img,
+              lyric: this.song.song_lyric -->
+				<div class="lplayer-lrc-container col-lg-6 ">
+					<div class="lplayer-music">
+						<h1>{{song.song_name}} </h1>
+						<span style=" margin-top: 16px; display: inline-block;">歌手：<span style = "color:white">{{artist}}</span></span>
+						<span style="margin-left: 20px;">专辑：<a href="javascript:;">{{song.album}} </a></span>
+					</div>
+					<div class="lplayer-lrc">
+						<div class="lplayer-lrc-content">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     <div class="g-btmbar">
       <div class="m-playbar row">
         <div class="playbar-btns col-lg-2 col-lg-offset-1">
@@ -122,7 +161,8 @@
             </div>
           </div>
         </div>
-        <router-link :to="{path:'/player',query: {show: true}}" class="allscreen"></router-link>
+        <!-- <router-link :to="{path:'/player',query: {show: true}}" class="allscreen"></router-link> -->
+        <a class="allscreen" @click.prevent="changeScreen()"></a>
       </div>
     </div>
   </div>
@@ -138,6 +178,16 @@ import { formatArtist } from "../../../service/core";
 import {removeStore} from "../../../service/getStoreData"
 export default {
   name: "player",
+  created(){
+    this.$root.$on('playEvent',(id)=>{
+      console.log("播放的歌曲id");
+      this.getSongUrl(id);
+    });
+    this.$root.$on('addPlayerListEvent',(playList,index)=>{
+      console.log("存储当前歌曲列表");
+      this.addPlayerList(playList,index);
+    });
+  },
   mounted: function() {
     this.getSong();
     this.getPlayerList();
@@ -145,6 +195,7 @@ export default {
     //如果url函数中带有show，则表明需要全屏显示歌曲播放信息
     if (this.$route.query.show) {
       this.isOnlyProgressBar = true;
+      this.LPlayer();
     }
     if (this.song.song_name != "未知") {
       //开始获取歌曲信息
@@ -162,7 +213,8 @@ export default {
       audioPlayer: null,
       status: "first",
       currSongIndex: 0,
-      firstPlayerListSong: "未知"
+      firstPlayerListSong: "未知",
+      artist:null
     };
   },
   watch: {
@@ -173,7 +225,7 @@ export default {
   beforeDestroy: function() {
     //在vue实例销毁之前将歌曲暂停并存储当前歌曲播放时间
     // this.audioPlayer.pause();
-    this.removeContainer();
+    // this.removeContainer();
     this.SAVE_CURRTIME(this.audioPlayer.getCurrTime());
   },
   // destroyed: function() {
@@ -193,6 +245,14 @@ export default {
       "getPlayerList"
     ]),
 
+    changeScreen(){
+      console.log("container block");
+      $("#container").css({
+        display:"block"
+      })
+      // this.isOnlyProgressBar = !this.isOnlyProgressBar;
+      // this.LPlayer();
+    },
     //添加到播放列表
     addPlayerList(playList, index) {
       let data,isRepeat = false;
@@ -235,12 +295,12 @@ export default {
       console.log(data);
       !isRepeat && this.SAVE_PLAYERLIST(data);
     },
-    //每次一首歌结束之后，就要将container去掉，因为它会重新生成一个节点
-    removeContainer() {
-      $("#player")
-        .children("#container")
-        .remove();
-    },
+    // //每次一首歌结束之后，就要将container去掉，因为它会重新生成一个节点
+    // removeContainer() {
+    //   $("#player")
+    //     .children("#container")
+    //     .remove();
+    // },
     start: function(id, song, index) {
       if (id) {
         this.currSongIndex = index || this.currSongIndex;
@@ -248,7 +308,7 @@ export default {
         console.log(song);
         this.SAVE_CURRTIME(0);
       }
-      //如果当前歌曲信息忆存在，则无需获取，直接播放，否则先获取歌曲播放地址
+      //如果当前歌曲信息已存在，则无需获取，直接播放，否则先获取歌曲播放地址
       if (
         this.songUrl != "" &&
         !this.lyric != "" &&
@@ -264,7 +324,7 @@ export default {
 
     //播放上一首歌曲
     playNextSong: function() {
-      this.removeContainer();
+      // this.removeContainer();
       this.currSongIndex = this.currSongIndex + 1;
       if (this.currSongIndex == this.playerList.length) {
         this.currSongIndex = 0;
@@ -278,7 +338,7 @@ export default {
 
     //播放下一首歌曲
     playPrevSong: function() {
-      this.removeContainer();
+      // this.removeContainer();
       this.currSongIndex = this.currSongIndex - 1;
       if (this.currSongIndex - 1 < 0) {
         this.currSongIndex = this.playerList.length - 1;
@@ -306,7 +366,7 @@ export default {
       this.SAVE_SONG_URL(this.song.song_url);
       this.SAVE_SONG_LYRIC(this.song.song_lyric);
       //歌曲可能有多个，需要对后台的数据进行处理
-      let artist = formatArtist(this.song.artist_names);
+      this.artist = formatArtist(this.song.artist_names);
 
       //全局只需要一个Lplayer实例，所以根据状态，如果还没有此实例，则创建，否则，更改数据，无需创建
       if (this.status == "first") {
@@ -318,18 +378,17 @@ export default {
             autoplay: true, //是否自动播放
             showlrc: true, //是否显示歌词
             theme: "#d4b514", //主题颜色 如进度条颜色,音量的颜色
-            isOnlyProgressBar: this.isOnlyProgressBar,
+            isOnlyProgressBar: true,
             music: {
               title: this.song.song_name,
               album: this.song.album,
-              author: artist,
+              author: this.artist,
               url: this.song.song_url,
               pic: this.song.album_img,
               lyric: this.song.song_lyric
             },
             audioCurrTime: this.currTime
           },
-          window
         );
       } else {
         this.audioPlayer.changeData({
@@ -337,11 +396,11 @@ export default {
           loop: false,
           showlrc: true, //是否显示歌词
           theme: "#d4b514", //主题颜色 如进度条颜色,音量的颜色
-          isOnlyProgressBar: this.isOnlyProgressBar,
+          isOnlyProgressBar: true,
           music: {
             title: this.song.song_name,
             album: this.song.album,
-            author: artist,
+            author: this.artist,
             url: this.song.song_url,
             pic: this.song.album_img,
             lyric: this.song.song_lyric
@@ -388,6 +447,11 @@ export default {
       } else {
         g_playList.style.display = "block";
       }
+    },
+    closePlayer(){
+      $("#container").css({
+        display:"none"
+      })
     }
   }
 };

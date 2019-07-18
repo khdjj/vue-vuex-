@@ -41,11 +41,11 @@
       <a href="javascript:;" class="m-creator-center">创作者中心</a>
       <div class="m-tophead">
         <div class="head" v-if="isLogin">
-          <img src="../../../default/default.png" alt>
+          <img :src="userInfo.avator">
           <a href="javascript:;" class="creator-center"></a>
         </div>
-        <a hidefocus="true" href="javascript:;" class="link s-fc3" data-action="login" @mouseover="show()">登录</a>
-        <div class="m-tlist j-uflag" @mouseover="show()" @mouseout="hide()">
+        <a hidefocus="true" href="javascript:;" class="link s-fc3" data-action="login" @mouseover="show()" v-else>登录</a>
+        <div class="m-tlist j-uflag" @mouseover="show()" @mouseout="hide()" >
           <!-- style="display: none;" -->
           <div class="inner">
             <ul class="f-cb">
@@ -71,12 +71,13 @@
       </div>
     </div>
   </div>
-  <pop ref="pop"></pop>
+  <pop ref="pop" @chageStatus="changeStatus"></pop>
   </div>
 </template>
 <script>
 import $ from 'jquery';
-import pop from '../popWindows/pop'
+import pop from '../popWindows/pop';
+import {mapState} from 'vuex'
 export default {
   name: "header",
   data() {
@@ -87,7 +88,22 @@ export default {
   components:{
     pop
   },
+  computed:{
+    ...mapState([
+      'userInfo'
+    ])
+  },
+  mounted(){
+    console.log(this.userInfo);
+  },
   methods:{
+    changeStatus(){
+      console.log(this.userInfo);
+      console.log("changeStatus");
+      this.isLogin  = !this.isLogin;
+      this.isLogin && this.hide();
+      !this.isLogin && this.show();
+    },
     showPop(){
       this.$refs.pop.show();
     },
