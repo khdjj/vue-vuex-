@@ -4,7 +4,7 @@
  * @Author: khdjj
  * @Date: 2019-06-01 14:53:53
  * @LastEditors: khdjj
- * @LastEditTime: 2019-07-18 14:03:41
+ * @LastEditTime: 2019-07-20 16:06:35
  -->
 <template>
   <div id="player">
@@ -201,6 +201,7 @@ export default {
       //开始获取歌曲信息
       this.start();
     }
+    this.closePlayer();
     window.playNextSong = this.playNextSong;
     window.playPrevSong = this.playPrevSong;
   },
@@ -378,7 +379,7 @@ export default {
             autoplay: true, //是否自动播放
             showlrc: true, //是否显示歌词
             theme: "#d4b514", //主题颜色 如进度条颜色,音量的颜色
-            isOnlyProgressBar: true,
+            isOnlyProgressBar:true,
             music: {
               title: this.song.song_name,
               album: this.song.album,

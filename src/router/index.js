@@ -8,6 +8,7 @@ const playlist  = resolve => require.ensure([], () => resolve(require('../compon
 const player = resolve => require.ensure([], () => resolve(require('../components/player/player.vue')), 'player');
 const toplist = resolve => require.ensure([], () => resolve(require('../components/toplist/toplist.vue')), 'toplist');
 const comment = resolve => require.ensure([], () => resolve(require('../components/comment/comment.vue')), 'comment');
+const search = resolve => require.ensure([], () => resolve(require('../components/search/search.vue')), 'search');
 
 
 
@@ -33,6 +34,11 @@ export default new Router({
           naem:'toplist',
           path:'/toplist',
           component:toplist
+        },
+        {
+          name:"search",
+          path:'/search',
+          component:search
         }
       ]
     },
@@ -45,7 +51,6 @@ export default new Router({
       name:"comment",
       path:'/comment',
       component:comment
-    }
-
+    },
   ]
 })

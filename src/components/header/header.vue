@@ -34,8 +34,8 @@
       </ul>
       <div class="m-search">
         <div class="srchbg">
-          <i class="srch-btn"></i>
-          <input type="text" placeholder="音乐/视频/电台/用户" id="srch">
+          <i class="srch-btn" @click="search()"></i>
+          <input type="text" placeholder="音乐/视频/电台/用户" id="srch" v-model="searchKey">
         </div>
       </div>
       <a href="javascript:;" class="m-creator-center">创作者中心</a>
@@ -82,7 +82,8 @@ export default {
   name: "header",
   data() {
     return {
-      isLogin: false
+      isLogin: false,
+      searchKey:''
     };
   },
   components:{
@@ -116,12 +117,16 @@ export default {
       $('.m-tlist').css({
         'display':'none'
       });
+    },
+    search(){
+      console.log(this.searchKey);
+      this.$router.push({name:"search",query:{searchKey:this.searchKey}});
     }
   }
 };
 </script>
 <style>
 @import url("./header.css");
-</style>
+</style> 
 
 
