@@ -122,7 +122,6 @@ export default {
   },
   watch:{
     id(){
-      console.log(this.id);
       this.getComment();
     }
   },
@@ -151,8 +150,6 @@ export default {
             !item.hot && self.newcomments.push(item);
           });
         }
-        console.log(self.hotcomments);
-        console.log(self.newcomments);
       });
     }
   }

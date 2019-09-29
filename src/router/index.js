@@ -9,8 +9,8 @@ const player = resolve => require.ensure([], () => resolve(require('../component
 const toplist = resolve => require.ensure([], () => resolve(require('../components/toplist/toplist.vue')), 'toplist');
 const comment = resolve => require.ensure([], () => resolve(require('../components/comment/comment.vue')), 'comment');
 const search = resolve => require.ensure([], () => resolve(require('../components/search/search.vue')), 'search');
-
-
+const myMusic = resolve => require.ensure([], () => resolve(require('../components/myMusic/myMusic.vue')), 'myMusic');
+const modifyPlayList = resolve => require.ensure([], () => resolve(require('../components/modify/modifyPlayList.vue')), 'modifyPlayList');
 
 export default new Router({
   routes: [
@@ -39,6 +39,18 @@ export default new Router({
           name:"search",
           path:'/search',
           component:search
+        },
+        {
+          name:'myMusic',
+          path:'/myMusic',
+          component:myMusic,
+          children:[
+            {
+              name:'modifyPlayList',
+              path:'/modify',
+              component:modifyPlayList
+            }
+          ]
         }
       ]
     },
@@ -51,6 +63,6 @@ export default new Router({
       name:"comment",
       path:'/comment',
       component:comment
-    },
+    }
   ]
 })

@@ -1,0 +1,138 @@
+.g-bd3 {
+    background: url(https://s2.music.126.net/style/web2/img/frame/wrap3.png?ef27251e45ce5c67d05631b5784d0b6a) repeat-y center 0;
+}
+.p-mymusic .g-sd3 {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* _zoom: 1; */
+}
+.n-musicsd {
+    padding-bottom: 50px;
+    padding-top: 40px;
+}
+.g-sd3 {
+    float: left;
+    width: 238px;
+    position: fixed;
+    /* _position: absolute; */
+}
+.n-minelst-1 {
+    margin-top: 5px;
+}
+.n-minelst h2 {
+    padding: 0 10px 12px 15px;
+    font-size: 14px;
+    color: #000;
+}
+
+.f-ff1 {
+    font-family: simsun,\5b8b\4f53;
+}
+.u-btn-crt {
+    width: 52px;
+    height: 22px;
+    background-position: 0 -96px;
+}
+
+.u-btn {
+    display: inline-block;
+}
+.u-btn-crt i {
+    display: inline-block;
+    line-height: 22px;
+    *line-height: 23px;
+    overflow: hidden;
+    padding-left: 20px;
+    color: #515151;
+    font-size: 12px;
+    font-weight: normal;
+}
+.n-minelst .rtitle {
+    cursor: pointer;
+}
+.f-pr {
+    position: relative;
+    zoom: 1;
+}
+.n-minelst .tri1 {
+    border-color: #ccc transparent transparent;
+    border-style: solid dashed dashed;
+    border-width: 8px 7px 0;
+}
+
+.n-minelst .tri {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px 0 5px;
+    cursor: pointer;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+}
+em, i {
+    font-style: normal;
+    text-align: left;
+    font-size: inherit;
+}
+.f-fr {
+    float: right;
+}
+.n-minelst li.z-selected, .n-minelst li.z-selected:hover {
+    background: #e6e6e6;
+}
+.n-minelst li {
+    position: relative;
+    zoom: 1;
+    height: 42px;
+    padding: 6px 0 6px 20px;
+    box-sizing:content-box;
+}
+.n-minelst ul * {
+    cursor: pointer;
+    vertical-align: middle;
+}
+.n-minelst .item {
+    padding-left: 50px;
+}
+.n-minelst .left {
+    display: inline;
+    float: left;
+    margin-left: -50px;
+    overflow: hidden;
+    width: 40px;
+}
+.n-minelst .avatar {
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+.n-minelst .avatar img {
+    width: 40px;
+    height: 40px;
+}
+.n-minelst .name {
+    width: 150px;
+    overflow: hidden;
+    margin-top: 2px;
+    margin-bottom: 3px;
+
+}
+.n-minelst .name a {
+    white-space: nowrap;
+    font-size:13px;
+}
+.n-minelst .num {
+    width: 130px;
+    font-size:13px;
+}
+.f-thide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+.s-fc4, a.s-fc4:hover {
+    color: #999;
+}

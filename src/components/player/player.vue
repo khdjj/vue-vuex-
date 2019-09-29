@@ -4,7 +4,7 @@
  * @Author: khdjj
  * @Date: 2019-06-01 14:53:53
  * @LastEditors: khdjj
- * @LastEditTime: 2019-07-20 16:06:35
+ * @LastEditTime: 2019-07-28 19:48:13
  -->
 <template>
   <div id="player">
@@ -180,11 +180,9 @@ export default {
   name: "player",
   created(){
     this.$root.$on('playEvent',(id)=>{
-      console.log("播放的歌曲id");
       this.getSongUrl(id);
     });
     this.$root.$on('addPlayerListEvent',(playList,index)=>{
-      console.log("存储当前歌曲列表");
       this.addPlayerList(playList,index);
     });
   },
@@ -247,7 +245,6 @@ export default {
     ]),
 
     changeScreen(){
-      console.log("container block");
       $("#container").css({
         display:"block"
       })
@@ -261,7 +258,6 @@ export default {
       let obj;
       if(index){
         if (Object.prototype.toString.call(playList[index]) == "[object Array]") {
-            console.log("array");
             obj = JSON.parse(JSON.stringify(playList[index]));
             data = {
               list:obj,
@@ -270,7 +266,6 @@ export default {
         }
       }else{
         if(Object.prototype.toString.call(playList) == "[object Array]"){
-          console.log("array");
             obj = JSON.parse(JSON.stringify(playList));
                data = {
               list:obj,
@@ -278,12 +273,9 @@ export default {
             }
         }
       }
-      console.log(Object.prototype.toString.call(playList));
      if (Object.prototype.toString.call(playList) == "[object Object]") {
-       console.log("object");
         for(let i = 0; i< this.playerList.length;i++){
           if(this.playerList[i].song_id == playList.song_id){
-            console.log(isRepeat);
             isRepeat = true;
             break;
           }
@@ -293,7 +285,6 @@ export default {
           isArray: false
         };
       }
-      console.log(data);
       !isRepeat && this.SAVE_PLAYERLIST(data);
     },
     // //每次一首歌结束之后，就要将container去掉，因为它会重新生成一个节点
@@ -306,7 +297,6 @@ export default {
       if (id) {
         this.currSongIndex = index || this.currSongIndex;
         this.SAVE_SONG(song);
-        console.log(song);
         this.SAVE_CURRTIME(0);
       }
       //如果当前歌曲信息已存在，则无需获取，直接播放，否则先获取歌曲播放地址
@@ -316,7 +306,6 @@ export default {
         this.songUrl &&
         this.lyric
       ) {
-        console.log("all have");
         this.LPlayer();
       } else {
         this.getSongUrl(id);
@@ -330,7 +319,6 @@ export default {
       if (this.currSongIndex == this.playerList.length) {
         this.currSongIndex = 0;
       }
-      console.log(this.playerList[this.currSongIndex]);
       this.start(
         this.playerList[this.currSongIndex].song_id,
         this.playerList[this.currSongIndex]
@@ -344,7 +332,6 @@ export default {
       if (this.currSongIndex - 1 < 0) {
         this.currSongIndex = this.playerList.length - 1;
       }
-      console.log(this.playerList[this.currSongIndex]);
       this.start(
         this.playerList[this.currSongIndex].song_id,
         this.playerList[this.currSongIndex]
@@ -421,8 +408,6 @@ export default {
       axiosMethod("/discover/song/player", {
         id: self.song.song_id
       }).then(res => {
-        console.log("getSongUrl");
-        console.log(res);
         this.song.song_url = res.data.url;
         self.getLyric();
       });
@@ -435,8 +420,6 @@ export default {
       axiosMethod("/discover/song/lyric", {
         id: self.song.song_id
       }).then(res => {
-        console.log("getSongLyric");
-        console.log(res);
         this.song.song_lyric = res.data.lyric;
         self.LPlayer();
       });

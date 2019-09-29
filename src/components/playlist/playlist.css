@@ -81,7 +81,7 @@
 .s-fc7{
     color:#000;
 }
-/* .m-info .btns {
+.m-info .btns {
     margin-bottom: 25px;
     margin-right: -10px;
 }
@@ -215,4 +215,16 @@
     line-height: 18px;
     color: #666;
     font-size:14px;
-} */
+}
+
+.m-table th, .m-table th .wp, .m-table td, .m-table .ply, .m-table .mv, .m-table .icn, .m-info .edit {
+    background: url(https://s2.music.126.net/style/web2/img/table.png?8499d27fbc692e24f33f979efa305331) no-repeat 0 9999px;
+}
+.m-info .edit {
+    float: right;
+    margin-top: 1px;
+    padding-left: 18px;
+    line-height: 17px;
+    background-position: 0 -259px;
+    cursor:pointer;
+}

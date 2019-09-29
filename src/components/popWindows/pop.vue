@@ -6,6 +6,7 @@
       <div class="zttl f-thide" v-if="isRegisterSucc">编辑个人资料</div>
     </div>
     <div class="zcnt">
+      <!-- 注册 -->
       <div class="lyct lyct-1" v-if="!isRegisterSucc">
         <div class="n-log2 n-log2-2">
           <div class="j-mob">
@@ -54,6 +55,7 @@
           </div>
         </div>
       </div>
+      <!-- 注册成功后填写资料 -->
       <div v-if="isRegisterSucc" class="g-update per_update">
         <form id="update_form">
           <div class="n-base f-cb">
@@ -112,6 +114,7 @@ import axiosMethod from "../../../service/axios";
 import alert from "../alert/alert";
 import axios from "axios";
 import {mapMutations} from "vuex";
+import {setStore} from '../../../service/getStoreData'
 export default {
   name: "pop",
   components: {
@@ -149,12 +152,9 @@ export default {
      * 上传图片,当文件改变时,将图片上传
      */
     upload(e) {
-       console.log(e);
         var input = e.currentTarget;
-        console.log(input);
         this.$refs.alert.show("正在上传，请稍候");
         let data = new FormData();
-        console.log(input.files[0]);
         data.append("file", input.files[0]);
         let config = {
           headers: {
@@ -164,7 +164,6 @@ export default {
         axios
           .post("http://localhost:8001/v1//users/avatar", data, config)
           .then(res => {
-            console.log(res);
             if (res.data.code == 200) {
               this.imgsrc = "http://localhost:8001/img/" + res.data.url;
               this.$refs.alert.show("上传成功");
@@ -177,9 +176,10 @@ export default {
           email:this.email,
           pwd:this.pwd
         },'POST').then(res=>{
-          console.log(res);
           let data = res.data;
           if(data.code == 200){
+            var token = data.token;
+            setStore("Authorization",token);
             this.SAVE_USER(data.userData);
             this.$emit('chageStatus');
             this.hide();
@@ -195,7 +195,6 @@ export default {
         axiosMethod("/v1/search/nickname", {
           nickname:this.nickname
         }).then(res => {
-          console.log(res);
           if (res.status == 0) {
             self.oldnickname = self.nickname;
             self.$refs.alert.show("对不起，用户名已存在，请重新输入");
@@ -205,7 +204,6 @@ export default {
     },
     //显示此pop组件
     show() {
-      console.log("show");
       document.getElementsByClassName("m-layer")[0].style.display = "block";
     },
     //隐藏此pop组件
@@ -234,15 +232,11 @@ export default {
       let _self = this;
       this.desc = this.desc || null;
       this.sex = this.sex || null;
-      console.log(this.sex);
-      console.log(this.desc);
-      console.log(this.nickname);
       axiosMethod("/v1/users/improve", {
           nickname: this.nickname,
           desc: this.desc,
           sex: this.sex
         },"POST").then(res => {
-          console.log(res);
           this.$refs.alert.show(res.data.msg);
           if (res.data.code == 200) {
             this.reset();
@@ -263,7 +257,6 @@ export default {
       //   this.$refs.alert.show("对不起，此用户名已存在，请重新填写");
       //   return;
       // }
-      console.log("register");
       if (!this.email) {
         this.hint = "邮箱未填写";
         return;
@@ -285,7 +278,6 @@ export default {
         pwd: this.pwd,
         code: this.code
       }).then(res => {
-        console.log(res);
         this.$refs.alert.show(res.data.msg);
         if (res.data.code == 200) {
           this.reset();
@@ -306,11 +298,9 @@ export default {
       }
       clearInterval(timer);
       this.send = false;
-      console.log(this.email);
       axiosMethod("/v1/getCaptchas", {
         email: this.email
       }).then(res => {
-        console.log(res);
           this.$refs.alert.show(res.data.msg);
         if (res.data.code == 200) {
           this.hint = res.data.msg;

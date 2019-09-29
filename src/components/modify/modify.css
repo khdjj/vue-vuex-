@@ -1,0 +1,234 @@
+.g-mn3 {
+    height: 100%;
+    float: right;
+    width: 740px;
+    padding-bottom: 50px;
+}
+.g-wrap {
+    padding: 40px;
+}
+.u-bread1 {
+    height: 27px;
+    border-bottom: 1px solid #cbcbcb;
+    font-family: simsun,\5b8b\4f53;
+}
+.u-bread1 .arr {
+    margin: 0 6px 0 8px;
+}
+.n-base {
+    margin-top: 30px;
+}
+.n-base .frm-1 {
+    width: 364px;
+}
+.n-base .frm {
+    float: left;
+    width: 340px;
+    margin-right: 30px;
+}
+.m-frm-1 .itm {
+    padding-left: 62px;
+}
+.m-frm .itm {
+    position: relative;
+    zoom: 1;
+    min-height: 32px;
+    margin-bottom: 10px;
+    padding-left: 38px;
+}
+.m-frm .must {
+    position: absolute;
+    left: 0;
+    top: 11px;
+}
+.s-fc6, a.s-fc6:hover {
+    color: #c20c0c;
+}
+
+.m-frm .lab {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 38px;
+    line-height: 32px;
+    text-align: right;
+}
+.m-frm-1 .lab {
+    width: 62px;
+    font-size:13px;
+}
+.n-base .txt, .n-base .area {
+    width: 292px;
+}
+
+.u-txt {
+    height: 19px;
+    margin: 0;
+    padding: 5px 6px 6px;
+    border: 1px solid #cdcdcd;
+    border-radius: 2px;
+    line-height: 19px;
+}
+.n-base .tags {
+    padding-top: 5px;
+    margin-left:24px;
+}
+.n-base .tags .cho {
+    line-height: 23px;
+}
+
+.s-fc7, a.s-fc7:hover {
+    color: #0c73c2;
+}
+.n-base .tagnote {
+    margin-top: 8px;
+    margin-left:24px;
+    font-size:13px;
+}
+.s-fc4, a.s-fc4:hover {
+    color: #999;
+}
+
+.u-txtwrap {
+    padding-right: 14px;
+}
+.n-base .area {
+    height: 122px;
+}
+.n-base .txt, .n-base .area {
+    width: 264px;
+}
+textarea.u-txt, div.u-txt {
+    width: 100%;
+    margin-right: -20px;
+}
+.u-txt {
+    height: 19px;
+    margin: 0;
+    padding: 5px 6px 6px;
+    border: 1px solid #cdcdcd;
+    border-radius: 2px;
+    line-height: 19px;
+    margin-left:24px;
+}
+textarea {
+    resize: none;
+    overflow: auto;
+}
+.u-txtwrap .zs {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    _right: 20px;
+}
+.s-fc2, a.s-fc2:hover {
+    color: #D0D0D0;
+}
+.n-base .avatar, .n-base .avatar img {
+    float: left;
+    width: 140px;
+    height: 140px;
+}
+.n-base .avatar {
+    float: left;
+}
+.f-pr {
+    position: relative;
+    zoom: 1;
+}
+.n-base .avatar, .n-base .avatar img {
+    float: left;
+    width: 140px;
+    height: 140px;
+}
+.n-base .avatar .btm {
+    background: #8e8e8e;
+    opacity: 0.8;
+    filter: Alpha(opacity=80);
+}
+.n-base .avatar .btm, .n-base .avatar .upload {
+    display: block;
+    position: absolute;
+    width: 140px;
+    height: 26px;
+    left: 0;
+    bottom: 0;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+}
+.n-base .avatar .upload {
+    color: #fff;
+    text-align: center;
+    line-height: 26px;  
+    opacity: 0;
+}
+
+#modifyPlayList{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: white;
+    z-index: 999;
+}
+
+
+.u-btn2, .u-btn2 i, .u-btn2 .icn, .u-btni, .u-btni i, .u-tag, .u-tag i, .u-btni-addply .ply {
+    background: url(https://s2.music.126.net/style/web2/img/button2.png?1506582e49a5067c322bd22a460b7578) no-repeat 0 9999px;
+}
+
+.n-base .tags .u-tag {
+    margin-right: 10px;
+}
+.u-tag {
+    padding: 0 10px 0 0;
+    text-shadow: 0 1px #fdfdfd;
+    background-position: right -27px;
+}
+.u-tag, .u-tag:hover {
+    color: #777;
+    text-decoration: none;
+}
+.u-tag, .u-tag i {
+    float: left;
+    height: 22px;
+    line-height: 22px;
+}
+.u-tag-1 i {
+    padding-right: 10px;
+}
+.u-tag i {
+    position: relative;
+    zoom: 1;
+    padding: 0 3px 0 13px;
+    background-position: 0 0;
+}
+.u-tag em {
+    position: absolute;
+    padding: 0 2px;
+    top: -1px;
+    right: -10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.u-btn2-1 i {
+    color: #333;
+    background-position: 0 -59px;
+}
+.u-btn2 i{
+    width:80px;
+    margin-left:12px;
+}
+.u-btn2-1 {
+    color: #333;
+    background-position: right -100px;
+}
+.u-btn2-2 i {
+    color: #fff;
+    background-position: 0 -387px;
+}

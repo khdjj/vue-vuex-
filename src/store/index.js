@@ -25,7 +25,8 @@ const state = {
         avatar:'http://p2.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg?param=180y180',
         userId:null,
         email:null
-    }
+    },
+    token:null
 }
 
 export default new Vuex.Store({

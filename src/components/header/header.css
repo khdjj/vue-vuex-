@@ -355,6 +355,56 @@ em, i {
     border: 1px solid #232323;
     border-width: 1px 0;
 }
-.m-tlist .inner li:hover{
+.m-tlist  li:hover{
     background: #3a3838;
+}
+.g-bd, .g-bd1, .g-bd2, .g-bd3, .g-bd4, .g-bd5, .g-bd6, .g-bd7 {
+    width: 980px;
+    min-height: 700px;
+    /* _height: 700px; */
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    border-width: 0 1px;
+}
+.u-btn, div.u-page a, div.u-page a.js-selected, div.u-page a.znxt.js-disabled, div.u-page a.zprv.js-disabled {
+    background: url(https://s2.music.126.net/style/web2/img/button.png?4142e23305b59357038bba215c281e00) no-repeat 0 9999px;
+}
+
+.m-tlist-lged a {
+    height: 34px;
+    line-height: 34px;
+}
+.m-tlist .icn, .m-tlist .arr {
+    background: url(https://s2.music.126.net/style/web2/img/frame/toplist.png?bbe48e5b26cffb433418a9c3bc766254) no-repeat 0 9999px;
+}
+.m-tlist-lged .icn {
+    margin: 7px 10px 0 0;
+}
+.m-tlist .icn-hm {
+    background-position: 0 -80px;
+}
+.m-tlist .icn-msg {
+    background-position: -20px -120px;
+}
+.m-tlist .icn-lv {
+    background-position: 0 -100px;
+}
+.m-tlist .icn-mbr {
+    background-position: 0 -221px;
+    margin-top: 9px;
+}
+.m-tlist .icn-st {
+    background-position: 0 -140px;
+}
+.m-tlist .icn-verify {
+    background-position: -20px -142px;
+}
+.m-tlist .icn-ex {
+    background-position: 0 -200px;
+}
+.m-tlist .icn {
+    float: left;
+    width: 18px;
+    height: 18px;
 }

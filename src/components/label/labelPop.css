@@ -1,0 +1,81 @@
+h4{
+    font-size:13px;
+    padding: 15px 0 0;
+    color: #999;
+    font-weight: normal;
+}
+.m-seltags {
+    position: relative;
+    zoom: 1;
+    padding: 0 0 0 20px;
+    height: 315px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.m-seltags .tagtyp {
+    padding: 15px 0;
+}
+.m-seltags h5 {
+    float: left;
+    width: 50px;
+    margin-right: -50px;
+    line-height: 30px;
+}
+.m-seltags .taglst {
+    float: right;
+    width: 100%;
+}
+.m-seltags ul {
+    margin: -10px 0 0 30px;
+}
+.m-seltags li {
+    position: relative;
+    float: left;
+    display: inline;
+    width: 70px;
+    height: 31px;
+    margin: 10px 0 0 20px;
+}
+div.m-layer .lybt {
+    border-top: 1px solid #c6c6c6;
+}
+div.m-layer .lybtc {
+    height: 54px;
+    line-height: 32px;
+    padding: 8px 20px;
+    border: 1px solid #fff;
+    border-radius: 0 0 4px 4px;
+    text-align: center;
+    background: #f7f7f7;
+    
+}
+div.m-layer .lybt .u-btn2 {
+    margin: 0 10px;
+}
+.u-icn, .u-title-1 .out .icon {
+    background: url(https://s2.music.126.net/style/web2/img/icon.png?00f79a42341c9486afcd03edd145cbaf) no-repeat 0 9999px;
+}
+.m-seltags li .u-icn-31 {
+    display: none;
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+}
+.u-icn-31 {
+    background-position: -25px -430px;
+}
+.u-icn-31, .u-icn-32 {
+    width: 18px;
+    height: 18px;
+}
+.u-icn, .u-icn2, .u-icn3 {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.m-seltags li.z-sel .u-icn-31 {
+    display: inline;
+}
+.z-sel{
+    display: inline!important;
+}

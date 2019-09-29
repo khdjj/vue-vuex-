@@ -11,25 +11,25 @@
           </div>
           <ul class="slider">
             <li class="img-items">
-              <img src="http://p1.music.126.net/bJwniekKyd8disfC-aZJ9A==/109951164108363779.jpg">
+              <img src="http://p1.music.126.net/V0VdeRo9a0zTVU3xWnzNMg==/109951164239959392.jpg">
             </li>
             <li class="img-items">
-              <img src="http://p1.music.126.net/P05are-Iqwt513CMlvvo2w==/109951164110504414.jpg">
+              <img src="http://p1.music.126.net/sGSz5MD4FGROpvvfz5ykgw==/109951164239700931.jpg">
             </li>
             <li class="img-items">
-              <img src="http://p1.music.126.net/DQnrPUsbyUSYrbTUYZakJw==/109951164111819482.jpg">
+              <img src="http://p1.music.126.net/pb6prIoyBdFJqLuQkBcBSw==/109951164240544327.jpg">
             </li>
             <li class="img-items">
-              <img src="http://p1.music.126.net/3xukBeaHJCSiHHYTCbLxSA==/109951164110146340.jpg">
+              <img src="http://p1.music.126.net/Qh5o2VheQx070wZ-eMQsyg==/109951164240181070.jpg">
             </li>
             <li class="img-items">
-              <img src="http://p1.music.126.net/11gGZDiLuOZ1mpX-Rune1A==/109951164110498858.jpg">
+              <img src="http://p1.music.126.net/aVuJ51VktKDRc7ugZU5Ugg==/109951164241210024.jpg">
             </li>
             <li class="img-items">
-              <img src="http://p1.music.126.net/USAyefWuwIi4k2VIVjBKAg==/109951164111325559.jpg">
+              <img src="http://p1.music.126.net/yVa3VX-9B9b3tsp3-Q0JYg==/109951164236362435.jpg">
             </li>
             <li class="img-items">
-              <img src="http://p1.music.126.net/IPc12NgTimcKXYNym2KMcg==/109951164110587739.jpg">
+              <img src="http://p1.music.126.net/8DzhuW8dNrmniNk0xbybHQ==/109951164240532956.jpg">
             </li>
           </ul>
           <div class="next-btn btn">
@@ -256,7 +256,6 @@ export default {
         offset: 0,
         name: ["云音乐飙升榜", "云音乐新歌榜", "网易原创歌曲榜"]
       }).then(res => {
-        console.log(res);
         self.topList = res.data.topList;
         self.songList = res.data.songs;
       });
