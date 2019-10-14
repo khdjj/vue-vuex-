@@ -26,7 +26,11 @@ const state = {
         userId:null,
         email:null
     },
-    token:null
+    token:null,
+    imgBaseUrl:'http://localhost:8001/img/',
+    HOST:'"http://localhost:8001',
+    myCreatePlayList:[],
+    modifyPlayList:null
 }
 
 export default new Vuex.Store({

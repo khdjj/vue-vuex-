@@ -1,0 +1,47 @@
+.m-favgd ul li {
+    padding: 6px 0 6px 35px;
+    border-top: 1px solid #e0e0e0;
+}
+.m-favgd ul .item {
+    padding-left: 50px;
+}
+.m-favgd ul .left {
+    display: inline;
+    float: left;
+    margin-left: -50px;
+    overflow: hidden;
+    width: 40px;
+}
+.m-favgd ul * {
+    cursor: pointer;
+}
+.m-favgd ul .avatar {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+.m-favgd ul .avatar img {
+    width: 40px;
+    height: 40px;
+}
+.m-favgd ul .name {
+    margin-top: 2px;
+    margin-bottom: 8px;
+}
+.m-favgd ul p {
+    word-wrap: break-word;
+}
+.m-favgd ul * {
+    cursor: pointer;
+}
+.f-thide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.xtag:hover{
+    background: #e6e6e6;
+}

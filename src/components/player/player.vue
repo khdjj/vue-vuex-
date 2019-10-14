@@ -4,7 +4,7 @@
  * @Author: khdjj
  * @Date: 2019-06-01 14:53:53
  * @LastEditors: khdjj
- * @LastEditTime: 2019-07-28 19:48:13
+ * @LastEditTime: 2019-10-14 10:03:56
  -->
 <template>
   <div id="player">
@@ -85,7 +85,7 @@
           </div>
         </div>
         <div class="oper col-lg-1 col-lg-offset-2">
-          <a href="javascript:;" title="收藏" class="icn icn-add"></a>
+          <a href="javascript:;" title="收藏" class="icn icn-add" @click="addToCollection(song)"></a>
           <a href="javascript:;" title="分享" class="icn icn-share"></a>
         </div>
         <div class="ctrl col-lg-1">
@@ -244,19 +244,21 @@ export default {
       "getPlayerList"
     ]),
 
+    addToCollection(song){
+      console.log("song"+song);
+      this.$root.$emit('addCollectionSong',song.song_id);
+    },
     changeScreen(){
       $("#container").css({
         display:"block"
       })
-      // this.isOnlyProgressBar = !this.isOnlyProgressBar;
-      // this.LPlayer();
     },
     //添加到播放列表
     addPlayerList(playList, index) {
       let data,isRepeat = false;
       //vuex的mutations不能传递多个参数，所以只能作为对象传进去
       let obj;
-      if(index){
+      if(typeof index == "number"){
         if (Object.prototype.toString.call(playList[index]) == "[object Array]") {
             obj = JSON.parse(JSON.stringify(playList[index]));
             data = {
@@ -287,12 +289,6 @@ export default {
       }
       !isRepeat && this.SAVE_PLAYERLIST(data);
     },
-    // //每次一首歌结束之后，就要将container去掉，因为它会重新生成一个节点
-    // removeContainer() {
-    //   $("#player")
-    //     .children("#container")
-    //     .remove();
-    // },
     start: function(id, song, index) {
       if (id) {
         this.currSongIndex = index || this.currSongIndex;

@@ -67,7 +67,7 @@
                   title="添加到播放列表"
                   @click.prevent="addToPlayerList(song)"
                 ></a>
-                <span class="icn icn-fav" title="收藏"></span>
+                <span class="icn icn-fav" title="收藏" @click="addToCollection(song)"></span>
                 <span class="icn icn-share" title="分享">分享</span>
                 <span class="icn icn-dl" title="下载"></span>
               </div>
@@ -122,6 +122,10 @@ export default {
     changeSongList(songList) {
       this.songList = songList;
       console.log(this.songList);
+    },
+       addToCollection(song){
+      console.log(song);
+      this.$root.$emit('addCollectionSong',song.song_id);
     },
     play(song, id, show) {
       this.SAVE_SONG(song); //在vuex中存储当前播放歌曲

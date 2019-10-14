@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-07-24 15:31:36
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-10-13 08:56:58
+ -->
 <template>
   <div id="g_mymusic" class="g-mymusic">
     <div class="g-bd3 p-mymusic f-cb">
@@ -12,13 +20,12 @@
               <li class="j-iflag z-selected" v-for="(playlist,index) in createList" :key="index" @click="changeList(playlist)">
                 <div class="item f-cb">
                   <div class="left"><a hidefocus="true" class="avatar">
-                    <img :src="playlist.img" alt=""></a>
+                    <img :src="playlist.img | imageFilter()" alt=""></a>
                   </div>
                   <p class="name f-thide">
                     <a hidefocus="true" href="javascript:void(0);" class="s-fc0" :title="playlist.name">{{playlist.name}}</a></p>
-                  <p class="s-fc4 f-thide num">{{createList.length}}首</p>
+                  <p class="s-fc4 f-thide num">{{playlist.song_ids.length}}首</p>
                  </div>
-
               </li>
             </ul>
           </div>
@@ -29,7 +36,8 @@
             <ul class="f-cb j-flag">
               <li class="j-iflag" id="auto-id-N0yzVL3kxNsM218y" @click="changeList(playlist)">
                 <div class="item f-cb">
-                  <div class="left"><a hidefocus="true" class="avatar"><img src="https://p2.music.126.net/hB4lqF-LiFYx_yvbChb7gg==/109951163754920641.jpg?param=40y40" alt=""></a></div>
+                  <div class="left"><a hidefocus="true" class="avatar">
+                    <img src="https://p2.music.126.net/hB4lqF-LiFYx_yvbChb7gg==/109951163754920641.jpg?param=40y40" alt=""></a></div>
                   <p class="name f-thide"><a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="700首流行经典老歌【80/90/00后KTV珍藏】">700首流行经典老歌【80/90/00后KTV珍藏】</a></p>
                   <p class="s-fc4 f-thide num">700首&nbsp;by PolooStudio</p>
                 </div><span class="oper hshow" style="display: none;"><a data-action="delete" hidefocus="true" title="删除" href="javascript:void(0);" class="u-icn u-icn-11"></a></span>
@@ -39,7 +47,7 @@
           <div style="height:100px;"></div>
         </div>
       </div>
-      <right-list :playList="list"></right-list>
+      <right-list></right-list>
       <play-list-pop ref="play_list_pop" @addCreatePlayList="addToCreatePlayList"></play-list-pop>
     </div>
   </div>
@@ -48,7 +56,8 @@
 import axiosMethod from '../../../service/axios';
 import rightList from '../rightList/rightList';
 import playListPop from '../playListPop/playListPop';
-
+import {formatImage} from '../../../service/utils'
+import {mapState,mapMutations} from 'vuex'
 export default {
   name: 'myMusic',
   components: {
@@ -70,11 +79,24 @@ export default {
       }
     }
   },
+  computed:{
+    ...mapState([
+      'imgBaseUrl'
+    ])
+  },  
   mounted() {
     this.getCreatePlayList();
     this.getCollPlayList();
   },
+  filters:{
+    imageFilter(value){
+    return formatImage(value);
+    }
+  },
   methods: {
+    ...mapMutations([
+      'SAVE_CREATPLAYLIST','SAVE_MODIFYPLAYLIST'
+    ]),
     create_playlist() {
       this.$refs.play_list_pop.showPop();
     },
@@ -84,7 +106,9 @@ export default {
     getCreatePlayList() {
       axiosMethod('/weapi/playlist/getcreateplaylist', {}, 'POST').then(res => {
         this.createList = res.data.results;
-         this.changeList(this.createList[0]);
+        console.log(this.createList);
+        this.SAVE_CREATPLAYLIST(this.createList);
+        this.changeList(this.createList[0]);
       })
     },
     /**
@@ -103,6 +127,7 @@ export default {
      * 将每个歌单的详细信息传给子组件right_list，因为自创歌单和收藏歌单不同，所以要用同一个list来接收
      */
     changeList(list){
+      this.SAVE_MODIFYPLAYLIST(list);
       this.list = list;
     }
   }

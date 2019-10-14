@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-06-04 17:13:58
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-06-04 17:13:58
+ */
 import axios from 'axios';
 import {getStore} from './getStoreData';
 let baseUrl = "http://localhost:8001";
@@ -22,6 +30,7 @@ axios.interceptors.request.use(
 export default (url = '', data = {}, type = "GET",token) => {
     type = type.toUpperCase();
     url = baseUrl + url;
+    console.log(url);
     console.log(type);
     if (type == 'GET') {
         return new Promise((resolve, reject) => {

@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-06-03 17:08:53
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-10-14 10:43:45
+ -->
 <template>
   <div>
     <nav-compt></nav-compt>
@@ -38,7 +46,7 @@
                   </i>
                 </a>
                 <a href="javascript:;" class="u-btni u-btni-add" hidefocus="true" title="添加到播放列表"></a>
-                <a class="u-btni u-btni-fav" href="javascript:;">
+                <a class="u-btni u-btni-fav" href="javascript:;" @click="addToCollectPlayList(playList)">
                   <i>(22283)</i>
                 </a>
                 <a class="u-btni u-btni-share" href="javascript:;">
@@ -73,6 +81,7 @@
         <comment type = "playListComment" :id="id"></comment>
       </div>
     </div>
+    <alert ref="alert"></alert>
   </div>
 </template>
 
@@ -83,12 +92,15 @@ import navCompt from "../nav/nav";
 import comment from "../comment/comment"
 import axiosMethod from "../../../service/axios";
 import playListSong from "./playlist_song";
+import alert from "../alert/alert"
+import {collectPlayList} from "../../common/addToCollectPlayList"
 export default {
   name: "playlist",
   components: {
     navCompt,
     playListSong,
-    comment
+    comment,
+    alert
   },
   data() {
     return {
@@ -101,6 +113,15 @@ export default {
     this.id && this.getPlayList();
   },
   methods: {
+    addToCollectPlayList(playlist){
+      var vm = this;
+      collectPlayList(playlist).then(res=>{
+        console.log(res);
+        if(res.data.code == 200){
+          vm.$refs.alert.show("收藏歌单成功");
+        }
+      })
+    },
     addToPlayList(){
       this.$refs.playlistsong.addToPlayerList();
     },

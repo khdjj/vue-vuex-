@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-05-31 10:25:06
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-05-31 10:25:06
+ -->
 
 
 <template>
@@ -114,7 +122,6 @@
                   v-bind:key="index"
                 >
                   <span class="no no-top">{{index+1}}</span>
-
                   <a
                     @click.stop.prevent="player(songlist,songlist.song_id,true)"
                     class="nm s-fc0 f-thide"
@@ -128,7 +135,7 @@
                       hidefocus="true"
                     ></a>
                     <a href="#" class="u-icn u-icn-81" @click.prevent="addToPlayerList(songlist)" title="添加到播放列表" hidefocus="true"></a>
-                    <a href="#" class="s-bg s-bg-12" title="收藏" hidefocus="true"></a>
+                    <a href="#" class="s-bg s-bg-12" title="收藏" hidefocus="true" @click="addToCollection(songlist)"></a>
                   </div>
                 </li>
               </ol>
@@ -143,9 +150,6 @@
         </div>
       </div>
     </div>
-    <!-- <keep-alive>
-    <player ref="play"></player>
-    </keep-alive> -->
     <foot></foot>
     <router-view></router-view>
   </div>
@@ -154,7 +158,6 @@
 <script>
 import navCompt from "../nav/nav";
 import $ from "jquery";
-// import player from "../player/player";
 import foot from "../foot/foot";
 import axios from "axios";
 import { numFormat } from "../../../service/utils";
@@ -204,8 +207,11 @@ export default {
       this.$root.$emit('playEvent', id); //插入歌曲
     },
 
+    addToCollection(song){
+      console.log("song"+song);
+      this.$root.$emit('addCollectionSong',song.song_id);
+    },
     addToPlayerList(playList, index) {
-      // this.$refs.play.addPlayerList(playList,index);
       this.$root.$emit('addPlayerListEvent', playList,index); //插入歌曲
     },
     /**

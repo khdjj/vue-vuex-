@@ -4,7 +4,7 @@
  * @Author: khdjj
  * @Date: 2019-06-06 10:24:45
  * @LastEditors: khdjj
- * @LastEditTime: 2019-07-27 21:58:21
+ * @LastEditTime: 2019-10-12 16:41:11
  */
 
  import {setStore,removeStore} from "../../service/getStoreData"
@@ -22,7 +22,15 @@ export default {
     SAVE_CURRTIME(state, time) {
         state.currTime = time;
     },
+    SAVE_CREATPLAYLIST(state,data){
+        state.myCreatePlayList = data;
+    },
+    SAVE_MODIFYPLAYLIST(state,data){
+        state.modifyPlayList = data;
+    },
     SAVE_PLAYERLIST(state,data) {
+        console.log("播放列表");
+        console.log(data.list);
         if (data.isArray) {
             state.playerList = data.list;
         } else {

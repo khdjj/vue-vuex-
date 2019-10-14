@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-06-10 20:39:01
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-06-10 20:39:01
+ -->
 <template>
   <div>
     <nav-compt></nav-compt>
@@ -52,6 +60,7 @@
                       class="u-btn2 u-btn2-2 u-btni-addply f-fl"
                       hidefocus="true"
                       title="播放"
+                      @click="addToPlayerList()"
                     >
                       <i>
                         <em class="ply"></em>播放
@@ -120,6 +129,9 @@ export default {
       axiosMethod('/discover/toplist/all').then(res=>{
         this.topList = res.data.data;
       })
+    },
+     addToPlayerList(playList, index) {
+      this.$root.$emit('addPlayerListEvent', this.songList); //插入歌曲
     },
     getCurrTopListData(){
       axiosMethod('/discover/toplist/',{
