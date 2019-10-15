@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-05-31 15:28:05
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-10-15 16:19:38
+ -->
 <template>
   <div>
     <div class="m-top">
@@ -41,7 +49,7 @@
         <a href="javascript:;" class="m-creator-center">创作者中心</a>
         <div class="m-tophead">
           <div class="head" v-if="isLogin">
-            <img :src="userInfo.avator"  @mouseover="show()">
+            <img :src="userInfo.avatarUrl |imageFilter " @mouseover="show()">
             <a href="javascript:;" class="creator-center"></a>
           </div>
           <a hidefocus="true" href="javascript:;" class="link s-fc3" data-action="login" @mouseover="show()" v-else>登录</a>
@@ -70,7 +78,7 @@
             <i class="arr"></i>
           </div>
           <!-- 个人中心 -->
-          <div class="m-tlist m-tlist-lged j-uflag" style="display:none"  @mouseover="show()" @mouseout="hide()" v-else>
+          <div class="m-tlist m-tlist-lged j-uflag" style="display:none" @mouseover="show()" @mouseout="hide()" v-else>
             <ul class="f-cb lb mg">
               <li><a hidefocus="true" class="itm-1" href="/user/home?id=1340338564"><i class="icn icn-hm"></i><em>我的主页</em></a></li>
               <li><a href="/msg/#/at" class="itm-2"><i class="icn icn-msg"></i><em>我的消息</em><span class="m-topmsg f-pa f-hide j-uflag"></span></a></li>
@@ -82,21 +90,21 @@
               <li><a hidefocus="true" class="itm-2" href="/login?targetUrl=%2Fst/userbasic/#/nameverify" target="_blank"><i class="icn icn-verify"></i><em>实名认证</em></a></li>
             </ul>
             <ul class="f-cb lt">
-              <li><a hidefocus="true" class="itm-3" href="#" @click.prevent="logout()"  ><i class="icn icn-ex"></i><em>退出</em></a></li>
+              <li><a hidefocus="true" class="itm-3" href="#" @click.prevent="logout()"><i class="icn icn-ex"></i><em>退出</em></a></li>
             </ul><i class="arr"></i>
           </div>
         </div>
       </div>
     </div>
     <pop ref="pop" @chageStatus="changeStatus"></pop>
-
   </div>
 </template>
 <script>
 import $ from 'jquery';
 import pop from '../popWindows/pop';
+import { formatImage } from '../../../service/utils'
 import { removeStore } from "../../../service/getStoreData"
-import { mapState, mapActions,mapMutations } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   name: "header",
   data() {
@@ -113,8 +121,16 @@ export default {
       'userInfo'
     ])
   },
+  filters: {
+    imageFilter(value) {
+      return formatImage(value);
+    }
+  },
   mounted() {
     this.getUserInfo();
+    console.log("userInfo");
+    console.log(this.userInfo);
+    console.log(this.isLogin);
     if (this.userInfo) {
       this.isLogin = true;
     }
@@ -155,7 +171,7 @@ export default {
     search() {
       this.$router.push({ name: "search", query: { searchKey: this.searchKey } });
     },
-    logout(){
+    logout() {
       this.LOGOUT();
       this.isLogin = false;
       console.log(this.isLogin);

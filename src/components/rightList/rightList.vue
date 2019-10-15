@@ -4,7 +4,7 @@
  * @Author: khdjj
  * @Date: 2019-07-24 16:37:01
  * @LastEditors: khdjj
- * @LastEditTime: 2019-10-14 09:16:17
+ * @LastEditTime: 2019-10-15 21:35:20
  -->
 <template>
   <div id="m-playlist" class="g-bd4 f-cb">
@@ -14,7 +14,7 @@
           <img :src="modifyPlayList.img | imageFilter " class="j-img" v-if="modifyPlayList">
           <span class="msk"></span>
         </div>
-        <router-link :to='{name:"modifyPlayList",query:{id:modifyPlayList.id,img:modifyPlayList.img,name:modifyPlayList.name}}' class="edit s-fc7">编辑</router-link>
+        <router-link :to='{name:"modifyPlayList",query:{id:modifyPlayList.id,img:modifyPlayList.img,name:modifyPlayList.name}}' class="edit s-fc7" v-if="!comment">编辑</router-link>
         <div class="cnt">
           <div class="cntc">
             <div class="hd f-cb">
@@ -59,7 +59,7 @@
         </div>
       </div>
       <play-list-song :songIdList="modifyPlayList.song_ids" :playNum="modifyPlayList.play_num" ref="playlistsong"></play-list-song>
-      <comment type="playListComment" :id="id"></comment>
+      <comment type="playListComment" :id="id" v-if="!comment"></comment>
       <router-view></router-view>
     </div>
   </div>
@@ -76,6 +76,7 @@ export default {
   components: {
     playListSong, comment
   },
+  props:['comment'],
   data() {
     return {
       id:''

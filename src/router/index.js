@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-05-31 10:25:06
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-05-31 10:25:06
+ */
 import Vue from 'vue'
 import Router from 'vue-router'
 import App from '../App.vue'
@@ -11,6 +19,9 @@ const comment = resolve => require.ensure([], () => resolve(require('../componen
 const search = resolve => require.ensure([], () => resolve(require('../components/search/search.vue')), 'search');
 const myMusic = resolve => require.ensure([], () => resolve(require('../components/myMusic/myMusic.vue')), 'myMusic');
 const modifyPlayList = resolve => require.ensure([], () => resolve(require('../components/modify/modifyPlayList.vue')), 'modifyPlayList');
+const mv = resolve => require.ensure([], () => resolve(require('../components/mv/mv.vue')), 'mv');
+const discover = resolve => require.ensure([], () => resolve(require('../components/discoverPlayList/discoverPlayList.vue')), 'discoverPlayList');
+
 
 export default new Router({
   routes: [
@@ -24,6 +35,11 @@ export default new Router({
         },{
           path:'/home',
           component:home
+        },
+        {
+          name:'discover',
+          path:'/discoverpl',
+          component:discover
         },
         {
           name:'playlist',
@@ -58,6 +74,10 @@ export default new Router({
       name:'player',
       path:'/player',
       component:player
+    },{
+      name:'mv',
+      path:'/mv',
+      component:mv
     },
     {
       name:"comment",

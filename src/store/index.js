@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-06-06 10:24:25
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-10-15 14:16:52
+ */
 import Vue from 'vue';
 import Vuex from 'vuex'
 import mutations from './mutations'
@@ -20,12 +28,13 @@ const state = {
     playerList: [],
     login: false,
     currTime:0,
-    userInfo:{
-        nickname:null,
-        avatar:'http://p2.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg?param=180y180',
-        userId:null,
-        email:null
-    },
+    userInfo:null,
+    // {
+    //     // nickname:null,
+    //     // avatarUrl:'http://p2.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg?param=180y180',
+    //     // userId:null,
+    //     // email:null
+    // },
     token:null,
     imgBaseUrl:'http://localhost:8001/img/',
     HOST:'"http://localhost:8001',

@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-06-10 09:25:24
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-10-14 20:47:15
+ -->
 <template>
   <div>
     <div class="n-songtb">
@@ -52,7 +60,7 @@
                       <a href="javascript:;">
                         <b title="One">{{song.song_name}}</b>
                       </a>
-                      <span title="播放mv" class="mv" v-if="song.mv_id != 0">MV</span>
+                      <span title="播放mv" class="mv" v-if="song.mv_id && song.mv_id!=0" @click="playMV(song)">MV</span>
                     </span>
                   </div>
                 </div>
@@ -111,6 +119,11 @@ export default {
   components: {
     // player
   },
+  watch:{
+    songIdList:function(){
+      this.getSongList();
+    }
+  },
   props: ["songIdList", "playNum"],
   data() {
     return {
@@ -127,6 +140,11 @@ export default {
       console.log(song);
       this.$root.$emit('addCollectionSong',song.song_id);
     },
+    playMV(song){
+      console.log(song);
+      this.$root.$emit('pause');
+      this.$router.push({path:'/mv',query:{id:song.mv_id,name:song.song_name,artist:song.artist_names[0].artist_name}});
+    },
     play(song, id, show) {
       this.SAVE_SONG(song); //在vuex中存储当前播放歌曲
       this.SAVE_CURRTIME(0); //在vuex中重置当前歌曲播放时间
@@ -138,10 +156,8 @@ export default {
     addToPlayerList(playlist) {
       if (playlist) {
          this.$root.$emit('addPlayerListEvent', playList); //插入歌曲
-        // this.$refs.play.addPlayerList(playlist);
       } else {
          this.songList &&  this.$root.$emit('addPlayerListEvent', this.songList); //插入歌曲
-        // this.songList && this.$refs.play.addPlayerList(this.songList);
       }
     },
     getSongList() {

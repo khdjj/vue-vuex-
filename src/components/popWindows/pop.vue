@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-06-25 08:37:13
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-10-15 15:30:06
+ -->
 <template>
   <div class="m-layer z-show">
     <div class="zbar">
@@ -129,7 +137,7 @@ export default {
       pwd: null, //密码
       code: null, //验证码
       send: true, //是否发送验证码
-      time: 120, //等待秒数
+      time: 60, //等待秒数
       nickname: null,
       oldnickname: null,
       desc: null, //个人描述
@@ -156,6 +164,7 @@ export default {
         this.$refs.alert.show("正在上传，请稍候");
         let data = new FormData();
         data.append("file", input.files[0]);
+        data.append("userId",this.userId);
         let config = {
           headers: {
             "Content-Type": "multipart/form-data"
@@ -181,6 +190,7 @@ export default {
             var token = data.token;
             setStore("Authorization",token);
             this.SAVE_USER(data.userData);
+            console.log(data.userData);
             this.$emit('chageStatus');
             this.hide();
           }
@@ -228,14 +238,15 @@ export default {
     },
     //注册后填写具体信息
     improve() {
-
+      console.log(this.userId);
       let _self = this;
       this.desc = this.desc || null;
       this.sex = this.sex || null;
       axiosMethod("/v1/users/improve", {
           nickname: this.nickname,
           desc: this.desc,
-          sex: this.sex
+          sex: this.sex,
+          userId:this.userId
         },"POST").then(res => {
           this.$refs.alert.show(res.data.msg);
           if (res.data.code == 200) {
@@ -252,11 +263,6 @@ export default {
      * 注册方法
      */
     async register() {
-
-      // if (this.nickname != null && this.nickname == this.oldnickname) {
-      //   this.$refs.alert.show("对不起，此用户名已存在，请重新填写");
-      //   return;
-      // }
       if (!this.email) {
         this.hint = "邮箱未填写";
         return;
@@ -273,6 +279,7 @@ export default {
         this.hint = "邮箱格式错误";
         return;
       }
+      var vm = this;
       axiosMethod("/v1/register", {
         email: this.email,
         pwd: this.pwd,
@@ -280,11 +287,11 @@ export default {
       }).then(res => {
         this.$refs.alert.show(res.data.msg);
         if (res.data.code == 200) {
-          this.reset();
-          this.userId = res.data.userId;
-          this.isRegister = false;
-          this.isLogin = false;
-          this.isRegisterSucc = true;
+          vm.reset();
+          vm.userId = res.data.userId;
+          vm.isRegister = false;
+          vm.isLogin = false;
+          vm.isRegisterSucc = true;
         }
       });
     },
@@ -309,7 +316,7 @@ export default {
       let timer = setInterval(() => {
         this.time--;
         if (this.time == 0) {
-          this.time = 120;
+          this.time = 60;
           this.hint = null;
           clearInterval(timer);
           this.send = true;

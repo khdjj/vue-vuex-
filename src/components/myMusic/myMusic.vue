@@ -4,17 +4,18 @@
  * @Author: khdjj
  * @Date: 2019-07-24 15:31:36
  * @LastEditors: khdjj
- * @LastEditTime: 2019-10-13 08:56:58
+ * @LastEditTime: 2019-10-15 21:36:17
  -->
 <template>
   <div id="g_mymusic" class="g-mymusic">
     <div class="g-bd3 p-mymusic f-cb">
-      <div class="g-sd3 u-scroll n-musicsd f-pr j-flag" style="height: 209px;">
+      <div class="g-sd3 u-scroll n-musicsd f-pr j-flag">
         <div id="auto-id-7RAPl94anxraXzBq">
           <div class="n-minelst n-minelst-1">
             <h2 class="f-ff1">
               <a hidefocus="true" href="javascript:void(0);" class="u-btn u-btn-crt f-fr j-flag" @click.prevent="create_playlist()"><i>新建</i></a>
-              <span class="rtitle f-pr" data-action="spread"><i class="tri tri1"></i>创建的歌单<span class="f-pa f-r-black-icon" style="display:inline-block;width:8px;height:8px;background-size:cover;"></span>&nbsp;(<span class="j-flag">6</span>)</span>
+              <span class="rtitle f-pr" data-action="spread"><i class="tri tri1"></i>创建的歌单
+              <span class="f-pa f-r-black-icon" style="display:inline-block;width:8px;height:8px;background-size:cover;"></span>&nbsp;(<span class="j-flag" v-if="createList[0]">{{createList.length}}</span>)</span>
             </h2>
             <ul class="j-flag f-cb">
               <li class="j-iflag z-selected" v-for="(playlist,index) in createList" :key="index" @click="changeList(playlist)">
@@ -31,15 +32,17 @@
           </div>
           <div class="n-minelst n-minelst-1">
             <h2 class="f-ff1">
-              <span class="rtitle f-pr" data-action="spread"><i class="tri tri1"></i>收藏的歌单<span class="f-pa f-r-black-icon" style="display:inline-block;width:8px;height:8px;background-size:cover;"></span>&nbsp;(<span class="j-flag">13</span>)</span>
+              <span class="rtitle f-pr" data-action="spread"><i class="tri tri1"></i>收藏的歌单<span class="f-pa f-r-black-icon" style="display:inline-block;width:8px;height:8px;background-size:cover;">
+                </span>&nbsp;(<span class="j-flag" v-if="collectionList[0]">{{collectionList.length}}</span>)</span>
             </h2>
             <ul class="f-cb j-flag">
-              <li class="j-iflag" id="auto-id-N0yzVL3kxNsM218y" @click="changeList(playlist)">
+              <li class="j-iflag" id="auto-id-N0yzVL3kxNsM218y" @click="changeList(item)" v-for="(item,index) in collectionList" :key="index">
                 <div class="item f-cb">
                   <div class="left"><a hidefocus="true" class="avatar">
-                    <img src="https://p2.music.126.net/hB4lqF-LiFYx_yvbChb7gg==/109951163754920641.jpg?param=40y40" alt=""></a></div>
-                  <p class="name f-thide"><a hidefocus="true" href="javascript:void(0);" class="s-fc0" title="700首流行经典老歌【80/90/00后KTV珍藏】">700首流行经典老歌【80/90/00后KTV珍藏】</a></p>
-                  <p class="s-fc4 f-thide num">700首&nbsp;by PolooStudio</p>
+                    <img :src="item.img" alt=""></a></div>
+                  <p class="name f-thide">
+                    <a hidefocus="true" href="javascript:void(0);" class="s-fc0" :title="item.name">{{item.name}}</a></p>
+                  <p class="s-fc4 f-thide num">{{item.song_ids.length}}首&nbsp;by {{item.creator}}</p>
                 </div><span class="oper hshow" style="display: none;"><a data-action="delete" hidefocus="true" title="删除" href="javascript:void(0);" class="u-icn u-icn-11"></a></span>
               </li>
             </ul>
@@ -47,7 +50,7 @@
           <div style="height:100px;"></div>
         </div>
       </div>
-      <right-list></right-list>
+      <right-list :comment="true"></right-list>
       <play-list-pop ref="play_list_pop" @addCreatePlayList="addToCreatePlayList"></play-list-pop>
     </div>
   </div>
@@ -115,7 +118,11 @@ export default {
      * 获取用户收藏的歌单
      */
     getCollPlayList() {
-
+      var vm = this;
+      axiosMethod('/v1/users/getCollectPlayList',{},'POST').then(res=>{
+        console.log(res);
+        vm.collectionList = res.data.results;
+      })
     },
     /**
      * 接收子类传递的歌单数据

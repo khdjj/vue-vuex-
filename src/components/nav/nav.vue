@@ -1,10 +1,18 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-05-31 20:13:42
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-05-31 20:13:42
+ -->
 <template>
     <div class="m-subnav">
         <div class="wrap  f-cb">
             <ul class="nav">
                 <li> <router-link to="/home">推荐</router-link></li>
                 <li> <router-link to="/toplist">排行榜</router-link></li>
-                <li> <a href="javascript:;">歌单</a></li>
+                <li> <router-link to="/discoverpl">歌单</router-link></li>
                 <li> <a href="javascript:;">主播电台</a></li>
                 <li> <a href="javascript:;">歌手</a></li>
                 <li> <a href="javascript:;">新碟上架</a></li>

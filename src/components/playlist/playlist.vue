@@ -4,7 +4,7 @@
  * @Author: khdjj
  * @Date: 2019-06-03 17:08:53
  * @LastEditors: khdjj
- * @LastEditTime: 2019-10-14 10:43:45
+ * @LastEditTime: 2019-10-15 21:27:57
  -->
 <template>
   <div>
@@ -116,8 +116,9 @@ export default {
     addToCollectPlayList(playlist){
       var vm = this;
       collectPlayList(playlist).then(res=>{
-        console.log(res);
+      
         if(res.data.code == 200){
+          console.log("收藏歌单成功");
           vm.$refs.alert.show("收藏歌单成功");
         }
       })

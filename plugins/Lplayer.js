@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-06-01 14:57:48
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-06-01 14:57:48
+ */
 function LPlayer(e,$window) {
 	if (!("music" in e && "title" in e.music && "url" in e.music && "pic" in e.music && "author" in e.music)) {
 		throw "APlayer Error: Music, music.title, music.author, music.url, music.pic are required in options";
@@ -10,7 +18,7 @@ function LPlayer(e,$window) {
 		autoplay: false,
 		showlrc: true,
 		theme: '#fff',
-		isOnlyProgressBar: false,
+		isOnlyProgressBar: true,
 	}
 	this.options = $.extend({}, a, e);
 	this._window = $window;
@@ -198,10 +206,12 @@ LPlayer.prototype = {
 
 			// $('#container').remove();
 			// $('#player').prepend(container);
-
-			$('#container').css({
-				display:"block"
-			})
+		    if(this.options.allscreen){
+				$('#container').css({
+					display:"block"
+				})
+			}
+			
 			//将文字信息转换成p的dom元素
 
 			let el = '';

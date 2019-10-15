@@ -4,7 +4,7 @@
  * @Author: khdjj
  * @Date: 2019-06-01 14:53:53
  * @LastEditors: khdjj
- * @LastEditTime: 2019-10-14 10:03:56
+ * @LastEditTime: 2019-10-15 09:39:21
  -->
 <template>
   <div id="player">
@@ -185,6 +185,9 @@ export default {
     this.$root.$on('addPlayerListEvent',(playList,index)=>{
       this.addPlayerList(playList,index);
     });
+    this.$root.$on('pause',()=>{
+      this.audioPlayer.pause();
+    });
   },
   mounted: function() {
     this.getSong();
@@ -192,6 +195,7 @@ export default {
 
     //如果url函数中带有show，则表明需要全屏显示歌曲播放信息
     if (this.$route.query.show) {
+      document.documentElement.style.overflow = "hidden";
       this.isOnlyProgressBar = true;
       this.LPlayer();
     }
@@ -249,6 +253,7 @@ export default {
       this.$root.$emit('addCollectionSong',song.song_id);
     },
     changeScreen(){
+      document.documentElement.style.overflow = "hidden";
       $("#container").css({
         display:"block"
       })
@@ -362,6 +367,7 @@ export default {
             autoplay: true, //是否自动播放
             showlrc: true, //是否显示歌词
             theme: "#d4b514", //主题颜色 如进度条颜色,音量的颜色
+            allscreen:false,
             isOnlyProgressBar:true,
             music: {
               title: this.song.song_name,
@@ -378,6 +384,7 @@ export default {
         this.audioPlayer.changeData({
           autoplay: true, //是否自动播放
           loop: false,
+          allscreen:false,
           showlrc: true, //是否显示歌词
           theme: "#d4b514", //主题颜色 如进度条颜色,音量的颜色
           isOnlyProgressBar: true,
@@ -432,6 +439,7 @@ export default {
       $("#container").css({
         display:"none"
       })
+      document.documentElement.style.overflow = "auto";
     }
   }
 };
