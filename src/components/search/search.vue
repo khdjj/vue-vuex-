@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: khdjj
+ * @Date: 2019-07-18 19:18:50
+ * @LastEditors: khdjj
+ * @LastEditTime: 2019-10-15 22:08:21
+ -->
 <template>
   <div class="g-bd">
     <div class="g-wrap n-srch">
@@ -23,7 +31,7 @@
             <div class="srchsongst" v-if="searchSong">
               <div class="item f-cb h-flag " v-for="(item,index) in searchData.result.songs" :key="index">
                 <div class="td">
-                  <div class="hd"><a class="ply " title="播放"></a></div>
+                  <div class="hd"><a class="splay " title="播放"></a></div>
                 </div>
                 <div class="td w0">
                   <div class="sn">
@@ -66,7 +74,7 @@
             <div class="n-srchrst ztag" v-if="searchAlbum">
               <ul class="m-cvrlst m-cvrlst-alb3 f-cb">
                 <li v-for="(item,index) in searchData.result.albums" :key="index">
-                  <div class="u-cover u-cover-alb2"><a href="#"><img :src="item.picUrl"><span :title="item.name" class="msk"></span></a><a title="播放" data-res-action="play" data-res-type="19" data-res-id="34943039" class="icon-play f-alpha f-fr " href="javascript:void(0)"></a></div>
+                  <div class="u-cover u-cover-alb2"><a href="#"><img :src="item.picUrl"><span :title="item.name" class="msk"></span></a><a title="播放" data-res-action="splay" data-res-type="19" data-res-id="34943039" class="icon-play f-alpha f-fr " href="javascript:void(0)"></a></div>
                   <p class="dec"><a href="#" class="tit f-thide s-fc0" :title="item.name">{{item.name}}</a></p>
                   <p><span class="nm f-thide" :title="item.artist.name"><a href="#" class="s-fc3">{{item.artist.name}}</a></span></p>
                 </li>
@@ -97,7 +105,7 @@
                   <tbody>
                     <tr class="h-flag"  v-for="(item,index) in searchData.result.playlists" :key="index">
                       <td class="first w0">
-                        <div class="hd"><span class="ply " title="播放" ></span></div>
+                        <div class="hd"><span class="splay " title="播放" ></span></div>
                       </td>
                       <td class="w7">
                         <div class="u-cover u-cover-3"><a href="">

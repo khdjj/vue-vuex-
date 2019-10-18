@@ -76,7 +76,7 @@
                   @click.prevent="addToPlayerList(song)"
                 ></a>
                 <span class="icn icn-fav" title="收藏" @click="addToCollection(song)"></span>
-                <span class="icn icn-share" title="分享">分享</span>
+                <span class="icn icn-share" title="分享" @click="share(song)">分享</span>
                 <span class="icn icn-dl" title="下载"></span>
               </div>
             </td>
@@ -135,6 +135,9 @@ export default {
     changeSongList(songList) {
       this.songList = songList;
       console.log(this.songList);
+    },
+    share(song){
+      this.$root.$emit('shareEvent','单曲',song);
     },
        addToCollection(song){
       console.log(song);

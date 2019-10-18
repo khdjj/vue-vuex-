@@ -4,7 +4,7 @@
  * @Author: khdjj
  * @Date: 2019-06-03 17:08:53
  * @LastEditors: khdjj
- * @LastEditTime: 2019-10-15 21:27:57
+ * @LastEditTime: 2019-10-17 20:28:27
  -->
 <template>
   <div>
@@ -49,7 +49,7 @@
                 <a class="u-btni u-btni-fav" href="javascript:;" @click="addToCollectPlayList(playList)">
                   <i>(22283)</i>
                 </a>
-                <a class="u-btni u-btni-share" href="javascript:;">
+                <a class="u-btni u-btni-share" href="javascript:;" @click="share(playList)">
                   <i>(258)</i>
                 </a>
                 <a class="u-btni u-btni-dl" href="javascript:;">
@@ -113,13 +113,15 @@ export default {
     this.id && this.getPlayList();
   },
   methods: {
+    share(playList){
+      let d = JSON.stringify(playList);
+      this.$root.$emit('shareEvent','歌单',JSON.parse(d));
+    },
     addToCollectPlayList(playlist){
       var vm = this;
       collectPlayList(playlist).then(res=>{
-      
         if(res.data.code == 200){
-          console.log("收藏歌单成功");
-          vm.$refs.alert.show("收藏歌单成功");
+          alert("收藏歌单成功");
         }
       })
     },

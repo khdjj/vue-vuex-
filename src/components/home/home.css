@@ -63,7 +63,7 @@ a{
     height: 100%;
     margin-left: 0px;
 }
-/* .m-cvrlst li{
+.m-cvrlst li{
     width: 140px;
     height: 204px;
     margin: 10px;
@@ -72,7 +72,7 @@ a{
     display: inline-block;
     overflow: hidden;
     line-height: 1.4;
-} */
+}
 .u-cover .msk{
     position: absolute;
     top:0;

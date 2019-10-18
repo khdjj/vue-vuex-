@@ -34,7 +34,6 @@
 <script>
 import axiosMethod from "../../../service/axios";
 import { formatImage } from '../../../service/utils'
-
 export default {
   data() {
     return {

@@ -1,0 +1,272 @@
+li,a,em,p,ul{
+    list-style:none;
+    text-decoration: none;
+    font-style: normal;
+    margin:0;
+    padding:0;
+    
+  }
+  .m-lyshare {
+      padding: 20px 40px 30px;
+  }
+  .m-tabs1 {
+      height: 27px;
+      border-bottom: 1px solid #dedede;
+      margin-bottom: 10px;
+  }
+  .m-tabs1 .z-slt {
+      border-bottom-color: #fff;
+  }
+  
+  .m-lyshare .u-txtwrap {
+      border: 1px solid #d9d9d9;
+      border-radius: 2px;
+  }
+  
+  .u-txtwrap {
+      padding-right: 14px;
+  }
+  
+  .m-tabs1 li {
+      margin-right: 4px;
+      position: relative;
+      border-bottom: 1px solid #dedede;
+  }
+  .m-tabs1 li, .m-tabs1 a {
+      float: left;
+      height: 27px;
+  }
+  .m-tabs1 .z-slt a {
+      background-position: right -303px;
+      color: #333;
+  }
+  .m-lyshare .area {
+      height: 106px;
+      border: none;
+  }
+  
+  textarea.u-txt, div.u-txt {
+      width: 100%;
+      margin-right: -20px;
+  }
+  .u-txt {
+      height: 19px;
+      margin: 0;
+      padding: 5px 6px 6px;
+      border: 1px solid #cdcdcd;
+      border-radius: 2px;
+      line-height: 19px;
+  }
+  textarea {
+      resize: none;
+      overflow: auto;
+  }
+  .m-lyshare .info.z-dis {
+      cursor: auto;
+      background-color: transparent !important;
+  }
+  
+  .m-lyshare .info {
+      position: relative;
+      height: 45px;
+      line-height: 45px;
+      margin: 0 -14px 0 0;
+      padding: 0 10px;
+      cursor: pointer;
+  }
+  
+  .m-lyshare .info .text {
+      width: 100%;
+      border-top: 1px solid #e5e5e5;
+  }
+  
+  .f-fs1 {
+      font-size: 14px;
+  }
+  .f-fl {
+      float: left;
+  }
+  .m-lyshare .info .text p, .m-lyshare .info .text h3 {
+      margin-right: 15px;
+  }
+  .f-thide {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: normal;
+  }
+  
+  .m-tabs, .m-tabs a, .m-tabs em, .m-tabs1 a, .m-tabs1 em {
+      background: url(https://s2.music.126.net/style/web2/img/tab.png?358a4ed17314c0ad310e7226eb15b758) no-repeat 0 9999px;
+  }
+  
+  .m-tabs1 .z-slt a em {
+      background-position: 0 -206px;
+  }
+  .m-tabs1 em {
+      display: block;
+      background-position: 0 -141px;
+      line-height: 27px;
+      width: 91px;
+      text-align: center;
+  }
+  .m-tabs1 li, .m-tabs1 a {
+      float: left;
+      height: 27px;
+  }
+  
+  .m-lyshare .pics {
+      float: left;
+      margin-left: -12px;
+      margin-top: -12px;
+  }
+  
+  .m-lyshare .pics .pic {
+      cursor: move;
+      background: url(https://s2.music.126.net/style/web2/img/icon2.png?cf2731894d1a4c4db6db38d7efc51682) no-repeat -210px -250px;
+  }
+  .m-lyshare .pics li {
+      width: 80px;
+      height: 80px;
+      float: left;
+      margin-left: 12px;
+      margin-top: 12px;
+  }
+ 
+  
+  .f-img, .f-blk {
+      display: block;
+      width: 100%;
+      height: 100%;
+  }
+  
+  .m-lyshare .pics .del {
+      display: none;
+      top: -6px;
+      right: -6px;
+      cursor: pointer;
+  }
+  
+  .u-icn, .u-icn2, .u-icn3 {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: middle;
+  }
+
+  .u-icn2 {
+      background: url(https://s2.music.126.net/style/web2/img/icon2.png?8d2befc295dbdc10aec059becb777bf6) no-repeat 0 9999px;
+  }
+  .f-pa {
+      position: absolute;
+  }
+  .u-icn2-addimg {
+    width: 80px;
+    height: 80px;
+    background-position: -210px -70px;
+}
+.u-icn2-delimg {
+    width: 16px;
+    height: 16px;
+    background-position: -120px -340px;
+}
+ 
+.m-lyshare .choose .add {
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin-left: 12px;
+    z-index: 0;
+}
+.u-btn2, .u-btn2 i, .u-btn2 .icn, .u-btni, .u-btni i, .u-tag, .u-tag i, .u-btni-addply .ply {
+    background: url(https://s2.music.126.net/style/web2/img/button2.png?98f32d0ce021f1c4a77cf4cd6bcf412a) no-repeat 0 9999px;
+}
+.m-lyshare .choose{
+    margin:10px;
+}
+.m-lyshare .pics .pic.z-fail {
+    background-position: -210px -160px;
+}
+.m-lyshare .pics .pic img {
+    background-color: #fff;
+}
+
+.m-lyshare .pics li {
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin-left: 12px;
+    margin-top: 12px;
+}
+
+.f-cb:after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.m-lyshare .btnwrap {
+    margin-top: 30px;
+}
+.m-lyshare .btnwrap a {
+    margin-right: 10px;
+}
+
+.u-btn2, .u-btn2:hover {
+    text-decoration: none;
+}
+.u-btn2 {
+    padding: 0 5px 0 0;
+    white-space: nowrap;
+}
+.u-btn2, .u-btn2 i {
+    display: inline-block;
+    height: 31px;
+    line-height: 31px;
+    overflow: hidden;
+    vertical-align: top;
+    text-align: center;
+    cursor: pointer;
+}
+.u-btn2-2 {
+    color: #fff;
+    background-position: right -428px;
+}
+.u-btn2-w2 i {
+    width: 40px;
+}
+
+.u-btn2-2 i {
+    color: #fff;
+    background-position: 0 -387px;
+}
+.u-btn2 i {
+    padding: 0 15px 0 20px;
+    pointer-events: none;
+}
+.u-btn2-1 {
+    color: #333;
+    background-position: right -100px;
+}
+.u-btn2 {
+    padding: 0 5px 0 0;
+    white-space: nowrap;
+}
+.u-btn2-1 i {
+    color: #333;
+    background-position: 0 -59px;
+}
+#uploadImg{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.u-btn2 i {
+    padding: 0 15px 0 20px;
+    pointer-events: none;
+}
+.show{
+    display:block!important;
+}

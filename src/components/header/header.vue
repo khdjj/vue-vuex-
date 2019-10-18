@@ -26,7 +26,7 @@
           </li>
           <li>
             <span>
-              <a href="javascript:;">朋友</a>
+              <router-link to="/shareTrend">动态</router-link>
             </span>
           </li>
           <li>

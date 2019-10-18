@@ -4,7 +4,7 @@
  * @Author: khdjj
  * @Date: 2019-06-01 14:53:53
  * @LastEditors: khdjj
- * @LastEditTime: 2019-10-15 09:39:21
+ * @LastEditTime: 2019-10-17 22:05:45
  -->
 <template>
   <div id="player">
@@ -407,6 +407,7 @@ export default {
       if (this.song.song_id == "") {
         this.song.song_id = id;
       }
+      console.log(this.song.song_id);
       let self = this;
       axiosMethod("/discover/song/player", {
         id: self.song.song_id

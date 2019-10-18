@@ -14,6 +14,7 @@
       <player></player>
     </keep-alive>
    <collection-pop></collection-pop>
+   <sharePop></sharePop>
    <!-- <create-playlist-pop></create-playlist-pop> -->
   </div>
 </template>
@@ -22,13 +23,14 @@
 import headerTop from '../src/components/header/header'
 import player from '../src/components/player/player'
 import collectionPop from '../src/components/collectionPop/collection'
+import sharePop from '../src/components/sharePop/sharePop'
 // import createPlayListPop from '../src/components/playListPop/playListPop'
 export default {
   components: {
     headerTop,
     player,
     collectionPop,
-    // createPlayListPop
+    sharePop
   }
 }
 </script>

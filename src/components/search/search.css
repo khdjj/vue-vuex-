@@ -140,10 +140,10 @@ li, s {
     width: 17px;
 }
 
-.n-srchrst .srchsongst .hd .ply, .n-srchrst .srchsongst .mv, .n-srchrst .srchsongst .icn, .m-plylist-rdi .icn, .n-srchrst .srchsongst .mv-dis {
+.n-srchrst .srchsongst .hd .splay, .n-srchrst .srchsongst .mv, .n-srchrst .srchsongst .icn, .m-plylist-rdi .icn, .n-srchrst .srchsongst .mv-dis {
     background: url(https://s2.music.126.net/style/web2/img/table.png?98e4840cc26b36b1eae0633c178608fd) no-repeat 0 9999px;
 }
-.n-srchrst .srchsongst .hd .ply {
+.n-srchrst .srchsongst .hd .splay {
     display: inline-block;
     width: 17px;
     height: 17px;
@@ -517,14 +517,14 @@ em, i {
 .m-table .hd {
     height: 18px;
 }
-.m-table .hd .ply {
+.m-table .hd .splay {
     float: right;
 }
 
-.m-table .ply {
+.m-table .splay {
     float: left;
 }
-.m-table .ply {
+.m-table .splay {
     width: 17px;
     height: 17px;
     cursor: pointer;
